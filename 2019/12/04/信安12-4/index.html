@@ -6,15 +6,21 @@
   <meta name="renderer" content="webkit">
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
   <link rel="dns-prefetch" href="http://yoursite.com">
-  <title>Archives: 2019 | 你好</title>
+  <title>你好</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-  <meta property="og:type" content="website">
+  <meta name="description" content="title:信安2019-12-4IP地址以及VLMP子网划分地址汇总交换机的工作原理交换机的配置DHCP动态主机配置协议">
+<meta property="og:type" content="article">
 <meta property="og:title" content="你好">
-<meta property="og:url" content="http://yoursite.com/archives/2019/index.html">
+<meta property="og:url" content="http://yoursite.com/2019/12/04/信安12-4/index.html">
 <meta property="og:site_name" content="你好">
+<meta property="og:description" content="title:信安2019-12-4IP地址以及VLMP子网划分地址汇总交换机的工作原理交换机的配置DHCP动态主机配置协议">
 <meta property="og:locale" content="en">
+<meta property="og:image" content="https://gss2.bdstatic.com/9fo3dSag_xI4khGkpoWK1HF6hhy/baike/c0%3Dbaike116%2C5%2C5%2C116%2C38/sign=ef0111789a25bc313f5009ca3fb6e6d4/fc1f4134970a304ee7eb644cd2c8a786c8175cbf.jpg">
+<meta property="og:updated_time" content="2019-12-04T11:23:53.091Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="你好">
+<meta name="twitter:description" content="title:信安2019-12-4IP地址以及VLMP子网划分地址汇总交换机的工作原理交换机的配置DHCP动态主机配置协议">
+<meta name="twitter:image" content="https://gss2.bdstatic.com/9fo3dSag_xI4khGkpoWK1HF6hhy/baike/c0%3Dbaike116%2C5%2C5%2C116%2C38/sign=ef0111789a25bc313f5009ca3fb6e6d4/fc1f4134970a304ee7eb644cd2c8a786c8175cbf.jpg">
   
     <link rel="alternative" href="/atom.xml" title="你好" type="application/atom+xml">
   
@@ -150,64 +156,230 @@
             <canvas data-colors="#eaeaea" data-sectionHeight="100" data-contentId="js-content" id="myCanvas1" class="anm-canvas"></canvas>
           </div>
           <div id="js-content" class="content-ll">
-            
-  
-  
+            <article id="post-信安12-4" class="article article-type-post " itemscope itemprop="blogPost">
+  <div class="article-inner">
     
-    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <hr>
+<h2 id="title-信安2019-12-4"><a href="#title-信安2019-12-4" class="headerlink" title="title:信安2019-12-4"></a>title:信安2019-12-4</h2><h2 id="IP地址以及VLMP"><a href="#IP地址以及VLMP" class="headerlink" title="IP地址以及VLMP"></a>IP地址以及VLMP</h2><h2 id="子网划分"><a href="#子网划分" class="headerlink" title="子网划分"></a>子网划分</h2><h2 id="地址汇总"><a href="#地址汇总" class="headerlink" title="地址汇总"></a>地址汇总</h2><h2 id="交换机的工作原理"><a href="#交换机的工作原理" class="headerlink" title="交换机的工作原理"></a>交换机的工作原理</h2><h2 id="交换机的配置"><a href="#交换机的配置" class="headerlink" title="交换机的配置"></a>交换机的配置</h2><h2 id="DHCP动态主机配置协议"><a href="#DHCP动态主机配置协议" class="headerlink" title="DHCP动态主机配置协议"></a>DHCP动态主机配置协议</h2><a id="more"></a>
+
+<p>1.OSI七层?<br>应用层、表示层、会话层、传输层、网络层、数据链路层、物理层  </p>
+<p>2.568-B线序：橙白 橙 绿白 蓝 蓝白 绿 棕白 棕  </p>
+<p>3.telnet和ssh的区别？<br>端口号不一样 telnet是21 ssh是22端口<br>telnet是明文传输 ssh是加密传输  </p>
+<p>4.数据包封装过程？<br>应用层————表示层————会话层——————传输层————————————网络层——————————数据链路层————————物理层<br>Data—————加密压缩———定义—————TCP/UDP（加包头）———上层数据包加上ip地址——————上层数据包加上MAC地址—————帧<br><img src="https://gss2.bdstatic.com/9fo3dSag_xI4khGkpoWK1HF6hhy/baike/c0%3Dbaike116%2C5%2C5%2C116%2C38/sign=ef0111789a25bc313f5009ca3fb6e6d4/fc1f4134970a304ee7eb644cd2c8a786c8175cbf.jpg" alt="a1"><br>5.有线传输介质？<br>光纤、双绞线  </p>
+<h1 id="IP地址以及VLMP-1"><a href="#IP地址以及VLMP-1" class="headerlink" title="IP地址以及VLMP"></a>IP地址以及VLMP</h1><h3 id="IPV4编制方案"><a href="#IPV4编制方案" class="headerlink" title="IPV4编制方案"></a>IPV4编制方案</h3><p>Ip地址由32位二进制数组成，被分成4个字节，每组8位，以十进制数形式显示。分为网络地址和主机地址两个部分。<br>192.168.10.1  </p>
+<p>00000000.00000000.00000000.00000000  </p>
+<p>128 64 32 16 8 4 2 1  </p>
+<p>所以192.168.10.1 = 11000000.10101000.00001010.00000001  </p>
+<p>IPV4一共有2^32 大约是40多亿个地址  </p>
+<p>IP地址在网络是唯一的，不能重复。  </p>
+<h5 id="由于40亿个地址不够用"><a href="#由于40亿个地址不够用" class="headerlink" title="由于40亿个地址不够用"></a>由于40亿个地址不够用</h5><p>对地址进行分类<br>分公有地址、私有地址、保留地址  </p>
+<p>NAT网络地址转换  </p>
+<h3 id="1-IP地址分类"><a href="#1-IP地址分类" class="headerlink" title="1.IP地址分类"></a>1.IP地址分类</h3><h4 id="A类网络地址范围"><a href="#A类网络地址范围" class="headerlink" title="A类网络地址范围"></a>A类网络地址范围</h4><p>第一个字节第一位必须为0，第一个字节取值为0-127的<br>    （取值范围00000000-01111111）  </p>
+<p>例如： 1.1.1.1/8      网络号：8位    255.0.0.0  </p>
+<p>网络号（标识地址具体在哪个网络）：1.0.0.0<br>子网掩码： 255.0.0.0  斜杠表示法  1.1.1.1/8 表示8位为网络位<br>广播地址： 1.255.255.255<br>在这个网络中有多少个地址呢？ 2^24<br>有效地址2^24-2<br>（网络号和广播号不能用）  </p>
+<h4 id="B类网络地址范围"><a href="#B类网络地址范围" class="headerlink" title="B类网络地址范围"></a>B类网络地址范围</h4><p>第一个字节第一位必须为1，且第二位必须是0，第一个字节取值为128-191<br>例如：181.1.1.1/16    255.255.0.0  </p>
+<p>网络地址：181.1.0.0<br>广播地址：181.1.255.255<br>在这个网络中有多少个地址呢？ 2^16<br>有效地址2^16-2<br>（网络号和广播号不能用）  </p>
+<h4 id="C类网络地址范围"><a href="#C类网络地址范围" class="headerlink" title="C类网络地址范围"></a>C类网络地址范围</h4><p>第一个字节第一位必须为1，且第三位必须是0，第一个字节取值为192-223<br>例如：192.168.1.1/24    255.255.255.0  </p>
+<p>网络地址：192.168.1.0<br>广播地址：192.168.1.255<br>在这个网络中有多少个地址呢？ 2^8<br>有效地址2^8-2<br>（网络号和广播号不能用）  </p>
+<h4 id="D类网络地址范围："><a href="#D类网络地址范围：" class="headerlink" title="D类网络地址范围："></a>D类网络地址范围：</h4><p>第一个字节为224-239 ，用于组播地址</p>
+<h4 id="E类网络地址范围："><a href="#E类网络地址范围：" class="headerlink" title="E类网络地址范围："></a>E类网络地址范围：</h4><p>第一个字节为240-255 ，用于科学用途</p>
+<h3 id="保留的IP地址"><a href="#保留的IP地址" class="headerlink" title="保留的IP地址"></a>保留的IP地址</h3><p>网络地址全为0 表示当前网络或网段<br>网络地址全为1  表示所有网络<br>地址127.0.0.1    保留用于环回测试<br>节点地址全为0    表示网络地址或指定网络中的任何主机<br>节点地址全为1     表示制定网的所有主机<br>整个IP地址全为0<br>整个IP地址全为1    </p>
+<h3 id="私有Ip地址范围-在公网中不能路由的"><a href="#私有Ip地址范围-在公网中不能路由的" class="headerlink" title="私有Ip地址范围 在公网中不能路由的"></a>私有Ip地址范围 在公网中不能路由的</h3><p>A类  10.0.0.0~ 10.255.255.255<br>B类  172.16.0.0 ~ 172.31.255.255<br>C类   192.168.0.0~192.168.255.255</p>
+<h2 id="子网划分-1"><a href="#子网划分-1" class="headerlink" title="子网划分"></a>子网划分</h2><p>子网划分：将大的网络划分为若干个小网络，尽量减少广播风暴，提高网络效率。  </p>
+<h3 id="如何进行子网划分呢？"><a href="#如何进行子网划分呢？" class="headerlink" title="如何进行子网划分呢？"></a>如何进行子网划分呢？</h3><h3 id="c类"><a href="#c类" class="headerlink" title="c类"></a>c类</h3><p>IP地址: 192.168.1.0 </p>
+<p>网络号192.168.1.0<br>广播号192.168.1.255<br>可用地址254个</p>
+<p>向主机借位？<br>如果借1位，那么划分了几个网呢？ 2^1个网络<br>划分成了哪两个网络呢？<br>192.168.1.0/25<br>子网掩码 255.255.255.128<br>块大小（每个小网络的地址总数）：256-128=128<br>分成了哪些网络呢？  </p>
+<h5 id="192-168-1-0-25"><a href="#192-168-1-0-25" class="headerlink" title="192.168.1.0/25"></a>192.168.1.0/25</h5><p>网络号：192.168.1.0/25<br>广播地址(是这个网络中的最后一个地址):192.168.1.127/25 </p>
+<h5 id="192-168-1-128-25"><a href="#192-168-1-128-25" class="headerlink" title="192.168.1.128/25"></a>192.168.1.128/25</h5><p>网络号：192.168.1.128/25<br>广播地址(是这个网络中的最后一个地址):192.168.1.255/25 </p>
+<h3 id="案例2"><a href="#案例2" class="headerlink" title="案例2"></a>案例2</h3><p>192.168.10.0<br>向主机位借2位<br>这是一个c类地址，默认子网掩码255.255.255.0<br>向主机位借2位后，划分了2^2=4个<br>现在子网掩码是：255.255.255.192<br>块大小：256-192=64<br>有哪些网络呢?<br>192.168.10.0/26<br>网络号：192.168.10.0/26<br>广播和：192.168.10.63/26 </p>
+<p>192.168.10.64/26<br>网络号：192.168.10.64/26<br>广播和：192.168.10.127/26  </p>
+<p>192.168.10.128/26<br>网络号：192.168.10.128/26<br>广播和：192.168.10.191/26  </p>
+<p>192.168.10.192/26<br>网络号：192.168.10.192/26<br>广播和：192.168.10.255/26  </p>
+<p>练习：192.168.2.0/30<br> 请问192.168.2.91是哪个网络的地址？在这个网络中广播地址是哪个？  </p>
+<p>192.168.2.0/30 是c类地址向主机位借了6位<br>共划分2^6=64个子网<br>子网掩码 255.255.255.252<br>块大小：256-252=4  </p>
+<p>192.168.2.91在192.168.2.88/30网络<br>广播地址192.168.2.91/30<br>可用地址：192.168.2.89和192.168.2.90  </p>
+<p>/30 255.255.255.252<br>/29 255.255.255.248<br>/28 255.255.255.240<br>/27 255.255.255.224<br>/26 255.255.255.192<br>/25 255.255.255.128  </p>
+<h4 id="B类网络子网划分"><a href="#B类网络子网划分" class="headerlink" title="B类网络子网划分"></a>B类网络子网划分</h4><p>B类IP地址：181.1.1.1<br>这是一个B类地址，默认子网掩码255.255.0.0/16  </p>
+<p>如果要进行子网划分，就向主机位借位。<br>假如借2位，那么子网掩码是255.255.192.0/18<br>划分了2^2=4个子网<br>块大小256-192=64<br>有哪些网络呢?  </p>
+<h5 id="181-1-0-0"><a href="#181-1-0-0" class="headerlink" title="181.1.0.0"></a>181.1.0.0</h5><p>   网络号：181.1.0.0/18<br>   广播号: 181.1.63.255  </p>
+<h5 id="181-1-64-0"><a href="#181-1-64-0" class="headerlink" title="181.1.64.0"></a>181.1.64.0</h5><p>   网络号：181.1.64.0/18<br>   广播号: 181.1.127.255  </p>
+<h5 id="181-1-128-0"><a href="#181-1-128-0" class="headerlink" title="181.1.128.0"></a>181.1.128.0</h5><p>   网络号：181.1.128.0/18<br>   广播号: 181.1.191.255  </p>
+<h5 id="181-1-192-0"><a href="#181-1-192-0" class="headerlink" title="181.1.192.0"></a>181.1.192.0</h5><p>   网络号：181.1.192.0/18<br>   广播号: 181.1.255.255  </p>
+<h4 id="A类网络子网划分"><a href="#A类网络子网划分" class="headerlink" title="A类网络子网划分"></a>A类网络子网划分</h4><p>12.1.1.1<br>这是一个A类地址，默认子网掩码255.0.0.0/8<br>假如借2位，那么子网掩码是255.192.0.0<br>有哪些网络？<br>12.0.0.0<br>12.64.0.0<br>12.128.0.0<br>12.192.0.0<br>这四个网络  </p>
+<p>1.典型的分类网络设计（有类网络：不携带子网掩码）<br>浪费了很多地址  </p>
+<p>2.无类网络设计<br>（可变长子网掩码）</p>
+<h2 id="地址汇总-1"><a href="#地址汇总-1" class="headerlink" title="地址汇总"></a>地址汇总</h2><p>无类域间路由  </p>
+<h1 id="交换机的工作原理-1"><a href="#交换机的工作原理-1" class="headerlink" title="交换机的工作原理"></a>交换机的工作原理</h1><h4 id="介质访问控制子层MAC"><a href="#介质访问控制子层MAC" class="headerlink" title="介质访问控制子层MAC"></a>介质访问控制子层MAC</h4><h4 id="逻辑链路控制子层LLC"><a href="#逻辑链路控制子层LLC" class="headerlink" title="逻辑链路控制子层LLC"></a>逻辑链路控制子层LLC</h4><p>MAC地址是由48位二进制数组成，以十六进制数表示。前24位称为OUI（组织唯一标识符），后24位是厂商对网卡的唯一编号,第8位如果是0表示单播地址，是1表示组播地址。  </p>
+<p>基本MAC地址<br>switch#show version<br>Base ethernet MAC Address : 0001.9761.DCE3   </p>
+<p>MAC地址表<br>switch#show mac-address-table   </p>
+<p>####以太网交换机：分隔冲突域，实现全双工通信，存储过滤转发等功能</p>
+<p>交换机转发原理：<br>转发  </p>
+<p>学习  </p>
+<p>广播  </p>
+<p>更新  </p>
+<p>MAC地址表老化时间300秒。  </p>
+<h3 id="交换机的配置-1"><a href="#交换机的配置-1" class="headerlink" title="交换机的配置"></a>交换机的配置</h3><p>交换机的所有端口默认情况下都在一个网络（vlan 1）,所以只要将电脑连接到交换机并配置同一个网络内的地址，这样就组成了一个局域网。所以这样会形成广播风暴。</p>
+<p>交换机分类： 傻瓜交换机<br>           可管理型交换机（二层）<br>           三层交换机：带路由功能的交换机  </p>
+<p>1.vlan技术（虚拟局域网）<br>划分vlan方法：基于端口的划分<br>            基于MAC地址划分<br>            等等  </p>
+<h4 id="基于端口的vlan划分"><a href="#基于端口的vlan划分" class="headerlink" title="基于端口的vlan划分"></a>基于端口的vlan划分</h4><p>switch#show vlan brief<br>查看vlan详细信息  </p>
+<p>划分vlan<br>switch(config)#vlan 10<br>switch(config-vlan)#name rsb  </p>
+<p>switch(config)#vlan 20<br>switch(config-vlan)#name rsb  </p>
+<p>将端口加入到对应的vlan  </p>
+<p>switch(config)#interface f0/1  </p>
+<p>switch(config)#interface range f0/1-10<br>switch(config)#interface range f0/1,f0/5,f0/9 (同时选中多个端口)</p>
+<p>switch(config-if)#switch mode access  （设置端口为Access模式）<br>switch(config-if)#switchport access vlan 10 (将端口划分到vlan10)  </p>
+<p>switch(config)#interface range f0/1-10<br>switch(config-if-range)#switch mode access<br>switch(config-if-range)#switchport  access vlan 20</p>
+<p>switch#show vlan brief<br>查看vlan划分是否正确  </p>
+<h5 id="如何实现不同交换机上的同一个vlan间的通信"><a href="#如何实现不同交换机上的同一个vlan间的通信" class="headerlink" title="如何实现不同交换机上的同一个vlan间的通信"></a>如何实现不同交换机上的同一个vlan间的通信</h5><p>“trunk技术”  vlan中继协议<br>switch(config)#interface f0/24  </p>
+<p>switch(config-if)#switch mode trunk<br>switch(config-if)#switchport trunk allowed vlan 10,20  </p>
+<p>switch#sh interface f0/24 switchport<br>查看端口状态</p>
+<p>switch#sh interfaces trunk<br>查看trunk端口  </p>
+<h5 id="如何实现不同vlan间的通信？"><a href="#如何实现不同vlan间的通信？" class="headerlink" title="如何实现不同vlan间的通信？"></a>如何实现不同vlan间的通信？</h5><p>方法一：使用三层交换机，配置SVI虚拟接口作为不同vlan的网关，并开启路由功能。<br>方法二：使用单臂路由来实现。  </p>
+<h6 id="方法一：使用三层交换机"><a href="#方法一：使用三层交换机" class="headerlink" title="方法一：使用三层交换机"></a>方法一：使用三层交换机</h6><p>1.划vlan<br>2.设trunk<br>3.开启路由<br>4.开启SVI虚拟接口，并配ip接口<br>5.为pc配置网关  </p>
+<p>Switch(config)#hostname Sw3<br>第一步：划vlan<br>Sw3(config)#vlan 10<br>Sw3(config-vlan)#name rsb<br>Sw3(config-vlan)#vlan 20<br>Sw3(config-vlan)#name xsb<br>Sw3(config-vlan)#exit<br>Sw3(config)#int f0/23<br>第二步：<br>Sw3(config-if)#switchport trunk   encapsulation dot1q<br>Sw3(config-if)#sw mo trunk<br>第三步：<br>Sw3(config-if)#exit<br>Sw3(config)#ip routing<br>第四步：<br>Sw3(config)#int vlan 10<br>Sw3(config-if)#ip add 192.168.10.254   255.255.255.0<br>Sw3(config-if)#exit<br>Sw3(config)#int vlan 20<br>ip add 192.168.20.254 255.255.255.0<br>第五步：为PC机配置网关地址  </p>
+<p>最后要检查配置是否正确？<br>Sw3#sh vlan brief<br>Sw3#sh interfaces trunk<br>Sw2#sh running-config  </p>
+<h6 id="方法二：使用单臂路由"><a href="#方法二：使用单臂路由" class="headerlink" title="方法二：使用单臂路由"></a>方法二：使用单臂路由</h6><p>1.交换机配置<br>划vlan 将端口加入vlan<br>trunk<br>2.路由器配置<br>开接口<br>开子接口<br>trunk<br>Ip地址<br>3.Pc机配网关    </p>
+<p>SW1的配置：<br>划分vlan<br>SW1(config)#vlan 10<br>SW1(config-vlan)#vlan 20<br>将端口加入到vlan<br>SW1(config)#int range f0/1-10<br>SW1(config-if-range)#sw mo acc<br>SW1(config-if-range)#sw acc vlan 10<br>SW1(config-if-range)#exit<br>SW1(config)#int range f0/11-20<br>SW1(config-if-range)#sw mo acc<br>SW1(config-if-range)#sw acc vlan 20<br>检查vlan划分与端口加入情况<br>SW1#sh vlan<br>设置trunk<br>SW1(config)#int f0/24<br>SW1(config-if)#sw mo trunk   </p>
+<p>R1的配置：<br>Router(config)#hostname R1<br>开启端口  </p>
+<p>R1(config)#int f0/0<br>R1(config-if)#no shutdown<br>开启子接口，封装为trunk，并设置IP地址作为对应vlan的网关<br>R1(config-if)#exit<br>R1(config)#int f0/0.10<br>R1(config-subif)#encapsulation dot1Q 10  封装并作为vlan 10的网关<br>R1(config-subif)#ip add 192.168.10.254 255.255.255.0<br>R1(config)#int f0/0.2<br>R1(config-subif)#encapsulation dot1Q 20<br>R1(config-subif)#ip add 192.168.20.254 255.255.255.0  </p>
+<p>为PC机设置网关地址  </p>
+<h3 id="DHCP动态主机配置协议-1"><a href="#DHCP动态主机配置协议-1" class="headerlink" title="DHCP动态主机配置协议"></a>DHCP动态主机配置协议</h3><p>1.什么是DHCP?<br>动态主机配置协议，为客户端自动分配IP地址。<br>2.DHCP的工作原理？<br>3.谁可以做DHCP服务器呢？<br>服务器、三层设备（路由器和三层交换机）  </p>
+<h4 id="如何配置路由器为DHCP服务器"><a href="#如何配置路由器为DHCP服务器" class="headerlink" title="如何配置路由器为DHCP服务器?"></a>如何配置路由器为DHCP服务器?</h4><h5 id="如何配置路由器为DHCP服务器？"><a href="#如何配置路由器为DHCP服务器？" class="headerlink" title="如何配置路由器为DHCP服务器？"></a>如何配置路由器为DHCP服务器？</h5><p>R1#config t<br>R1(config)#ip dhcp pool vlan10     地址池名<br>R1(dhcp-config)#network 192.168.10.0   255.255.255.0   地址范围<br>R1(dhcp-config)#default-router   192.168.10.254     网关地址<br>R1(dhcp-config)#dns-server 61.139.2.69             DNS地址<br>R1(dhcp-config)#exit<br>R1(config)#ip dhcp excluded-address   192.168.10.1 192.168.10.10   排除地址  </p>
+<p>R1(config)#ip dhcp excluded-address   192.168.20.1 192.168.20.10<br>R1(config)#ip dhcp pool vlan20<br>R1(dhcp-config)#network 192.168.20.0 255.255.255.0<br>R1(dhcp-config)#default-router 192.168.20.254<br>R1(dhcp-config)#dns-server 61.139.2.69</p>
+<p>DNS：域名解析  </p>
+<h5 id="如果使用服务器作DHCP服务器呢？"><a href="#如果使用服务器作DHCP服务器呢？" class="headerlink" title="如果使用服务器作DHCP服务器呢？"></a>如果使用服务器作DHCP服务器呢？</h5><p>首先：配置vlan间通信<br>Sw3(config)#vlan 100<br>Sw3(config-vlan)#exit<br>Sw3(config)#int f0/1<br>Sw3(config-if)#sw mo acc<br>Sw3(config-if)#sw acc vlan 100<br>Sw3(config-if)#ip add 192.168.100.254 255.255.255.0<br>其次：配置DHCP服务器（在图形界面上）<br>最后，配置转发<br>Sw3(config)#int vlan 10<br>Sw3(config-if)#ip helper-address 192.168.100.1<br>Sw3(config)#int vlan 20<br>Sw3(config-if)#ip helper-address 192.168.100.1  </p>
+<p>今日任务：<br>任务一：IP编制方案、子网划分、斜杠表示法、VLSM可变长子网掩码  无类网络设、IP地址汇总<br>任务二：交换机的工作原理，vlan的配置及如何实现vlan间的通信。DHCP的原理及配置。</p>
+
+      
+
+      
+        <div class="page-reward">
+          <a href="javascript:;" class="page-reward-btn tooltip-top">
+            <div class="tooltip tooltip-east">
+            <span class="tooltip-item">
+              赏
+            </span>
+            <span class="tooltip-content">
+              <span class="tooltip-text">
+                <span class="tooltip-inner">
+                  <p class="reward-p"><i class="icon icon-quo-left"></i>谢谢你请我吃糖果<i class="icon icon-quo-right"></i></p>
+                  <div class="reward-box">
+                    
+                    
+                  </div>
+                </span>
+              </span>
+            </span>
+          </div>
+          </a>
+        </div>
+      
+    </div>
+    <div class="article-info article-info-index">
       
       
-      <section class="archives-wrap">
-        <div class="archive-year-wrap">
-          <a href="/archives/2019" class="archive-year">2019</a>
-        </div>
-        <div class="archives">
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      	<div class="article-meta">
-	      	<a href="/2019/12/04/信安12-4/" class="archive-article-date">
-  	<time datetime="2019-12-04T11:23:53.080Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2019-12-04</time>
-</a>
-        </div>
-    	 
-        <div class="article-info info-on-right">
-          
-          
+      
 
+      
+
+      
+        
+<div class="share-btn share-icons tooltip-left">
+  <div class="tooltip tooltip-east">
+    <span class="tooltip-item">
+      <a href="javascript:;" class="share-sns share-outer">
+        <i class="icon icon-share"></i>
+      </a>
+    </span>
+    <span class="tooltip-content">
+      <div class="share-wrap">
+        <div class="share-icons">
+          <a class="weibo share-sns" href="javascript:;" data-type="weibo">
+            <i class="icon icon-weibo"></i>
+          </a>
+          <a class="weixin share-sns wxFab" href="javascript:;" data-type="weixin">
+            <i class="icon icon-weixin"></i>
+          </a>
+          <a class="qq share-sns" href="javascript:;" data-type="qq">
+            <i class="icon icon-qq"></i>
+          </a>
+          <a class="douban share-sns" href="javascript:;" data-type="douban">
+            <i class="icon icon-douban"></i>
+          </a>
+          <a class="qzone share-sns" href="javascript:;" data-type="qzone">
+            <i class="icon icon-qzone"></i>
+          </a>
+          <a class="facebook share-sns" href="javascript:;" data-type="facebook">
+            <i class="icon icon-facebook"></i>
+          </a>
+          <a class="twitter share-sns" href="javascript:;" data-type="twitter">
+            <i class="icon icon-twitter"></i>
+          </a>
+          <a class="google share-sns" href="javascript:;" data-type="google">
+            <i class="icon icon-google"></i>
+          </a>
         </div>
-        <div class="clearfix"></div>
-    </header>
+      </div>
+    </span>
+  </div>
+</div>
+
+<div class="page-modal wx-share js-wx-box">
+    <a class="close js-modal-close" href="javascript:;"><i class="icon icon-close"></i></a>
+    <p>扫一扫，分享到微信</p>
+    <div class="wx-qrcode">
+      <img src="//pan.baidu.com/share/qrcode?url=http://yoursite.com/2019/12/04/信安12-4/" alt="微信分享二维码">
+    </div>
+</div>
+
+<div class="mask js-mask"></div>
+      
+      <div class="clearfix"></div>
+    </div>
   </div>
 </article>
-  
-    
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      	<div class="article-meta">
-	      	<a href="/2019/12/03/first blog/" class="archive-article-date">
-  	<time datetime="2019-12-03T12:10:24.983Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2019-12-03</time>
-</a>
-        </div>
-    	 
-        <div class="article-info info-on-right">
-          
-          
 
+  
+<nav id="article-nav">
+  
+  
+    <a href="/2019/12/03/first blog/" id="article-nav-older" class="article-nav-link-wrap">
+      <div class="article-nav-title"></div>
+      <i class="icon-circle-right"></i>
+    </a>
+  
+</nav>
+
+
+<aside class="wrap-side-operation">
+    <div class="mod-side-operation">
+        
+        <div class="jump-container" id="js-jump-container" style="display:none;">
+            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
+                <i class="icon-font icon-back"></i>
+            </a>
+            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
+                <i class="icon-font icon-plane jump-plane"></i>
+            </div>
         </div>
-        <div class="clearfix"></div>
-    </header>
-  </div>
-</article>
+        
+        
+    </div>
+</aside>
+
+
+
   
   
-    </div></section>
   
 
-    
+  
+
+  
+
+  
 
 
           </div>
@@ -230,8 +402,8 @@
 	var yiliaConfig = {
 		mathjax: false,
 		isHome: false,
-		isPost: false,
-		isArchive: true,
+		isPost: true,
+		isArchive: false,
 		isTag: false,
 		isCategory: false,
 		open_in_new: false,
