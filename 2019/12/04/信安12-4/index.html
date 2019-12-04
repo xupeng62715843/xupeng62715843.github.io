@@ -16,7 +16,7 @@
 <meta property="og:description" content="标题:信安2019-12-4 IP地址以及VLMP 子网划分 地址汇总 交换机的工作原理 交换机的配置 DHCP动态主机配置协议">
 <meta property="og:locale" content="en">
 <meta property="og:image" content="https://gss2.bdstatic.com/9fo3dSag_xI4khGkpoWK1HF6hhy/baike/c0%3Dbaike116%2C5%2C5%2C116%2C38/sign=ef0111789a25bc313f5009ca3fb6e6d4/fc1f4134970a304ee7eb644cd2c8a786c8175cbf.jpg">
-<meta property="og:updated_time" content="2019-12-04T11:37:12.606Z">
+<meta property="og:updated_time" content="2019-12-04T12:11:57.019Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="你好">
 <meta name="twitter:description" content="标题:信安2019-12-4 IP地址以及VLMP 子网划分 地址汇总 交换机的工作原理 交换机的配置 DHCP动态主机配置协议">
@@ -250,7 +250,7 @@
 <h4 id="如何配置路由器为DHCP服务器"><a href="#如何配置路由器为DHCP服务器" class="headerlink" title="如何配置路由器为DHCP服务器?"></a>如何配置路由器为DHCP服务器?</h4><h5 id="如何配置路由器为DHCP服务器？"><a href="#如何配置路由器为DHCP服务器？" class="headerlink" title="如何配置路由器为DHCP服务器？"></a>如何配置路由器为DHCP服务器？</h5><p>R1#config t<br>R1(config)#ip dhcp pool vlan10     地址池名<br>R1(dhcp-config)#network 192.168.10.0   255.255.255.0   地址范围<br>R1(dhcp-config)#default-router   192.168.10.254     网关地址<br>R1(dhcp-config)#dns-server 61.139.2.69             DNS地址<br>R1(dhcp-config)#exit<br>R1(config)#ip dhcp excluded-address   192.168.10.1 192.168.10.10   排除地址  </p>
 <p>R1(config)#ip dhcp excluded-address   192.168.20.1 192.168.20.10<br>R1(config)#ip dhcp pool vlan20<br>R1(dhcp-config)#network 192.168.20.0 255.255.255.0<br>R1(dhcp-config)#default-router 192.168.20.254<br>R1(dhcp-config)#dns-server 61.139.2.69</p>
 <p>DNS：域名解析  </p>
-<h5 id="如果使用服务器作DHCP服务器呢？"><a href="#如果使用服务器作DHCP服务器呢？" class="headerlink" title="如果使用服务器作DHCP服务器呢？"></a>如果使用服务器作DHCP服务器呢？</h5><p>首先：配置vlan间通信<br>Sw3(config)#vlan 100<br>Sw3(config-vlan)#exit<br>Sw3(config)#int f0/1<br>Sw3(config-if)#sw mo acc<br>Sw3(config-if)#sw acc vlan 100<br>Sw3(config-if)#ip add 192.168.100.254 255.255.255.0<br>其次：配置DHCP服务器（在图形界面上）<br>最后，配置转发<br>Sw3(config)#int vlan 10<br>Sw3(config-if)#ip helper-address 192.168.100.1<br>Sw3(config)#int vlan 20<br>Sw3(config-if)#ip helper-address 192.168.100.1  </p>
+<h5 id="如果使用服务器作DHCP服务器呢？"><a href="#如果使用服务器作DHCP服务器呢？" class="headerlink" title="如果使用服务器作DHCP服务器呢？"></a>如果使用服务器作DHCP服务器呢？</h5><p>首先：配置vlan间通信<br>Sw3(config)#vlan 100<br>Sw3(config-vlan)#exit<br>Sw3(config)#int f0/1<br>Sw3(config-if)#sw mo acc<br>Sw3(config-if)#sw acc vlan 100<br>Sw3(config)#int vlan 100<br>Sw3(config-if)#ip add 192.168.100.254 255.255.255.0<br>其次：配置DHCP服务器（在图形界面上）<br>最后，配置转发<br>Sw3(config)#int vlan 10<br>Sw3(config-if)#ip helper-address 192.168.100.1<br>Sw3(config)#int vlan 20<br>Sw3(config-if)#ip helper-address 192.168.100.1  </p>
 <p>今日任务：<br>任务一：IP编制方案、子网划分、斜杠表示法、VLSM可变长子网掩码  无类网络设、IP地址汇总<br>任务二：交换机的工作原理，vlan的配置及如何实现vlan间的通信。DHCP的原理及配置。</p>
 
       
