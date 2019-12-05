@@ -6,15 +6,19 @@
   <meta name="renderer" content="webkit">
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
   <link rel="dns-prefetch" href="http://yoursite.com">
-  <title>Archives: 2019 | 你好</title>
+  <title>你好</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-  <meta property="og:type" content="website">
+  <meta name="description" content="标题：信安2019-12-5">
+<meta property="og:type" content="article">
 <meta property="og:title" content="你好">
-<meta property="og:url" content="http://yoursite.com/archives/2019/index.html">
+<meta property="og:url" content="http://yoursite.com/2019/12/05/信安12-5/index.html">
 <meta property="og:site_name" content="你好">
+<meta property="og:description" content="标题：信安2019-12-5">
 <meta property="og:locale" content="en">
+<meta property="og:updated_time" content="2019-12-05T08:47:25.069Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="你好">
+<meta name="twitter:description" content="标题：信安2019-12-5">
   
     <link rel="alternative" href="/atom.xml" title="你好" type="application/atom+xml">
   
@@ -150,106 +154,181 @@
             <canvas data-colors="#eaeaea" data-sectionHeight="100" data-contentId="js-content" id="myCanvas1" class="anm-canvas"></canvas>
           </div>
           <div id="js-content" class="content-ll">
-            
-  
-  
+            <article id="post-信安12-5" class="article article-type-post " itemscope itemprop="blogPost">
+  <div class="article-inner">
     
-    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <hr>
+<h2 id="标题：信安2019-12-5"><a href="#标题：信安2019-12-5" class="headerlink" title="标题：信安2019-12-5"></a>标题：信安2019-12-5</h2><a id="more"></a>
+<h4 id="每日提问："><a href="#每日提问：" class="headerlink" title="每日提问："></a>每日提问：</h4><ol>
+<li>23.1.1.25/26<br>这是一个什么类型的地址？     A类地址  默认子网掩码：255.0.0.0    /8<br>这个地址的子网掩码值?       255.255.255.192<br>这个地址在哪个网络？        23.1.1.0/26<br>块大小？                  256-192=64<br>在这个网络中可用的地址有哪些？      23.1.1.1/26  —  23.1.1.62/26<br>被分成了哪些网络呢？           23.1.1.0/26      23.1.1.64/26    <pre><code>23.1.1.128/26    23.1.1.192/26   </code></pre></li>
+</ol>
+<p>2.请描述交换机的工作原理？<br>交换机工作在数据链路层，传输的是数据帧。  </p>
+<p>3.trunk是什么？ 它的作用？<br>vlan中继协议，封装标准：    802.1Q  </p>
+<p>switchport mode access<br>switchport mode trunk     (switchport:交换机端口)  </p>
+<pre><code>  模式  
+  Mode          DTP send     DTP Response  
+------------------------------------------------  
+ Access           -           -  
+ Trunk            Y           Y            
+ Desirable         Y           Y       企望      
+ Auto             N           Y      自动  
+ Nonegotiate       N           N     不协商  </code></pre><h4 id="交换机的五种攻击类型"><a href="#交换机的五种攻击类型" class="headerlink" title="交换机的五种攻击类型"></a>交换机的五种攻击类型</h4><p>（端口安全）<br>1.vlan跳跃攻击<br>2.生成树攻击<br>3.MAC表泛洪攻击   泛洪 = 广播  </p>
+<p>Switch(config)#int f0/1<br>　　Switch(configif)#sw mo access<br>　　Switch(confiaif)#switchport port-security开启端口安全<br>　　Switch(confiaif) #switchport port-security mac-address 00D0.BC82.32D2绑定MAC地址<br>　　Switch(confiqif)#switchport port-security violation shutdown设置违例处理方式为关闭端口<br>　　如果端口关闭后怎么开启呢?<br>　　端口被逻辑断开，如果要开启先物理断开，再开启。就可以了!（进入端口先shutdown再no shutdown）  </p>
+<p>4 ARP攻击<br>5.VTP攻击（VTP:vlan同步技术，一个交换机上划分了vlan,其他交换机自动也划分相同vlan）  </p>
+<p>1.vtp是将所有vlan信息打包并通过trunk链路进行传输使vlan同步。<br>2.通过域（Domain）来同步的。<br>3.password<br>4.version<br>5.模式  </p>
+<p>在vtp中谁与谁同步，不是由角色决定，而是由修订版本号决定<br>版本号大的vlan信息将完全覆盖修订版本号低的vlan信息<br>在向网路中添加交换机时一定要注意修订版本号的大小，建议把模式改为透明模式<br>（谁的修改次数多，谁的修订版本号就大）</p>
+<h4 id="配置VTP"><a href="#配置VTP" class="headerlink" title="配置VTP"></a>配置VTP</h4><p>S1（config）#vtp domain xp  设置vtp域名<br>S1（config）#vtp mode server</p>
+<h4 id="生成树STP"><a href="#生成树STP" class="headerlink" title="生成树STP"></a>生成树STP</h4><p>STP将一个环形网络生成无环拓扑的步骤：<br>第一步：选择根网桥<br>第二步：选择根端口<br>第三步：选择指定端口</p>
+<p>第一步：选择根网桥<br>根据网桥ID(BID)选择根网桥，谁的优先级小，谁就是根桥。如果优先级相同，谁的MAC的地址小谁就是根桥。<br>什么是BID,BID=优先级+MAC地址。</p>
+<p>默认情况下，所以交换机的优先级为：32768，如何查看优先级呢？<br>switch#show spanning-tree  </p>
+<p>如何查看交换机MAC地址？<br>switch#show version  </p>
+<p>第二步：选择根端口<br>在非根网桥上选择一个到根网桥最近的端口作为根端口。<br>选择的依据是：</p>
+<p>根路径成本（cost值）【从端口出发到根桥】最低<br>直连网桥的网桥ID最小<br>直连网桥的端口的ID最小</p>
+<p>第三步：选择指定端口<br>在每个网段上，选择一个指定端口，根桥上的端口全是指定端口。  </p>
+<p>非根桥上的指定端口：<br>根路径</p>
+<p>BPDU（桥协议数据单元）<br>1.什么是BPDU？<br>交换机怎么指定其他交换机的网桥ID？ 怎么知道哪个端口的根路径成本最低？<br>是因为交换机之间使用BPDU来交换STP信息，BPDU使用组播发送BPDU，</p>
+<p>生成树端口的状态：<br>转发      转发和接受用户数据<br>学习       构建网桥表<br>倾听       构建“活动”拓扑选举根桥、根端口、指定端口<br>阻塞       只接受BPDU<br>禁用       强制关闭    </p>
+<h4 id="PVST-按vlan生成树"><a href="#PVST-按vlan生成树" class="headerlink" title="PVST  按vlan生成树"></a>PVST  按vlan生成树</h4><h5 id="让Sw1做vlan10的根桥，SW2做vlan20的备份根桥。"><a href="#让Sw1做vlan10的根桥，SW2做vlan20的备份根桥。" class="headerlink" title="让Sw1做vlan10的根桥，SW2做vlan20的备份根桥。"></a>让Sw1做vlan10的根桥，SW2做vlan20的备份根桥。</h5><p>SW1(config)#spanning-tree vlan 10 root primary<br>SW2(config)#spanning-tree vlan 10 root secondary   </p>
+<h5 id="让SW2做vlan20的根桥，SW1做vlan20的备份根桥"><a href="#让SW2做vlan20的根桥，SW1做vlan20的备份根桥" class="headerlink" title="让SW2做vlan20的根桥，SW1做vlan20的备份根桥"></a>让SW2做vlan20的根桥，SW1做vlan20的备份根桥</h5><p>SW2(config)#spanning-tree vlan 20 root primary<br>SW1(config)#spanning-tree vlan 20 root secondary    </p>
+<p>这样做可以将所有线路都利用起来，并实现负载均衡和链路备份。  </p>
+<h5 id="PVST的配置命令"><a href="#PVST的配置命令" class="headerlink" title="PVST的配置命令"></a>PVST的配置命令</h5><p>启用生成树： switch(config)#spanning-tree vlan vlan-list<br>设置根网桥：switch(config)#spanning-tree  vlan vlan-list root primary<br>修改网桥的优先级：switch(config)#spanning-tree vlan vlan-list priority 4096的倍数</p>
+<h4 id="以太网端口聚合"><a href="#以太网端口聚合" class="headerlink" title="以太网端口聚合"></a>以太网端口聚合</h4><h5 id="端口聚合："><a href="#端口聚合：" class="headerlink" title="端口聚合："></a>端口聚合：</h5><h6 id="在SW1上配置聚合端口"><a href="#在SW1上配置聚合端口" class="headerlink" title="在SW1上配置聚合端口"></a>在SW1上配置聚合端口</h6><p>SW1(config)# interface port-channel 1<br>SW1(config-if)#sw mo trunk<br>创建聚合端口  </p>
+<p>SW1(config)# int range f0/1,10<br>进入端口f0/1 和 f0/10<br>SW1(config-if-range)#channel-group 1  mode on<br>（将端口加入到聚合端口）</p>
+<h6 id="在sw2上配置聚合端口"><a href="#在sw2上配置聚合端口" class="headerlink" title="在sw2上配置聚合端口"></a>在sw2上配置聚合端口</h6><p>SW2(config)# interface port-channel 1<br>SW2(config-if)#sw mo trunk<br>创建聚合端口  </p>
+<p>SW2(config)# int range f0/1,10<br>进入端口f0/1 和 f0/10<br>SW2(config-if-range)#channel-group 1  mode on<br>（将端口加入到聚合端口）</p>
+<p>####### channel-group 模式<br>active<br>auto<br>desirable<br>on<br>passive             </p>
+<p>端口聚合还可以增加冗余电路，增加带宽，做负载均衡。  </p>
+
+      
+
+      
+        <div class="page-reward">
+          <a href="javascript:;" class="page-reward-btn tooltip-top">
+            <div class="tooltip tooltip-east">
+            <span class="tooltip-item">
+              赏
+            </span>
+            <span class="tooltip-content">
+              <span class="tooltip-text">
+                <span class="tooltip-inner">
+                  <p class="reward-p"><i class="icon icon-quo-left"></i>谢谢你请我吃糖果<i class="icon icon-quo-right"></i></p>
+                  <div class="reward-box">
+                    
+                    
+                  </div>
+                </span>
+              </span>
+            </span>
+          </div>
+          </a>
+        </div>
+      
+    </div>
+    <div class="article-info article-info-index">
       
       
-      <section class="archives-wrap">
-        <div class="archive-year-wrap">
-          <a href="/archives/2019" class="archive-year">2019</a>
-        </div>
-        <div class="archives">
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      	<div class="article-meta">
-	      	<a href="/2019/12/05/信安12-5/" class="archive-article-date">
-  	<time datetime="2019-12-05T08:47:25.058Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2019-12-05</time>
-</a>
-        </div>
-    	 
-        <div class="article-info info-on-right">
-          
-          
+      
 
+      
+
+      
+        
+<div class="share-btn share-icons tooltip-left">
+  <div class="tooltip tooltip-east">
+    <span class="tooltip-item">
+      <a href="javascript:;" class="share-sns share-outer">
+        <i class="icon icon-share"></i>
+      </a>
+    </span>
+    <span class="tooltip-content">
+      <div class="share-wrap">
+        <div class="share-icons">
+          <a class="weibo share-sns" href="javascript:;" data-type="weibo">
+            <i class="icon icon-weibo"></i>
+          </a>
+          <a class="weixin share-sns wxFab" href="javascript:;" data-type="weixin">
+            <i class="icon icon-weixin"></i>
+          </a>
+          <a class="qq share-sns" href="javascript:;" data-type="qq">
+            <i class="icon icon-qq"></i>
+          </a>
+          <a class="douban share-sns" href="javascript:;" data-type="douban">
+            <i class="icon icon-douban"></i>
+          </a>
+          <a class="qzone share-sns" href="javascript:;" data-type="qzone">
+            <i class="icon icon-qzone"></i>
+          </a>
+          <a class="facebook share-sns" href="javascript:;" data-type="facebook">
+            <i class="icon icon-facebook"></i>
+          </a>
+          <a class="twitter share-sns" href="javascript:;" data-type="twitter">
+            <i class="icon icon-twitter"></i>
+          </a>
+          <a class="google share-sns" href="javascript:;" data-type="google">
+            <i class="icon icon-google"></i>
+          </a>
         </div>
-        <div class="clearfix"></div>
-    </header>
+      </div>
+    </span>
+  </div>
+</div>
+
+<div class="page-modal wx-share js-wx-box">
+    <a class="close js-modal-close" href="javascript:;"><i class="icon icon-close"></i></a>
+    <p>扫一扫，分享到微信</p>
+    <div class="wx-qrcode">
+      <img src="//pan.baidu.com/share/qrcode?url=http://yoursite.com/2019/12/05/信安12-5/" alt="微信分享二维码">
+    </div>
+</div>
+
+<div class="mask js-mask"></div>
+      
+      <div class="clearfix"></div>
+    </div>
   </div>
 </article>
-  
-    
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      	<div class="article-meta">
-	      	<a href="/2019/12/04/信安12-3/" class="archive-article-date">
-  	<time datetime="2019-12-04T14:17:04.892Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2019-12-04</time>
-</a>
-        </div>
-    	 
-        <div class="article-info info-on-right">
-          
-          
 
-        </div>
-        <div class="clearfix"></div>
-    </header>
-  </div>
-</article>
   
-    
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      	<div class="article-meta">
-	      	<a href="/2019/12/04/信安12-2/" class="archive-article-date">
-  	<time datetime="2019-12-04T14:14:55.397Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2019-12-04</time>
-</a>
-        </div>
-    	 
-        <div class="article-info info-on-right">
-          
-          
+<nav id="article-nav">
+  
+  
+    <a href="/2019/12/04/信安12-3/" id="article-nav-older" class="article-nav-link-wrap">
+      <div class="article-nav-title"></div>
+      <i class="icon-circle-right"></i>
+    </a>
+  
+</nav>
 
-        </div>
-        <div class="clearfix"></div>
-    </header>
-  </div>
-</article>
-  
-    
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      	<div class="article-meta">
-	      	<a href="/2019/12/04/信安12-4/" class="archive-article-date">
-  	<time datetime="2019-12-04T12:11:57.017Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2019-12-04</time>
-</a>
-        </div>
-    	 
-        <div class="article-info info-on-right">
-          
-          
 
+<aside class="wrap-side-operation">
+    <div class="mod-side-operation">
+        
+        <div class="jump-container" id="js-jump-container" style="display:none;">
+            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
+                <i class="icon-font icon-back"></i>
+            </a>
+            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
+                <i class="icon-font icon-plane jump-plane"></i>
+            </div>
         </div>
-        <div class="clearfix"></div>
-    </header>
-  </div>
-</article>
+        
+        
+    </div>
+</aside>
+
+
+
   
   
-    </div></section>
   
 
-    
+  
+
+  
+
+  
 
 
           </div>
@@ -272,8 +351,8 @@
 	var yiliaConfig = {
 		mathjax: false,
 		isHome: false,
-		isPost: false,
-		isArchive: true,
+		isPost: true,
+		isArchive: false,
 		isTag: false,
 		isCategory: false,
 		open_in_new: false,
