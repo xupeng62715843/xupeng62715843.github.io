@@ -8,17 +8,22 @@
   <link rel="dns-prefetch" href="http://yoursite.com">
   <title>徐鹏</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-  <meta name="description" content="标题：网络安全：信安2019-12-5交换机的五种攻击类型配置VTP生成树STPPVST  按vlan生成树PVST的配置命令以太网端口聚合">
+  <meta name="description" content="​—标题：网络安全：信安2019-12-9 ​—重启switch#reload 本征vlan为通过某一个端口但未打标的数据打标，统一打标为本征vlan的标签。 trunk链路上用于传输没有vlan打标的信息，默认是vlan 1  ![img](file:///D:\Documents\Tencent Files\627125843\Image\C2C\Image1\1LP3KL}H4]3~}[Y">
 <meta property="og:type" content="article">
 <meta property="og:title" content="徐鹏">
-<meta property="og:url" content="http://yoursite.com/2019/12/05/信安12-5/index.html">
+<meta property="og:url" content="http://yoursite.com/2019/12/10/信安12-9/index.html">
 <meta property="og:site_name" content="徐鹏">
-<meta property="og:description" content="标题：网络安全：信安2019-12-5交换机的五种攻击类型配置VTP生成树STPPVST  按vlan生成树PVST的配置命令以太网端口聚合">
+<meta property="og:description" content="​—标题：网络安全：信安2019-12-9 ​—重启switch#reload 本征vlan为通过某一个端口但未打标的数据打标，统一打标为本征vlan的标签。 trunk链路上用于传输没有vlan打标的信息，默认是vlan 1  ![img](file:///D:\Documents\Tencent Files\627125843\Image\C2C\Image1\1LP3KL}H4]3~}[Y">
 <meta property="og:locale" content="en">
-<meta property="og:updated_time" content="2019-12-05T10:30:18.285Z">
+<meta property="og:image" content="c:%5CUsers%5CAdministrator%5CAppData%5CRoaming%5CTypora%5Ctypora-user-images%5C1575858347775.png">
+<meta property="og:image" content="c:%5CUsers%5CAdministrator%5CAppData%5CRoaming%5CTypora%5Ctypora-user-images%5C1575861165902.png">
+<meta property="og:image" content="c:%5CUsers%5CAdministrator%5CAppData%5CRoaming%5CTypora%5Ctypora-user-images%5C1575872688544.png">
+<meta property="og:image" content="c:%5CUsers%5CAdministrator%5CAppData%5CRoaming%5CTypora%5Ctypora-user-images%5C1575874716642.png">
+<meta property="og:updated_time" content="2019-12-10T11:21:08.503Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="徐鹏">
-<meta name="twitter:description" content="标题：网络安全：信安2019-12-5交换机的五种攻击类型配置VTP生成树STPPVST  按vlan生成树PVST的配置命令以太网端口聚合">
+<meta name="twitter:description" content="​—标题：网络安全：信安2019-12-9 ​—重启switch#reload 本征vlan为通过某一个端口但未打标的数据打标，统一打标为本征vlan的标签。 trunk链路上用于传输没有vlan打标的信息，默认是vlan 1  ![img](file:///D:\Documents\Tencent Files\627125843\Image\C2C\Image1\1LP3KL}H4]3~}[Y">
+<meta name="twitter:image" content="c:%5CUsers%5CAdministrator%5CAppData%5CRoaming%5CTypora%5Ctypora-user-images%5C1575858347775.png">
   
     <link rel="alternative" href="/atom.xml" title="徐鹏" type="application/atom+xml">
   
@@ -154,54 +159,100 @@
             <canvas data-colors="#eaeaea" data-sectionHeight="100" data-contentId="js-content" id="myCanvas1" class="anm-canvas"></canvas>
           </div>
           <div id="js-content" class="content-ll">
-            <article id="post-信安12-5" class="article article-type-post " itemscope itemprop="blogPost">
+            <article id="post-信安12-9" class="article article-type-post " itemscope itemprop="blogPost">
   <div class="article-inner">
     
     <div class="article-entry" itemprop="articleBody">
       
         <hr>
-<h2 id="标题：网络安全：信安2019-12-5"><a href="#标题：网络安全：信安2019-12-5" class="headerlink" title="标题：网络安全：信安2019-12-5"></a>标题：网络安全：信安2019-12-5</h2><p>交换机的五种攻击类型<br>配置VTP<br>生成树STP<br>PVST  按vlan生成树<br>PVST的配置命令<br>以太网端口聚合</p>
-<a id="more"></a>
-<h4 id="每日提问："><a href="#每日提问：" class="headerlink" title="每日提问："></a>每日提问：</h4><ol>
-<li>23.1.1.25/26<br>这是一个什么类型的地址？     A类地址  默认子网掩码：255.0.0.0    /8<br>这个地址的子网掩码值?       255.255.255.192<br>这个地址在哪个网络？        23.1.1.0/26<br>块大小？                  256-192=64<br>在这个网络中可用的地址有哪些？      23.1.1.1/26  —  23.1.1.62/26<br>被分成了哪些网络呢？           23.1.1.0/26      23.1.1.64/26    <pre><code>23.1.1.128/26    23.1.1.192/26   </code></pre></li>
-</ol>
-<p>2.请描述交换机的工作原理？<br>交换机工作在数据链路层，传输的是数据帧。  </p>
-<p>3.trunk是什么？ 它的作用？<br>vlan中继协议，封装标准：    802.1Q  </p>
-<p>switchport mode access<br>switchport mode trunk     (switchport:交换机端口)  </p>
-<pre><code>  模式  
-  Mode          DTP send     DTP Response  
-------------------------------------------------  
- Access           -           -  
- Trunk            Y           Y            
- Desirable         Y           Y       企望      
- Auto             N           Y      自动  
- Nonegotiate       N           N     不协商  </code></pre><h4 id="交换机的五种攻击类型"><a href="#交换机的五种攻击类型" class="headerlink" title="交换机的五种攻击类型"></a>交换机的五种攻击类型</h4><p>（端口安全）<br>1.vlan跳跃攻击<br>2.生成树攻击<br>3.MAC表泛洪攻击   泛洪 = 广播  </p>
-<p>Switch(config)#int f0/1<br>　　Switch(configif)#sw mo access<br>　　Switch(confiaif)#switchport port-security开启端口安全<br>　　Switch(confiaif) #switchport port-security mac-address 00D0.BC82.32D2绑定MAC地址<br>　　Switch(confiqif)#switchport port-security violation shutdown设置违例处理方式为关闭端口<br>　　如果端口关闭后怎么开启呢?<br>　　端口被逻辑断开，如果要开启先物理断开，再开启。就可以了!（进入端口先shutdown再no shutdown）  </p>
-<p>4 ARP攻击<br>5.VTP攻击（VTP:vlan同步技术，一个交换机上划分了vlan,其他交换机自动也划分相同vlan）  </p>
-<p>1.vtp是将所有vlan信息打包并通过trunk链路进行传输使vlan同步。<br>2.通过域（Domain）来同步的。<br>3.password<br>4.version<br>5.模式  </p>
-<p>在vtp中谁与谁同步，不是由角色决定，而是由修订版本号决定<br>版本号大的vlan信息将完全覆盖修订版本号低的vlan信息<br>在向网路中添加交换机时一定要注意修订版本号的大小，建议把模式改为透明模式<br>（谁的修改次数多，谁的修订版本号就大）</p>
-<h4 id="配置VTP"><a href="#配置VTP" class="headerlink" title="配置VTP"></a>配置VTP</h4><p>S1（config）#vtp domain xp  设置vtp域名<br>S1（config）#vtp mode server</p>
-<h4 id="生成树STP"><a href="#生成树STP" class="headerlink" title="生成树STP"></a>生成树STP</h4><p>STP将一个环形网络生成无环拓扑的步骤：<br>第一步：选择根网桥<br>第二步：选择根端口<br>第三步：选择指定端口</p>
-<p>第一步：选择根网桥<br>根据网桥ID(BID)选择根网桥，谁的优先级小，谁就是根桥。如果优先级相同，谁的MAC的地址小谁就是根桥。<br>什么是BID,BID=优先级+MAC地址。</p>
-<p>默认情况下，所以交换机的优先级为：32768，如何查看优先级呢？<br>switch#show spanning-tree  </p>
-<p>如何查看交换机MAC地址？<br>switch#show version  </p>
-<p>第二步：选择根端口<br>在非根网桥上选择一个到根网桥最近的端口作为根端口。<br>选择的依据是：</p>
-<p>根路径成本（cost值）【从端口出发到根桥】最低<br>直连网桥的网桥ID最小<br>直连网桥的端口的ID最小</p>
-<p>第三步：选择指定端口<br>在每个网段上，选择一个指定端口，根桥上的端口全是指定端口。  </p>
-<p>非根桥上的指定端口：<br>根路径</p>
-<p>BPDU（桥协议数据单元）<br>1.什么是BPDU？<br>交换机怎么指定其他交换机的网桥ID？ 怎么知道哪个端口的根路径成本最低？<br>是因为交换机之间使用BPDU来交换STP信息，BPDU使用组播发送BPDU，</p>
-<p>生成树端口的状态：<br>转发      转发和接受用户数据<br>学习       构建网桥表<br>倾听       构建“活动”拓扑选举根桥、根端口、指定端口<br>阻塞       只接受BPDU<br>禁用       强制关闭    </p>
-<h4 id="PVST-按vlan生成树"><a href="#PVST-按vlan生成树" class="headerlink" title="PVST  按vlan生成树"></a>PVST  按vlan生成树</h4><h5 id="让Sw1做vlan10的根桥，SW2做vlan20的备份根桥。"><a href="#让Sw1做vlan10的根桥，SW2做vlan20的备份根桥。" class="headerlink" title="让Sw1做vlan10的根桥，SW2做vlan20的备份根桥。"></a>让Sw1做vlan10的根桥，SW2做vlan20的备份根桥。</h5><p>SW1(config)#spanning-tree vlan 10 root primary<br>SW2(config)#spanning-tree vlan 10 root secondary   </p>
-<h5 id="让SW2做vlan20的根桥，SW1做vlan20的备份根桥"><a href="#让SW2做vlan20的根桥，SW1做vlan20的备份根桥" class="headerlink" title="让SW2做vlan20的根桥，SW1做vlan20的备份根桥"></a>让SW2做vlan20的根桥，SW1做vlan20的备份根桥</h5><p>SW2(config)#spanning-tree vlan 20 root primary<br>SW1(config)#spanning-tree vlan 20 root secondary    </p>
-<p>这样做可以将所有线路都利用起来，并实现负载均衡和链路备份。  </p>
-<h5 id="PVST的配置命令"><a href="#PVST的配置命令" class="headerlink" title="PVST的配置命令"></a>PVST的配置命令</h5><p>启用生成树： switch(config)#spanning-tree vlan vlan-list<br>设置根网桥：switch(config)#spanning-tree  vlan vlan-list root primary<br>修改网桥的优先级：switch(config)#spanning-tree vlan vlan-list priority 4096的倍数</p>
-<h4 id="以太网端口聚合"><a href="#以太网端口聚合" class="headerlink" title="以太网端口聚合"></a>以太网端口聚合</h4><h5 id="端口聚合："><a href="#端口聚合：" class="headerlink" title="端口聚合："></a>端口聚合：</h5><h6 id="在SW1上配置聚合端口"><a href="#在SW1上配置聚合端口" class="headerlink" title="在SW1上配置聚合端口"></a>在SW1上配置聚合端口</h6><p>SW1(config)# interface port-channel 1<br>SW1(config-if)#sw mo trunk<br>创建聚合端口  </p>
-<p>SW1(config)# int range f0/1,10<br>进入端口f0/1 和 f0/10<br>SW1(config-if-range)#channel-group 1  mode on<br>（将端口加入到聚合端口）</p>
-<h6 id="在sw2上配置聚合端口"><a href="#在sw2上配置聚合端口" class="headerlink" title="在sw2上配置聚合端口"></a>在sw2上配置聚合端口</h6><p>SW2(config)# interface port-channel 1<br>SW2(config-if)#sw mo trunk<br>创建聚合端口  </p>
-<p>SW2(config)# int range f0/1,10<br>进入端口f0/1 和 f0/10<br>SW2(config-if-range)#channel-group 1  mode on<br>（将端口加入到聚合端口）</p>
-<p>####### channel-group 模式<br>active<br>auto<br>desirable<br>on<br>passive             </p>
-<p>端口聚合还可以增加冗余电路，增加带宽，做负载均衡。  </p>
-<p>#######查看端口聚合情况<br>SW1#sh etherchannel port-channel   </p>
+<p>​—<br>标题：网络安全：信安2019-12-9</p>
+<h2 id="​—"><a href="#​—" class="headerlink" title="​—"></a>​—</h2><h3 id="重启"><a href="#重启" class="headerlink" title="重启"></a>重启</h3><p>switch#reload</p>
+<h3 id="本征vlan"><a href="#本征vlan" class="headerlink" title="本征vlan"></a>本征vlan</h3><p>为通过某一个端口但未打标的数据打标，统一打标为本征vlan的标签。</p>
+<p>trunk链路上用于传输没有vlan打标的信息，默认是vlan 1</p>
+<p> ![img](file:///D:\Documents\Tencent Files\627125843\Image\C2C\Image1\1LP3KL}H4]3~}[Y0JAYE1%D.png) </p>
+<h3 id="寄存器"><a href="#寄存器" class="headerlink" title="寄存器"></a>寄存器</h3><p>Flash        存镜像文件 操作系统OS</p>
+<p>RAM         存运行配置文件 running-config</p>
+<p>NVRAM    存启动配置文件 start-up</p>
+<h3 id="备份"><a href="#备份" class="headerlink" title="备份"></a>备份</h3><p>switch#copy flash:  tftp:</p>
+<p>(把flash里备份到tftp服务器)</p>
+<h3 id="还原"><a href="#还原" class="headerlink" title="还原"></a>还原</h3><p>switch#copy tftp:  flash:</p>
+<p>（把tftp服务器里还原到flash里）</p>
+<h3 id="清除启动配置文件"><a href="#清除启动配置文件" class="headerlink" title="清除启动配置文件"></a>清除启动配置文件</h3><p>Switch#erase startup-config</p>
+<p>——————————————————</p>
+<p>switch#copy starting-config tftp：</p>
+<p><img src="C:%5CUsers%5CAdministrator%5CAppData%5CRoaming%5CTypora%5Ctypora-user-images%5C1575858347775.png" alt="1575858347775"></p>
+<h2 id="思科路由器的启动过程："><a href="#思科路由器的启动过程：" class="headerlink" title="思科路由器的启动过程："></a>思科路由器的启动过程：</h2><p>1、 路由器加电后，首先运行ROM中的POST程序（Power On Self Test）对路由器的硬件进行检测，俗称加电自检。</p>
+<p>2、 检测通过后紧接着执行ROM中的引导程序（bootstrap），并根据寄存器值（register）来决定启动方式。</p>
+<p>寄存器值的格式为：0x21YZ</p>
+<p>  Y列的状态：0x210Z    从nvram加载配置文件<br>         0x214Z    不从nvram加载配置文件</p>
+<p>  Z列的状态：0x21Y0   从rommon启动   提示符为：&gt;(路由器启动时按Ctrl+Break)<br>        0x21Y1   从mini ios启动  提示符为：Router(boot)&gt;<br>         0x21Y2   从flash启动    提示符为：Router&gt;<br>    <strong><em>\</em>我们经常使用的两个寄存器值：0x2102 （正常），0x2142（不读取保存的配置）。**</strong></p>
+<p>3、 如果正常启动，则按引导程序到Flash中查找IOS镜像。如果找到IOS镜像，则读取后正常启动。如果没有找到IOS镜像，则进入boot模式，即Mini IOS启动。boot模式下可使用TFTP上的IOS；或使用TFTP/X-modem为路由器重新灌一个IOS。如果Mini IOS也启动失败，则进入rom monitor模式。 </p>
+<p>4、 读取IOS并初始化成功后，引导程序将更具寄存器值决定加载或者不加载启动配置文件。如果选择加载，则到NVRAM中找到启动配置文件，并加载到RAM中成为运行配置文件。如果选择不加载或者根本没有启动配置文件，则路由器会进入询问配置模式，以问答的方式对路由器进行基本配置。 </p>
+<p>5、 进入用户模式，启动过程完毕</p>
+<p>6、 举例：如果设置的密码忘记了怎么办？</p>
+<p>​     路由器启动时按Ctrl+Break</p>
+<p>​         rommon 1 &gt; confreg 0x2142</p>
+<p> rommon 1 &gt; reset</p>
+<p><strong><em>\</em>R2#copy startup-config running-config**</strong></p>
+<hr>
+<h4 id="！！！！！！！一定要copy启动配置文件过来-再改密码-再保存！！！-否则新运行文件将覆盖原来的启动配置文件！！！"><a href="#！！！！！！！一定要copy启动配置文件过来-再改密码-再保存！！！-否则新运行文件将覆盖原来的启动配置文件！！！" class="headerlink" title="！！！！！！！一定要copy启动配置文件过来 再改密码 再保存！！！ 否则新运行文件将覆盖原来的启动配置文件！！！"></a>！！！！！！！一定要copy启动配置文件过来 再改密码 再保存！！！ 否则新运行文件将覆盖原来的启动配置文件！！！</h4><p>修改密码配置后重启路由器</p>
+<p>R2#reload </p>
+<p>路由器启动时按Ctrl+Break</p>
+<p>​         rommon 1 &gt; confreg 0x2102</p>
+<p> rommon 1 &gt; reset</p>
+<hr>
+<h2 id="动态路由协议——RIP"><a href="#动态路由协议——RIP" class="headerlink" title="动态路由协议——RIP"></a>动态路由协议——RIP</h2><h3 id="cdp协议-：思科发现协议"><a href="#cdp协议-：思科发现协议" class="headerlink" title="cdp协议 ：思科发现协议"></a>cdp协议 ：思科发现协议</h3><p>发现直连的对方设备 形成邻居关系，通过发送hello包，维持邻居关系。  </p>
+<h3 id="距离矢量路由协议"><a href="#距离矢量路由协议" class="headerlink" title="距离矢量路由协议"></a>距离矢量路由协议</h3><p>{距离；矢量}  </p>
+<p>距离：跳数，                   矢量：方向  </p>
+<p>————————————————</p>
+<h3 id="解决RIP路由协议的环路问题"><a href="#解决RIP路由协议的环路问题" class="headerlink" title="解决RIP路由协议的环路问题"></a>解决RIP路由协议的环路问题</h3><h5 id="1-定义最大跳数（15跳）"><a href="#1-定义最大跳数（15跳）" class="headerlink" title="1.定义最大跳数（15跳）"></a>1.定义最大跳数（15跳）</h5><h5 id="2-水平分隔-（向原始信息的来源方向返回路由信息毫无用处）"><a href="#2-水平分隔-（向原始信息的来源方向返回路由信息毫无用处）" class="headerlink" title="2.水平分隔   （向原始信息的来源方向返回路由信息毫无用处）"></a>2.水平分隔   （向原始信息的来源方向返回路由信息毫无用处）</h5><h5 id="3-路由毒化和毒性逆转"><a href="#3-路由毒化和毒性逆转" class="headerlink" title="3.路由毒化和毒性逆转"></a>3.路由毒化和毒性逆转</h5><h5 id="4-抑制计时器"><a href="#4-抑制计时器" class="headerlink" title="4.抑制计时器"></a>4.抑制计时器</h5><h5 id="5-触发更新"><a href="#5-触发更新" class="headerlink" title="5.触发更新"></a>5.触发更新</h5><h4 id="RIP路由协议的版本"><a href="#RIP路由协议的版本" class="headerlink" title="RIP路由协议的版本"></a>RIP路由协议的版本</h4><h5 id="RIP-V1"><a href="#RIP-V1" class="headerlink" title="RIP V1"></a>RIP V1</h5><p>发送路由更新时不携带子网掩码，宣告主类网络，属于有类路由协议。</p>
+<p>发送路由更新时，目标地址为广播地址：255.255.255.255</p>
+<h5 id="RIP-V2"><a href="#RIP-V2" class="headerlink" title="RIP V2"></a>RIP V2</h5><p>发送路由更新时携带子网掩码，属于无类路由协议。</p>
+<p>发送路由更新时，目标地址为广播地址：224.0.0.0</p>
+<h4 id="配置RIP路由协议"><a href="#配置RIP路由协议" class="headerlink" title="配置RIP路由协议"></a>配置RIP路由协议</h4><p><img src="C:%5CUsers%5CAdministrator%5CAppData%5CRoaming%5CTypora%5Ctypora-user-images%5C1575861165902.png" alt="1575861165902"></p>
+<p>R1(config)#router rip</p>
+<p>开启RIP路由协议</p>
+<p>R1(config-router)#version 1</p>
+<p>设置版本号为1</p>
+<p>R1(config-router)#network 12.1.1.0</p>
+<p>宣告直连网络（是自己直连的所有网络，意思是连了几个就宣告几个）</p>
+<p>R2(config)#router rip</p>
+<p>开启RIP路由协议</p>
+<p>R2(config-router)#version 1</p>
+<p>设置版本号为1</p>
+<p>R2(config-router)#network 12.1.1.0</p>
+<p>R2(config-router)#network  23.1.1.0</p>
+<p>宣告直连网络（两条）</p>
+<p>R3(config)#router rip</p>
+<p>开启RIP路由协议</p>
+<p>R3(config-router)#version 1</p>
+<p>设置版本号为1</p>
+<p>R3(config-router)#network 23.1.1.0</p>
+<h4 id="查看路由表"><a href="#查看路由表" class="headerlink" title="查看路由表"></a>查看路由表</h4><p>R1#sh ip route</p>
+<h4 id="清除路由表"><a href="#清除路由表" class="headerlink" title="清除路由表"></a>清除路由表</h4><p>R1#clear ip route *</p>
+<h4 id="版本2中关闭自动汇总"><a href="#版本2中关闭自动汇总" class="headerlink" title="版本2中关闭自动汇总"></a>版本2中关闭自动汇总</h4><p>R1(config-router)#no auto-summary</p>
+<h3 id="Version1与Version2的兼容问题"><a href="#Version1与Version2的兼容问题" class="headerlink" title="Version1与Version2的兼容问题"></a>Version1与Version2的兼容问题</h3><p><img src="C:%5CUsers%5CAdministrator%5CAppData%5CRoaming%5CTypora%5Ctypora-user-images%5C1575872688544.png" alt="1575872688544"></p>
+<p>———————————————————</p>
+<h2 id="在接口禁止运行RIP"><a href="#在接口禁止运行RIP" class="headerlink" title="在接口禁止运行RIP"></a>在接口禁止运行RIP</h2><p>R3(config-router)passive-interface f0/1</p>
+<p>(！！只收不发！！)</p>
+<h2 id="RIP-version2的单播更新"><a href="#RIP-version2的单播更新" class="headerlink" title="RIP version2的单播更新"></a>RIP version2的单播更新</h2><h2 id="RIP-version2自动汇总"><a href="#RIP-version2自动汇总" class="headerlink" title="RIP version2自动汇总"></a>RIP version2自动汇总</h2><h2 id="RIP-version2手动汇总"><a href="#RIP-version2手动汇总" class="headerlink" title="RIP version2手动汇总"></a>RIP version2手动汇总</h2><p>（因为自动汇总最终汇总成了主类网络）</p>
+<p><img src="C:%5CUsers%5CAdministrator%5CAppData%5CRoaming%5CTypora%5Ctypora-user-images%5C1575874716642.png" alt="1575874716642"></p>
+<p>手动汇总可以缩小汇总的范围</p>
+<p>（有一个问题，汇总地址的子网掩码长度必须大于主类的子网掩码长度）</p>
+<h2 id="使用RIP产生默认路由"><a href="#使用RIP产生默认路由" class="headerlink" title="使用RIP产生默认路由"></a>使用RIP产生默认路由</h2><p>R3(config)#route rip</p>
+<p>R3(config-router)#default-information originate </p>
+<h2 id="RIP-V2明文认证"><a href="#RIP-V2明文认证" class="headerlink" title="RIP V2明文认证"></a>RIP V2明文认证</h2><h2 id="RIP-V2密文认证-MD5"><a href="#RIP-V2密文认证-MD5" class="headerlink" title="RIP V2密文认证(MD5)"></a>RIP V2密文认证(MD5)</h2><h2 id="RIP过滤路由"><a href="#RIP过滤路由" class="headerlink" title="RIP过滤路由"></a>RIP过滤路由</h2><h2 id="提问："><a href="#提问：" class="headerlink" title="提问："></a>提问：</h2><h5 id="RIP路由协议的工作原理？"><a href="#RIP路由协议的工作原理？" class="headerlink" title="RIP路由协议的工作原理？"></a>RIP路由协议的工作原理？</h5><p>RIP协议是一种典型的距离矢量协议，它使用的也是距离矢量算法，该算法可以用一句话来概括：进行路由更新时传递路由表。 </p>
+<h5 id="RIP解决环路的机制？"><a href="#RIP解决环路的机制？" class="headerlink" title="RIP解决环路的机制？"></a>RIP解决环路的机制？</h5><p>5种：</p>
+<p>定义最大跳数</p>
+<p>水平分隔</p>
+<p>路由毒化和毒性逆转</p>
+<p>抑制计时器</p>
+<p>触发更新</p>
+<h5 id="RIP的最大跳数？"><a href="#RIP的最大跳数？" class="headerlink" title="RIP的最大跳数？"></a>RIP的最大跳数？</h5><p>15</p>
+<h5 id="RIP的管理距离？-120"><a href="#RIP的管理距离？-120" class="headerlink" title="RIP的管理距离？   120"></a>RIP的管理距离？   120</h5><p>补充ospf管理距离为110 管理距离为0-255中的整数，值越高可靠性越低。</p>
+<h5 id="RIP的配置？"><a href="#RIP的配置？" class="headerlink" title="RIP的配置？"></a>RIP的配置？</h5><p>8个实验：</p>
+<p>1.Version1与Version2的兼容问题<br>2.在接口禁止运行RIP<br>3.RIP version2的单播更新<br>4.RIP version2自动汇总<br>5.RIP version2手动汇总<br>6.使用RIP产生默认路由<br>7.RIP V2明文认证  RIP V2密文认证(MD5)<br>8.RIP过滤路由</p>
+<h5 id="RIP路由协议的优缺点？"><a href="#RIP路由协议的优缺点？" class="headerlink" title="RIP路由协议的优缺点？"></a>RIP路由协议的优缺点？</h5><p>根据跳数选择路由，没有考虑开销和延迟等其他因素。收敛速度慢，最大跳数是15，超过15认为不可达，并且rip不支持可变长子网掩码，ip地址分配效率低，原理简单开销小。</p>
 
       
 
@@ -281,7 +332,7 @@
     <a class="close js-modal-close" href="javascript:;"><i class="icon icon-close"></i></a>
     <p>扫一扫，分享到微信</p>
     <div class="wx-qrcode">
-      <img src="//pan.baidu.com/share/qrcode?url=http://yoursite.com/2019/12/05/信安12-5/" alt="微信分享二维码">
+      <img src="//pan.baidu.com/share/qrcode?url=http://yoursite.com/2019/12/10/信安12-9/" alt="微信分享二维码">
     </div>
 </div>
 
@@ -295,7 +346,7 @@
   
 <nav id="article-nav">
   
-    <a href="/2019/12/10/信安12-6/" id="article-nav-newer" class="article-nav-link-wrap">
+    <a href="/2019/12/10/信安12-10/" id="article-nav-newer" class="article-nav-link-wrap">
       <i class="icon-circle-left"></i>
       <div class="article-nav-title">
         
@@ -305,7 +356,7 @@
     </a>
   
   
-    <a href="/2019/12/04/信安12-3/" id="article-nav-older" class="article-nav-link-wrap">
+    <a href="/2019/12/10/信安12-6/" id="article-nav-older" class="article-nav-link-wrap">
       <div class="article-nav-title"></div>
       <i class="icon-circle-right"></i>
     </a>
