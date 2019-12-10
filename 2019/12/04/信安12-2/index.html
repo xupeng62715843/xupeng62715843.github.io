@@ -1,0 +1,531 @@
+<!DOCTYPE html>
+<html lang="en">
+<head><meta name="generator" content="Hexo 3.9.0">
+
+    <!--[if lt IE 9]>
+        <style>body {display: none; background: none !important} </style>
+        <meta http-equiv="Refresh" Content="0; url=//outdatedbrowser.com/" />
+    <![endif]-->
+
+<meta charset="utf-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge, chrome=1">
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
+<meta name="format-detection" content="telephone=no">
+<meta name="author" content="徐鹏">
+
+
+
+<meta name="description" content="标题：网络安全：信安2019-12-2什么是计算机网络基本命令操作为方便管理，配置telnet远程管理设备SSH远程管理网络设备">
+<meta property="og:type" content="article">
+<meta property="og:title" content="徐鹏">
+<meta property="og:url" content="http://yoursite.com/2019/12/04/信安12-2/index.html">
+<meta property="og:site_name" content="徐鹏">
+<meta property="og:description" content="标题：网络安全：信安2019-12-2什么是计算机网络基本命令操作为方便管理，配置telnet远程管理设备SSH远程管理网络设备">
+<meta property="og:locale" content="en">
+<meta property="og:updated_time" content="2019-12-07T03:41:21.419Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="徐鹏">
+<meta name="twitter:description" content="标题：网络安全：信安2019-12-2什么是计算机网络基本命令操作为方便管理，配置telnet远程管理设备SSH远程管理网络设备">
+
+<link rel="apple-touch-icon" href="/apple-touch-icon.png">
+
+
+    <link rel="alternate" href="/atom.xml" title="徐鹏" type="application/atom+xml">
+
+
+
+    <link rel="shortcut icon" href="/favicon.png">
+
+
+
+    <link href="//cdn.bootcss.com/animate.css/3.5.1/animate.min.css" rel="stylesheet">
+
+
+
+    <link href="//cdn.bootcss.com/fancybox/2.1.5/jquery.fancybox.min.css" rel="stylesheet">
+
+
+
+    <script src="//cdn.bootcss.com/pace/1.0.2/pace.min.js"></script>
+    <link href="//cdn.bootcss.com/pace/1.0.2/themes/blue/pace-theme-minimal.css" rel="stylesheet">
+
+
+<link rel="stylesheet" href="/css/style.css">
+
+
+
+<link href="//cdn.bootcss.com/font-awesome/4.6.3/css/font-awesome.min.css" rel="stylesheet">
+
+
+<title>徐鹏</title>
+
+<script src="//cdn.bootcss.com/jquery/2.2.4/jquery.min.js"></script>
+<script src="//cdn.bootcss.com/clipboard.js/1.5.10/clipboard.min.js"></script>
+
+<script>
+    var yiliaConfig = {
+        fancybox: true,
+        animate: true,
+        isHome: false,
+        isPost: true,
+        isArchive: false,
+        isTag: false,
+        isCategory: false,
+        fancybox_js: "//cdn.bootcss.com/fancybox/2.1.5/jquery.fancybox.min.js",
+        scrollreveal: "//cdn.bootcss.com/scrollReveal.js/3.1.4/scrollreveal.min.js",
+        search: 
+    }
+</script>
+
+
+    <script> yiliaConfig.jquery_ui = [false]; </script>
+
+
+
+    <script> yiliaConfig.rootUrl = "\/";</script>
+
+
+
+
+
+
+</head></html>
+<body>
+  <div id="container">
+    <div class="left-col">
+    <div class="overlay"></div>
+<div class="intrude-less">
+    <header id="header" class="inner">
+        <a href="/" class="profilepic">
+            <img src="/img/avatar.png" class="animated zoomIn">
+        </a>
+        <hgroup>
+          <h1 class="header-author"><a href="/">徐鹏</a></h1>
+        </hgroup>
+
+        
+
+        
+
+
+        
+            <div id="switch-btn" class="switch-btn">
+                <div class="icon">
+                    <div class="icon-ctn">
+                        <div class="icon-wrap icon-house" data-idx="0">
+                            <div class="birdhouse"></div>
+                            <div class="birdhouse_holes"></div>
+                        </div>
+                        <div class="icon-wrap icon-ribbon hide" data-idx="1">
+                            <div class="ribbon"></div>
+                        </div>
+                        
+                        <div class="icon-wrap icon-link hide" data-idx="2">
+                            <div class="loopback_l"></div>
+                            <div class="loopback_r"></div>
+                        </div>
+                        
+                        
+                        <div class="icon-wrap icon-me hide" data-idx="3">
+                            <div class="user"></div>
+                            <div class="shoulder"></div>
+                        </div>
+                        
+                    </div>
+                    
+                </div>
+                <div class="tips-box hide">
+                    <div class="tips-arrow"></div>
+                    <ul class="tips-inner">
+                        <li>Menu</li>
+                        <li>Tags</li>
+                        
+                        <li>Friends</li>
+                        
+                        
+                        <li>About Me</li>
+                        
+                    </ul>
+                </div>
+            </div>
+        
+
+        <div id="switch-area" class="switch-area">
+            <div class="switch-wrap">
+                <section class="switch-part switch-part1">
+                    <nav class="header-menu">
+                        <ul>
+                        
+                            <li><a href="/">主页</a></li>
+                        
+                            <li><a href="/archives/">所有文章</a></li>
+                        
+                            <li><a href="/tags/">标签云</a></li>
+                        
+                            <li><a href="/about/">关于我</a></li>
+                        
+                        </ul>
+                    </nav>
+                    <nav class="header-nav">
+                        <ul class="social">
+                            
+                                <a class="fa Email" href="mailto:123@123.com" title="Email"></a>
+                            
+                                <a class="fa GitHub" href="#" title="GitHub"></a>
+                            
+                                <a class="fa RSS" href="/atom.xml" title="RSS"></a>
+                            
+                        </ul>
+                    </nav>
+                </section>
+                
+                
+                <section class="switch-part switch-part2">
+                    <div class="widget tagcloud" id="js-tagcloud">
+                        
+                    </div>
+                </section>
+                
+                
+                
+                <section class="switch-part switch-part3">
+                    <div id="js-friends">
+                    
+                      <a class="main-nav-link switch-friends-link" href="https://hexo.io">Hexo</a>
+                    
+                      <a class="main-nav-link switch-friends-link" href="https://pages.github.com/">GitHub</a>
+                    
+                      <a class="main-nav-link switch-friends-link" href="http://moxfive.xyz/">MOxFIVE</a>
+                    
+                    </div>
+                </section>
+                
+
+                
+                
+                <section class="switch-part switch-part4">
+                
+                    <div id="js-aboutme">专注于前端</div>
+                </section>
+                
+            </div>
+        </div>
+    </header>                
+</div>
+    </div>
+    <div class="mid-col">
+      <nav id="mobile-nav">
+      <div class="overlay">
+          <div class="slider-trigger"></div>
+          <h1 class="header-author js-mobile-header hide"><a href="/" title="回到主页">徐鹏</a></h1>
+      </div>
+    <div class="intrude-less">
+        <header id="header" class="inner">
+            <a href="/" class="profilepic">
+                <img src="/img/avatar.png" class="animated zoomIn">
+            </a>
+            <hgroup>
+              <h1 class="header-author"><a href="/" title="回到主页">徐鹏</a></h1>
+            </hgroup>
+            
+            <nav class="header-menu">
+                <ul>
+                
+                    <li><a href="/">主页</a></li>
+                
+                    <li><a href="/archives/">所有文章</a></li>
+                
+                    <li><a href="/tags/">标签云</a></li>
+                
+                    <li><a href="/about/">关于我</a></li>
+                
+                <div class="clearfix"></div>
+                </ul>
+            </nav>
+            <nav class="header-nav">
+                        <ul class="social">
+                            
+                                <a class="fa Email" target="_blank" href="mailto:123@123.com" title="Email"></a>
+                            
+                                <a class="fa GitHub" target="_blank" href="#" title="GitHub"></a>
+                            
+                                <a class="fa RSS" target="_blank" href="/atom.xml" title="RSS"></a>
+                            
+                        </ul>
+            </nav>
+        </header>                
+    </div>
+    <link class="menu-list" tags="Tags" friends="Friends" about="About Me"/>
+</nav>
+      <div class="body-wrap"><article id="post-信安12-2" class="article article-type-post" itemscope itemprop="blogPost">
+  
+    <div class="article-meta">
+      <a href="/2019/12/04/信安12-2/" class="article-date">
+      <time datetime="2019-12-04T14:14:55.397Z" itemprop="datePublished">2019-12-04</time>
+</a>
+
+
+    </div>
+  
+  <div class="article-inner">
+    
+      <input type="hidden" class="isFancy" />
+    
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+          
+        <hr>
+<h2 id="标题：网络安全：信安2019-12-2"><a href="#标题：网络安全：信安2019-12-2" class="headerlink" title="标题：网络安全：信安2019-12-2"></a>标题：网络安全：信安2019-12-2</h2><p>什么是计算机网络<br>基本命令操作<br>为方便管理，配置telnet远程管理设备<br>SSH远程管理网络设备  </p>
+<a id="more"></a>
+<p>###什么是计算机网络<br>将位于不同位置的计算机，用不同的传输介质（有线、无线）连接起来，通过一些网络软件，最终实现资源共享的系统。  </p>
+<p>思科pacet Tracer<br>路由器<br>2960双层交换机<br>3560三层交换机<br>Hub 集线器<br>无线设备<br>线缆{蓝色：配置线；黑色实线、黑色虚线都是双绞线，实线是直连线，虚线是交叉线；闪电形的两个是串口线}<br>终端设备{台式机、笔记本、服务器等}  </p>
+<p>e0/0     以太网接口 传输速率10MB<br>f0/0     快速以太网接口  传输速率100MB<br>g0/0     千兆以太网接口  传输速率1GB</p>
+<p>思科路由器启动分为：1.硬件检查 2.运行IOS 3.导入配置文件<br>BIOS：硬件基础系统<br>思科路由器主要存储硬件{<br>ROM：只读存储器<br>Flash:存储完整的IOS镜像文件<br>NVRAM:存放路由器启动配置文件<br>RAM：存储运行配置文件<br>}</p>
+<p>双绞线：直通线、交叉线、控制线<br>T568B： 橙白 橙 绿白 蓝 蓝白 绿 棕白 棕<br>T568A： 绿白 绿 橙白 蓝 蓝白 橙 棕白 棕  </p>
+<p>直通线:T568A-T568A T568B-T568B<br>不同设备相连<br>交换机-路由器 路由器-集线器 交换机-PC  </p>
+<p>交叉线：T568A-T568B<br>交换机-交换器 路由器-路由器 交换机-集线器  </p>
+<p>全反线：控制线</p>
+<h2 id="基本命令操作："><a href="#基本命令操作：" class="headerlink" title="基本命令操作："></a>基本命令操作：</h2><p>如何对设备进行配置？<br>真实设备的配置：<br>需要通过控制线进行连接，并在计算机上安装接口驱动程序和超级终端程序。  </p>
+<p>模式：<br>Router&gt;用户模式<br>Router&gt;enable (简写en)<br>Router#特权模式<br>Router#config terminal 全局配置模式<br>Router(config)#<br>全局模式下路由器改名：<br>Router(config)# hostname R1  </p>
+<p>路由器工作在网络模型的第三层（所以也叫三层【网络层】设备）<br>网络层：传输数据包，作用是寻址，隔离广播，转发等。<br>广播域：不同网络处于不同广播域。 路由器的一个接口为一个广播域，交换机的所有接口都在一个广播域。<br>冲突域：集线器的所有端口都工作在一个冲突域，交换机的一个接口为一个冲突域。  </p>
+<p>R1(config)# interface fastEthernet 0/0<br>进入0/0接口<br>R1(config-if)# 接口模式<br>R1(config-if)#ip address 192.168.10.254  255.255.255.0<br>配置ip地址（和子网掩码）  </p>
+<p>子网掩码：标识网络号<br>R1(config-if)#no shudown 开启端口  </p>
+<p>返回上一级模式 exit<br>直接返回到特权模式 end   </p>
+<p>网关:一个网络的路由器 填路由器在这个网络接口的ip地址  </p>
+<p>在全局模式下输入：no ip domain-lookup (取消域名搜索)<br>               ctrl+shift+6</p>
+<p>如何查看配置是否正确：<br>启动配置文件：配置好以后进行保存的配置文件。<br>运行配置文件：当前已配置但是还未保存或当前运行的配置文件。  </p>
+<p>在特权模式下，show running-config 查看运行配置文件<br>           show startup-config 查看启动配置文件  </p>
+<p>特权模式下 copy running-config startup-config 保存配置文件<br>（或 R1#write R1#w  也可以直接保存）</p>
+<p>R1#reload  重启<br>重启后running-config的内容会消失，而startup-config的配置会一直存在。  </p>
+<p>###为提高设备安全，配置设备console密码保护设备。(路由器开机密码)<br>进入全局模式，R1#config t<br>R1#(config)#line console 0<br>R1#(config-line)#password 123456<br>R1#(config-line)#login  </p>
+<p>####如果需要用户名和密码同时存在，怎么配置呢？<br>R1#config t<br>R1#(config)#username xupeng password 123456<br>R1#(config)#line console 0<br>R1#(config)#login local  </p>
+<p>####设置enable密码：<br>R1#config t<br>R1(config)# enable password 123456<br>明文密码<br>R1(config)# enable secert 123456<br>密文密码<br>当这两个密码同时存在时，密文密码生效。  </p>
+<p>###为方便管理，配置telnet远程管理设备。<br>R1（config）#line vty<br>R1（config）#line vty 0 4<br>R1（config-line）#password 123456<br>R1（config-line）#login  </p>
+<p>####如何选择登陆呢？<br>在pc端的命令提示符中输入：pc&gt;telnet 192.168.10.254  </p>
+<p>####在远程登陆时需要用户名和密码呢?<br>R1（config）#line vty 0 4<br>R1（config-line）#login local  </p>
+<p>####如何配置管理交换机设备呢？<br>默认情况下，所有端口都在vlan1这个网络，我们只需要给vlan1这个接口配置IP地址，并远程登陆密码，就可以进行远程登陆访问了。  </p>
+<p>switch(config)#int vlan1<br>switch(config-if)#ip address 192.168.10.253 255.255.255.0<br>switch(config-if)#no shutdown  0</p>
+<p>switch(config)#line vty 0 4<br>switch(config-line)#login local  </p>
+<p>switch(config)#hostname S1<br>S1(config)#username xupeng password 123456<br>S1(config)#enable secret 123456  </p>
+<h3 id="SSH远程管理网络设备"><a href="#SSH远程管理网络设备" class="headerlink" title="SSH远程管理网络设备"></a>SSH远程管理网络设备</h3><p>switch(config)#hostname S1<br>S1(config)#ip domain-name xupeng.com  设置域名<br>S1(config)#crypto key generate rsa    配置加密方式为RSA<br>  How many bits in the modulus [512]:1024    加密的位数（默认是512位）<br>S1(config)#username admin privilege 0 secret xupeng  设置用户名及密码<br>安全级别是0<br>s1(config)#line vty 0 4  进入line vty 模式 开启5个端口<br>S1(config-line)#exec-timeout 10 0   设置超时时间  10分钟 0秒<br>S1(config-line)#logging synchronous    日志同步<br>S1(config-line)#login local  采用本地登陆<br>S1(config-line)#transport input ssh  启用ssh登陆</p>
+<p> 在pc机上验证ssh登：<br> ssh -l 用户名 ip地址  </p>
+<p>####ssh远程访问配置<br>服务端：<br>1.创建账户和密码<br>2.规定远程连接的方式  </p>
+<p>R1(config)#username admin password 123456  </p>
+<p>R1(config)#line vty ?<br>R1(config)#line vty 0 5   （创建了6个）</p>
+<p>R1(config-line)#login local</p>
+<p>R1(config-line)#transport input ssh  </p>
+
+      
+    </div>
+    
+  </div>
+  
+    
+    <div class="copyright">
+        <p><span>Title:</span><a href="/2019/12/04/信安12-2/"></a></p>
+        <p><span>Author:</span><a href="/" title="Back to Homepage">徐鹏</a></p>
+        <p><span>Created:</span>2019-12-04, 22:14:55</p>
+        <p><span>Updated:</span>2019-12-07, 11:41:21</p>
+        <p>
+            <span>Full URL:</span><a class="post-url" href="/2019/12/04/信安12-2/" title="">http://yoursite.com/2019/12/04/信安12-2/</a>
+            <span class="copy-path" data-clipboard-text="From http://yoursite.com/2019/12/04/信安12-2/　　By 徐鹏" title="Copy Article&#39;s Link &amp; Author"><i class="fa fa-clipboard"></i></span>
+            <script> var clipboard = new Clipboard('.copy-path'); </script>
+        </p>
+        <p>
+            <span>License:</span><i class="fa fa-creative-commons"></i> <a rel="license" href="http://creativecommons.org/licenses/by-nc-sa/4.0/" title="CC BY-NC-SA 4.0 International" target = "_blank">"CC BY-NC-SA 4.0"</a> Keep Link &amp; Author if Distribute.
+        </p>
+    </div>
+
+
+
+    <nav id="article-nav">
+        
+            <div id="article-nav-newer" class="article-nav-title">
+                <a href="/2019/12/04/信安12-3/">
+                    
+                </a>
+            </div>
+        
+        
+            <div id="article-nav-older" class="article-nav-title">
+                <a href="/2019/12/04/信安12-4/">
+                    
+                </a>
+            </div>
+        
+    </nav>
+
+  
+</article>
+
+    <div id="toc" class="toc-article">
+        <strong class="toc-title">Contents</strong>
+        
+            <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#标题：网络安全：信安2019-12-2"><span class="toc-number">1.</span> <span class="toc-text">标题：网络安全：信安2019-12-2</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#基本命令操作："><span class="toc-number">2.</span> <span class="toc-text">基本命令操作：</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#SSH远程管理网络设备"><span class="toc-number">2.1.</span> <span class="toc-text">SSH远程管理网络设备</span></a></li></ol></li></ol>
+        
+    </div>
+    <style>
+        .left-col .switch-btn,
+        .left-col .switch-area {
+            display: none;
+        }
+        .toc-level-3 i,
+        .toc-level-3 ol {
+            display: none !important;
+        }
+    </style>
+
+    <input type="button" id="tocButton" value="Hide"  title="Show or Hide Table of Contents">
+
+    <script>
+        yiliaConfig.toc = ["Hide", "Show", !!"false"];
+    </script>
+
+
+
+    
+<div class="share">
+    
+        <div class="bdsharebuttonbox">
+            <a href="#" class="fa fa-twitter bds_twi" data-cmd="twi" title="分享到推特"></a>
+            <a href="#" class="fa fa-weibo bds_tsina" data-cmd="tsina" title="分享到新浪微博"></a>
+            <a href="#" class="fa fa-qq bds_sqq" data-cmd="sqq" title="分享给 QQ 好友"></a>
+            <a href="#" class="fa fa-files-o bds_copy" data-cmd="copy" title="复制网址"></a>
+            <a href="#" class="fa fa fa-envelope-o bds_mail" data-cmd="mail" title="通过邮件分享"></a>
+            <a href="#" class="fa fa-weixin bds_weixin" data-cmd="weixin" title="生成文章二维码"></a>
+            <a href="#" class="fa fa-share-alt bds_more" data-cmd="more"></i></a>
+        </div>
+        <script>
+            window._bd_share_config={
+                "common":{"bdSnsKey":{},"bdText":"　| 徐鹏　","bdMini":"2","bdMiniList":false,"bdPic":"","bdStyle":"0","bdSize":"24"},"share":{}};with(document)0[(getElementsByTagName('head')[0]||body).appendChild(createElement('script')).src='http://bdimg.share.baidu.com/static/api/js/share.js?v=89860593.js?cdnversion='+~(-new Date()/36e5)];
+        </script>
+    
+
+    
+</div>
+
+
+
+
+
+
+
+    
+
+
+
+
+    <div class="scroll" id="post-nav-button">
+        
+            <a href="/2019/12/04/信安12-3/" title="Pre: ">
+                <i class="fa fa-angle-left"></i>
+            </a>
+        
+
+        <a title="Mini Archives"><i class="fa fa-bars"></i><i class="fa fa-times"></i></a>
+
+        
+            <a href="/2019/12/04/信安12-4/" title="Next: ">
+                <i class="fa fa-angle-right"></i>
+            </a>
+        
+    </div>
+
+    <ul class="post-list"><li class="post-list-item"><a class="post-list-link" href="/2019/12/10/信安12-10/">信安12-10</a></li><li class="post-list-item"><a class="post-list-link" href="/2019/12/10/信安12-9/">信安12-9</a></li><li class="post-list-item"><a class="post-list-link" href="/2019/12/10/信安12-6/">信安12-6</a></li><li class="post-list-item"><a class="post-list-link" href="/2019/12/05/信安12-5/">信安12-5</a></li><li class="post-list-item"><a class="post-list-link" href="/2019/12/04/信安12-3/">信安12-3</a></li><li class="post-list-item"><a class="post-list-link" href="/2019/12/04/信安12-2/">信安12-2</a></li><li class="post-list-item"><a class="post-list-link" href="/2019/12/04/信安12-4/">信安12-4</a></li></ul>
+
+
+
+
+    <script>
+        
+    </script>
+</div>
+      <footer id="footer">
+    <div class="outer">
+        <div id="footer-info">
+            <div class="footer-left">
+                <i class="fa fa-copyright"></i> 
+                2016-2019 徐鹏
+            </div>
+            <div class="footer-right">
+                <a href="http://hexo.io/" target="_blank" title="A fast, simple &amp; powerful blog framework">Hexo</a>  Theme <a href="https://github.com/MOxFIVE/hexo-theme-yelee" target="_blank" title="Another simple and elegant theme for Hexo  v3.5">Yelee</a> by MOxFIVE <i class="fa fa-heart animated infinite pulse"></i>
+            </div>
+        </div>
+        
+            <div class="visit">
+                
+                    <span id="busuanzi_container_site_pv" style='display:none'>
+                        <span id="site-visit" title="Site Visitors"><i class="fa fa-user" aria-hidden="true"></i><span id="busuanzi_value_site_uv"></span>
+                        </span>
+                    </span>
+                
+                
+                    <span>| </span>
+                
+                
+                    <span id="busuanzi_container_page_pv" style='display:none'>
+                        <span id="page-visit"  title="Page Hits"><i class="fa fa-eye animated infinite pulse" aria-hidden="true"></i><span id="busuanzi_value_page_pv"></span>
+                        </span>
+                    </span>
+                
+            </div>
+        
+    </div>
+</footer>
+    </div>
+    
+<script data-main="/js/main.js" src="//cdn.bootcss.com/require.js/2.2.0/require.min.js"></script>
+
+    <script>
+        $(document).ready(function() {
+            var iPad = window.navigator.userAgent.indexOf('iPad');
+            if (iPad > -1 || $(".left-col").css("display") === "none") {
+                var bgColorList = ["#9db3f4", "#414141", "#e5a859", "#f5dfc6", "#c084a0", "#847e72", "#cd8390", "#996731"];
+                var bgColor = Math.ceil(Math.random() * (bgColorList.length - 1));
+                $("body").css({"background-color": bgColorList[bgColor], "background-size": "cover"});
+            }
+            else {
+                var backgroundnum = 5;
+                var backgroundimg = "url(/background/bg-x.jpg)".replace(/x/gi, Math.ceil(Math.random() * backgroundnum));
+                $("body").css({"background": backgroundimg, "background-attachment": "fixed", "background-size": "cover"});
+            }
+        })
+    </script>
+
+
+
+
+
+<div class="scroll" id="scroll">
+    <a href="#" title="Back to Top"><i class="fa fa-arrow-up"></i></a>
+    <a href="#comments" onclick="load$hide();" title="Comments"><i class="fa fa-comments-o"></i></a>
+    <a href="#footer" title="Go to Bottom"><i class="fa fa-arrow-down"></i></a>
+</div>
+<script>
+    // Open in New Window
+    
+        var oOpenInNew = {
+            
+            
+            
+            
+            
+            
+             archives: ".archive-article-title", 
+             miniArchives: "a.post-list-link", 
+            
+             friends: "#js-friends a", 
+             socail: ".social a" 
+        }
+        for (var x in oOpenInNew) {
+            $(oOpenInNew[x]).attr("target", "_blank");
+        }
+    
+</script>
+
+<script async src="https://dn-lbstatics.qbox.me/busuanzi/2.3/busuanzi.pure.mini.js">
+</script>
+  </div>
+</body>
+</html>

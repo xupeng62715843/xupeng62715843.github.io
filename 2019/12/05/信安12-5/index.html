@@ -1,0 +1,534 @@
+<!DOCTYPE html>
+<html lang="en">
+<head><meta name="generator" content="Hexo 3.9.0">
+
+    <!--[if lt IE 9]>
+        <style>body {display: none; background: none !important} </style>
+        <meta http-equiv="Refresh" Content="0; url=//outdatedbrowser.com/" />
+    <![endif]-->
+
+<meta charset="utf-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge, chrome=1">
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
+<meta name="format-detection" content="telephone=no">
+<meta name="author" content="徐鹏">
+
+
+
+<meta name="description" content="标题：网络安全：信安2019-12-5交换机的五种攻击类型配置VTP生成树STPPVST  按vlan生成树PVST的配置命令以太网端口聚合">
+<meta property="og:type" content="article">
+<meta property="og:title" content="徐鹏">
+<meta property="og:url" content="http://yoursite.com/2019/12/05/信安12-5/index.html">
+<meta property="og:site_name" content="徐鹏">
+<meta property="og:description" content="标题：网络安全：信安2019-12-5交换机的五种攻击类型配置VTP生成树STPPVST  按vlan生成树PVST的配置命令以太网端口聚合">
+<meta property="og:locale" content="en">
+<meta property="og:updated_time" content="2019-12-05T10:30:18.285Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="徐鹏">
+<meta name="twitter:description" content="标题：网络安全：信安2019-12-5交换机的五种攻击类型配置VTP生成树STPPVST  按vlan生成树PVST的配置命令以太网端口聚合">
+
+<link rel="apple-touch-icon" href="/apple-touch-icon.png">
+
+
+    <link rel="alternate" href="/atom.xml" title="徐鹏" type="application/atom+xml">
+
+
+
+    <link rel="shortcut icon" href="/favicon.png">
+
+
+
+    <link href="//cdn.bootcss.com/animate.css/3.5.1/animate.min.css" rel="stylesheet">
+
+
+
+    <link href="//cdn.bootcss.com/fancybox/2.1.5/jquery.fancybox.min.css" rel="stylesheet">
+
+
+
+    <script src="//cdn.bootcss.com/pace/1.0.2/pace.min.js"></script>
+    <link href="//cdn.bootcss.com/pace/1.0.2/themes/blue/pace-theme-minimal.css" rel="stylesheet">
+
+
+<link rel="stylesheet" href="/css/style.css">
+
+
+
+<link href="//cdn.bootcss.com/font-awesome/4.6.3/css/font-awesome.min.css" rel="stylesheet">
+
+
+<title>徐鹏</title>
+
+<script src="//cdn.bootcss.com/jquery/2.2.4/jquery.min.js"></script>
+<script src="//cdn.bootcss.com/clipboard.js/1.5.10/clipboard.min.js"></script>
+
+<script>
+    var yiliaConfig = {
+        fancybox: true,
+        animate: true,
+        isHome: false,
+        isPost: true,
+        isArchive: false,
+        isTag: false,
+        isCategory: false,
+        fancybox_js: "//cdn.bootcss.com/fancybox/2.1.5/jquery.fancybox.min.js",
+        scrollreveal: "//cdn.bootcss.com/scrollReveal.js/3.1.4/scrollreveal.min.js",
+        search: 
+    }
+</script>
+
+
+    <script> yiliaConfig.jquery_ui = [false]; </script>
+
+
+
+    <script> yiliaConfig.rootUrl = "\/";</script>
+
+
+
+
+
+
+</head></html>
+<body>
+  <div id="container">
+    <div class="left-col">
+    <div class="overlay"></div>
+<div class="intrude-less">
+    <header id="header" class="inner">
+        <a href="/" class="profilepic">
+            <img src="/img/avatar.png" class="animated zoomIn">
+        </a>
+        <hgroup>
+          <h1 class="header-author"><a href="/">徐鹏</a></h1>
+        </hgroup>
+
+        
+
+        
+
+
+        
+            <div id="switch-btn" class="switch-btn">
+                <div class="icon">
+                    <div class="icon-ctn">
+                        <div class="icon-wrap icon-house" data-idx="0">
+                            <div class="birdhouse"></div>
+                            <div class="birdhouse_holes"></div>
+                        </div>
+                        <div class="icon-wrap icon-ribbon hide" data-idx="1">
+                            <div class="ribbon"></div>
+                        </div>
+                        
+                        <div class="icon-wrap icon-link hide" data-idx="2">
+                            <div class="loopback_l"></div>
+                            <div class="loopback_r"></div>
+                        </div>
+                        
+                        
+                        <div class="icon-wrap icon-me hide" data-idx="3">
+                            <div class="user"></div>
+                            <div class="shoulder"></div>
+                        </div>
+                        
+                    </div>
+                    
+                </div>
+                <div class="tips-box hide">
+                    <div class="tips-arrow"></div>
+                    <ul class="tips-inner">
+                        <li>Menu</li>
+                        <li>Tags</li>
+                        
+                        <li>Friends</li>
+                        
+                        
+                        <li>About Me</li>
+                        
+                    </ul>
+                </div>
+            </div>
+        
+
+        <div id="switch-area" class="switch-area">
+            <div class="switch-wrap">
+                <section class="switch-part switch-part1">
+                    <nav class="header-menu">
+                        <ul>
+                        
+                            <li><a href="/">主页</a></li>
+                        
+                            <li><a href="/archives/">所有文章</a></li>
+                        
+                            <li><a href="/tags/">标签云</a></li>
+                        
+                            <li><a href="/about/">关于我</a></li>
+                        
+                        </ul>
+                    </nav>
+                    <nav class="header-nav">
+                        <ul class="social">
+                            
+                                <a class="fa Email" href="mailto:123@123.com" title="Email"></a>
+                            
+                                <a class="fa GitHub" href="#" title="GitHub"></a>
+                            
+                                <a class="fa RSS" href="/atom.xml" title="RSS"></a>
+                            
+                        </ul>
+                    </nav>
+                </section>
+                
+                
+                <section class="switch-part switch-part2">
+                    <div class="widget tagcloud" id="js-tagcloud">
+                        
+                    </div>
+                </section>
+                
+                
+                
+                <section class="switch-part switch-part3">
+                    <div id="js-friends">
+                    
+                      <a class="main-nav-link switch-friends-link" href="https://hexo.io">Hexo</a>
+                    
+                      <a class="main-nav-link switch-friends-link" href="https://pages.github.com/">GitHub</a>
+                    
+                      <a class="main-nav-link switch-friends-link" href="http://moxfive.xyz/">MOxFIVE</a>
+                    
+                    </div>
+                </section>
+                
+
+                
+                
+                <section class="switch-part switch-part4">
+                
+                    <div id="js-aboutme">专注于前端</div>
+                </section>
+                
+            </div>
+        </div>
+    </header>                
+</div>
+    </div>
+    <div class="mid-col">
+      <nav id="mobile-nav">
+      <div class="overlay">
+          <div class="slider-trigger"></div>
+          <h1 class="header-author js-mobile-header hide"><a href="/" title="回到主页">徐鹏</a></h1>
+      </div>
+    <div class="intrude-less">
+        <header id="header" class="inner">
+            <a href="/" class="profilepic">
+                <img src="/img/avatar.png" class="animated zoomIn">
+            </a>
+            <hgroup>
+              <h1 class="header-author"><a href="/" title="回到主页">徐鹏</a></h1>
+            </hgroup>
+            
+            <nav class="header-menu">
+                <ul>
+                
+                    <li><a href="/">主页</a></li>
+                
+                    <li><a href="/archives/">所有文章</a></li>
+                
+                    <li><a href="/tags/">标签云</a></li>
+                
+                    <li><a href="/about/">关于我</a></li>
+                
+                <div class="clearfix"></div>
+                </ul>
+            </nav>
+            <nav class="header-nav">
+                        <ul class="social">
+                            
+                                <a class="fa Email" target="_blank" href="mailto:123@123.com" title="Email"></a>
+                            
+                                <a class="fa GitHub" target="_blank" href="#" title="GitHub"></a>
+                            
+                                <a class="fa RSS" target="_blank" href="/atom.xml" title="RSS"></a>
+                            
+                        </ul>
+            </nav>
+        </header>                
+    </div>
+    <link class="menu-list" tags="Tags" friends="Friends" about="About Me"/>
+</nav>
+      <div class="body-wrap"><article id="post-信安12-5" class="article article-type-post" itemscope itemprop="blogPost">
+  
+    <div class="article-meta">
+      <a href="/2019/12/05/信安12-5/" class="article-date">
+      <time datetime="2019-12-05T10:30:18.283Z" itemprop="datePublished">2019-12-05</time>
+</a>
+
+
+    </div>
+  
+  <div class="article-inner">
+    
+      <input type="hidden" class="isFancy" />
+    
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+          
+        <hr>
+<h2 id="标题：网络安全：信安2019-12-5"><a href="#标题：网络安全：信安2019-12-5" class="headerlink" title="标题：网络安全：信安2019-12-5"></a>标题：网络安全：信安2019-12-5</h2><p>交换机的五种攻击类型<br>配置VTP<br>生成树STP<br>PVST  按vlan生成树<br>PVST的配置命令<br>以太网端口聚合</p>
+<a id="more"></a>
+<h4 id="每日提问："><a href="#每日提问：" class="headerlink" title="每日提问："></a>每日提问：</h4><ol>
+<li>23.1.1.25/26<br>这是一个什么类型的地址？     A类地址  默认子网掩码：255.0.0.0    /8<br>这个地址的子网掩码值?       255.255.255.192<br>这个地址在哪个网络？        23.1.1.0/26<br>块大小？                  256-192=64<br>在这个网络中可用的地址有哪些？      23.1.1.1/26  —  23.1.1.62/26<br>被分成了哪些网络呢？           23.1.1.0/26      23.1.1.64/26    <pre><code>23.1.1.128/26    23.1.1.192/26   </code></pre></li>
+</ol>
+<p>2.请描述交换机的工作原理？<br>交换机工作在数据链路层，传输的是数据帧。  </p>
+<p>3.trunk是什么？ 它的作用？<br>vlan中继协议，封装标准：    802.1Q  </p>
+<p>switchport mode access<br>switchport mode trunk     (switchport:交换机端口)  </p>
+<pre><code>  模式  
+  Mode          DTP send     DTP Response  
+------------------------------------------------  
+ Access           -           -  
+ Trunk            Y           Y            
+ Desirable         Y           Y       企望      
+ Auto             N           Y      自动  
+ Nonegotiate       N           N     不协商  </code></pre><h4 id="交换机的五种攻击类型"><a href="#交换机的五种攻击类型" class="headerlink" title="交换机的五种攻击类型"></a>交换机的五种攻击类型</h4><p>（端口安全）<br>1.vlan跳跃攻击<br>2.生成树攻击<br>3.MAC表泛洪攻击   泛洪 = 广播  </p>
+<p>Switch(config)#int f0/1<br>　　Switch(configif)#sw mo access<br>　　Switch(confiaif)#switchport port-security开启端口安全<br>　　Switch(confiaif) #switchport port-security mac-address 00D0.BC82.32D2绑定MAC地址<br>　　Switch(confiqif)#switchport port-security violation shutdown设置违例处理方式为关闭端口<br>　　如果端口关闭后怎么开启呢?<br>　　端口被逻辑断开，如果要开启先物理断开，再开启。就可以了!（进入端口先shutdown再no shutdown）  </p>
+<p>4 ARP攻击<br>5.VTP攻击（VTP:vlan同步技术，一个交换机上划分了vlan,其他交换机自动也划分相同vlan）  </p>
+<p>1.vtp是将所有vlan信息打包并通过trunk链路进行传输使vlan同步。<br>2.通过域（Domain）来同步的。<br>3.password<br>4.version<br>5.模式  </p>
+<p>在vtp中谁与谁同步，不是由角色决定，而是由修订版本号决定<br>版本号大的vlan信息将完全覆盖修订版本号低的vlan信息<br>在向网路中添加交换机时一定要注意修订版本号的大小，建议把模式改为透明模式<br>（谁的修改次数多，谁的修订版本号就大）</p>
+<h4 id="配置VTP"><a href="#配置VTP" class="headerlink" title="配置VTP"></a>配置VTP</h4><p>S1（config）#vtp domain xp  设置vtp域名<br>S1（config）#vtp mode server</p>
+<h4 id="生成树STP"><a href="#生成树STP" class="headerlink" title="生成树STP"></a>生成树STP</h4><p>STP将一个环形网络生成无环拓扑的步骤：<br>第一步：选择根网桥<br>第二步：选择根端口<br>第三步：选择指定端口</p>
+<p>第一步：选择根网桥<br>根据网桥ID(BID)选择根网桥，谁的优先级小，谁就是根桥。如果优先级相同，谁的MAC的地址小谁就是根桥。<br>什么是BID,BID=优先级+MAC地址。</p>
+<p>默认情况下，所以交换机的优先级为：32768，如何查看优先级呢？<br>switch#show spanning-tree  </p>
+<p>如何查看交换机MAC地址？<br>switch#show version  </p>
+<p>第二步：选择根端口<br>在非根网桥上选择一个到根网桥最近的端口作为根端口。<br>选择的依据是：</p>
+<p>根路径成本（cost值）【从端口出发到根桥】最低<br>直连网桥的网桥ID最小<br>直连网桥的端口的ID最小</p>
+<p>第三步：选择指定端口<br>在每个网段上，选择一个指定端口，根桥上的端口全是指定端口。  </p>
+<p>非根桥上的指定端口：<br>根路径</p>
+<p>BPDU（桥协议数据单元）<br>1.什么是BPDU？<br>交换机怎么指定其他交换机的网桥ID？ 怎么知道哪个端口的根路径成本最低？<br>是因为交换机之间使用BPDU来交换STP信息，BPDU使用组播发送BPDU，</p>
+<p>生成树端口的状态：<br>转发      转发和接受用户数据<br>学习       构建网桥表<br>倾听       构建“活动”拓扑选举根桥、根端口、指定端口<br>阻塞       只接受BPDU<br>禁用       强制关闭    </p>
+<h4 id="PVST-按vlan生成树"><a href="#PVST-按vlan生成树" class="headerlink" title="PVST  按vlan生成树"></a>PVST  按vlan生成树</h4><h5 id="让Sw1做vlan10的根桥，SW2做vlan20的备份根桥。"><a href="#让Sw1做vlan10的根桥，SW2做vlan20的备份根桥。" class="headerlink" title="让Sw1做vlan10的根桥，SW2做vlan20的备份根桥。"></a>让Sw1做vlan10的根桥，SW2做vlan20的备份根桥。</h5><p>SW1(config)#spanning-tree vlan 10 root primary<br>SW2(config)#spanning-tree vlan 10 root secondary   </p>
+<h5 id="让SW2做vlan20的根桥，SW1做vlan20的备份根桥"><a href="#让SW2做vlan20的根桥，SW1做vlan20的备份根桥" class="headerlink" title="让SW2做vlan20的根桥，SW1做vlan20的备份根桥"></a>让SW2做vlan20的根桥，SW1做vlan20的备份根桥</h5><p>SW2(config)#spanning-tree vlan 20 root primary<br>SW1(config)#spanning-tree vlan 20 root secondary    </p>
+<p>这样做可以将所有线路都利用起来，并实现负载均衡和链路备份。  </p>
+<h5 id="PVST的配置命令"><a href="#PVST的配置命令" class="headerlink" title="PVST的配置命令"></a>PVST的配置命令</h5><p>启用生成树： switch(config)#spanning-tree vlan vlan-list<br>设置根网桥：switch(config)#spanning-tree  vlan vlan-list root primary<br>修改网桥的优先级：switch(config)#spanning-tree vlan vlan-list priority 4096的倍数</p>
+<h4 id="以太网端口聚合"><a href="#以太网端口聚合" class="headerlink" title="以太网端口聚合"></a>以太网端口聚合</h4><h5 id="端口聚合："><a href="#端口聚合：" class="headerlink" title="端口聚合："></a>端口聚合：</h5><h6 id="在SW1上配置聚合端口"><a href="#在SW1上配置聚合端口" class="headerlink" title="在SW1上配置聚合端口"></a>在SW1上配置聚合端口</h6><p>SW1(config)# interface port-channel 1<br>SW1(config-if)#sw mo trunk<br>创建聚合端口  </p>
+<p>SW1(config)# int range f0/1,10<br>进入端口f0/1 和 f0/10<br>SW1(config-if-range)#channel-group 1  mode on<br>（将端口加入到聚合端口）</p>
+<h6 id="在sw2上配置聚合端口"><a href="#在sw2上配置聚合端口" class="headerlink" title="在sw2上配置聚合端口"></a>在sw2上配置聚合端口</h6><p>SW2(config)# interface port-channel 1<br>SW2(config-if)#sw mo trunk<br>创建聚合端口  </p>
+<p>SW2(config)# int range f0/1,10<br>进入端口f0/1 和 f0/10<br>SW2(config-if-range)#channel-group 1  mode on<br>（将端口加入到聚合端口）</p>
+<p>####### channel-group 模式<br>active<br>auto<br>desirable<br>on<br>passive             </p>
+<p>端口聚合还可以增加冗余电路，增加带宽，做负载均衡。  </p>
+<p>#######查看端口聚合情况<br>SW1#sh etherchannel port-channel   </p>
+
+      
+    </div>
+    
+  </div>
+  
+    
+    <div class="copyright">
+        <p><span>Title:</span><a href="/2019/12/05/信安12-5/"></a></p>
+        <p><span>Author:</span><a href="/" title="Back to Homepage">徐鹏</a></p>
+        <p><span>Created:</span>2019-12-05, 18:30:18</p>
+        <p><span>Updated:</span>2019-12-05, 18:30:18</p>
+        <p>
+            <span>Full URL:</span><a class="post-url" href="/2019/12/05/信安12-5/" title="">http://yoursite.com/2019/12/05/信安12-5/</a>
+            <span class="copy-path" data-clipboard-text="From http://yoursite.com/2019/12/05/信安12-5/　　By 徐鹏" title="Copy Article&#39;s Link &amp; Author"><i class="fa fa-clipboard"></i></span>
+            <script> var clipboard = new Clipboard('.copy-path'); </script>
+        </p>
+        <p>
+            <span>License:</span><i class="fa fa-creative-commons"></i> <a rel="license" href="http://creativecommons.org/licenses/by-nc-sa/4.0/" title="CC BY-NC-SA 4.0 International" target = "_blank">"CC BY-NC-SA 4.0"</a> Keep Link &amp; Author if Distribute.
+        </p>
+    </div>
+
+
+
+    <nav id="article-nav">
+        
+            <div id="article-nav-newer" class="article-nav-title">
+                <a href="/2019/12/10/信安12-6/">
+                    
+                </a>
+            </div>
+        
+        
+            <div id="article-nav-older" class="article-nav-title">
+                <a href="/2019/12/04/信安12-3/">
+                    
+                </a>
+            </div>
+        
+    </nav>
+
+  
+</article>
+
+    <div id="toc" class="toc-article">
+        <strong class="toc-title">Contents</strong>
+        
+            <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#标题：网络安全：信安2019-12-5"><span class="toc-number">1.</span> <span class="toc-text">标题：网络安全：信安2019-12-5</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#每日提问："><span class="toc-number">1.0.1.</span> <span class="toc-text">每日提问：</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#交换机的五种攻击类型"><span class="toc-number">1.0.2.</span> <span class="toc-text">交换机的五种攻击类型</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#配置VTP"><span class="toc-number">1.0.3.</span> <span class="toc-text">配置VTP</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#生成树STP"><span class="toc-number">1.0.4.</span> <span class="toc-text">生成树STP</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#PVST-按vlan生成树"><span class="toc-number">1.0.5.</span> <span class="toc-text">PVST  按vlan生成树</span></a><ol class="toc-child"><li class="toc-item toc-level-5"><a class="toc-link" href="#让Sw1做vlan10的根桥，SW2做vlan20的备份根桥。"><span class="toc-number">1.0.5.1.</span> <span class="toc-text">让Sw1做vlan10的根桥，SW2做vlan20的备份根桥。</span></a></li><li class="toc-item toc-level-5"><a class="toc-link" href="#让SW2做vlan20的根桥，SW1做vlan20的备份根桥"><span class="toc-number">1.0.5.2.</span> <span class="toc-text">让SW2做vlan20的根桥，SW1做vlan20的备份根桥</span></a></li><li class="toc-item toc-level-5"><a class="toc-link" href="#PVST的配置命令"><span class="toc-number">1.0.5.3.</span> <span class="toc-text">PVST的配置命令</span></a></li></ol></li><li class="toc-item toc-level-4"><a class="toc-link" href="#以太网端口聚合"><span class="toc-number">1.0.6.</span> <span class="toc-text">以太网端口聚合</span></a><ol class="toc-child"><li class="toc-item toc-level-5"><a class="toc-link" href="#端口聚合："><span class="toc-number">1.0.6.1.</span> <span class="toc-text">端口聚合：</span></a><ol class="toc-child"><li class="toc-item toc-level-6"><a class="toc-link" href="#在SW1上配置聚合端口"><span class="toc-number">1.0.6.1.1.</span> <span class="toc-text">在SW1上配置聚合端口</span></a></li><li class="toc-item toc-level-6"><a class="toc-link" href="#在sw2上配置聚合端口"><span class="toc-number">1.0.6.1.2.</span> <span class="toc-text">在sw2上配置聚合端口</span></a></li></ol></li></ol></li></ol></li></ol></li></ol>
+        
+    </div>
+    <style>
+        .left-col .switch-btn,
+        .left-col .switch-area {
+            display: none;
+        }
+        .toc-level-3 i,
+        .toc-level-3 ol {
+            display: none !important;
+        }
+    </style>
+
+    <input type="button" id="tocButton" value="Hide"  title="Show or Hide Table of Contents">
+
+    <script>
+        yiliaConfig.toc = ["Hide", "Show", !!"false"];
+    </script>
+
+
+
+    
+<div class="share">
+    
+        <div class="bdsharebuttonbox">
+            <a href="#" class="fa fa-twitter bds_twi" data-cmd="twi" title="分享到推特"></a>
+            <a href="#" class="fa fa-weibo bds_tsina" data-cmd="tsina" title="分享到新浪微博"></a>
+            <a href="#" class="fa fa-qq bds_sqq" data-cmd="sqq" title="分享给 QQ 好友"></a>
+            <a href="#" class="fa fa-files-o bds_copy" data-cmd="copy" title="复制网址"></a>
+            <a href="#" class="fa fa fa-envelope-o bds_mail" data-cmd="mail" title="通过邮件分享"></a>
+            <a href="#" class="fa fa-weixin bds_weixin" data-cmd="weixin" title="生成文章二维码"></a>
+            <a href="#" class="fa fa-share-alt bds_more" data-cmd="more"></i></a>
+        </div>
+        <script>
+            window._bd_share_config={
+                "common":{"bdSnsKey":{},"bdText":"　| 徐鹏　","bdMini":"2","bdMiniList":false,"bdPic":"","bdStyle":"0","bdSize":"24"},"share":{}};with(document)0[(getElementsByTagName('head')[0]||body).appendChild(createElement('script')).src='http://bdimg.share.baidu.com/static/api/js/share.js?v=89860593.js?cdnversion='+~(-new Date()/36e5)];
+        </script>
+    
+
+    
+</div>
+
+
+
+
+
+
+
+    
+
+
+
+
+    <div class="scroll" id="post-nav-button">
+        
+            <a href="/2019/12/10/信安12-6/" title="Pre: ">
+                <i class="fa fa-angle-left"></i>
+            </a>
+        
+
+        <a title="Mini Archives"><i class="fa fa-bars"></i><i class="fa fa-times"></i></a>
+
+        
+            <a href="/2019/12/04/信安12-3/" title="Next: ">
+                <i class="fa fa-angle-right"></i>
+            </a>
+        
+    </div>
+
+    <ul class="post-list"><li class="post-list-item"><a class="post-list-link" href="/2019/12/10/信安12-10/">信安12-10</a></li><li class="post-list-item"><a class="post-list-link" href="/2019/12/10/信安12-9/">信安12-9</a></li><li class="post-list-item"><a class="post-list-link" href="/2019/12/10/信安12-6/">信安12-6</a></li><li class="post-list-item"><a class="post-list-link" href="/2019/12/05/信安12-5/">信安12-5</a></li><li class="post-list-item"><a class="post-list-link" href="/2019/12/04/信安12-3/">信安12-3</a></li><li class="post-list-item"><a class="post-list-link" href="/2019/12/04/信安12-2/">信安12-2</a></li><li class="post-list-item"><a class="post-list-link" href="/2019/12/04/信安12-4/">信安12-4</a></li></ul>
+
+
+
+
+    <script>
+        
+    </script>
+</div>
+      <footer id="footer">
+    <div class="outer">
+        <div id="footer-info">
+            <div class="footer-left">
+                <i class="fa fa-copyright"></i> 
+                2016-2019 徐鹏
+            </div>
+            <div class="footer-right">
+                <a href="http://hexo.io/" target="_blank" title="A fast, simple &amp; powerful blog framework">Hexo</a>  Theme <a href="https://github.com/MOxFIVE/hexo-theme-yelee" target="_blank" title="Another simple and elegant theme for Hexo  v3.5">Yelee</a> by MOxFIVE <i class="fa fa-heart animated infinite pulse"></i>
+            </div>
+        </div>
+        
+            <div class="visit">
+                
+                    <span id="busuanzi_container_site_pv" style='display:none'>
+                        <span id="site-visit" title="Site Visitors"><i class="fa fa-user" aria-hidden="true"></i><span id="busuanzi_value_site_uv"></span>
+                        </span>
+                    </span>
+                
+                
+                    <span>| </span>
+                
+                
+                    <span id="busuanzi_container_page_pv" style='display:none'>
+                        <span id="page-visit"  title="Page Hits"><i class="fa fa-eye animated infinite pulse" aria-hidden="true"></i><span id="busuanzi_value_page_pv"></span>
+                        </span>
+                    </span>
+                
+            </div>
+        
+    </div>
+</footer>
+    </div>
+    
+<script data-main="/js/main.js" src="//cdn.bootcss.com/require.js/2.2.0/require.min.js"></script>
+
+    <script>
+        $(document).ready(function() {
+            var iPad = window.navigator.userAgent.indexOf('iPad');
+            if (iPad > -1 || $(".left-col").css("display") === "none") {
+                var bgColorList = ["#9db3f4", "#414141", "#e5a859", "#f5dfc6", "#c084a0", "#847e72", "#cd8390", "#996731"];
+                var bgColor = Math.ceil(Math.random() * (bgColorList.length - 1));
+                $("body").css({"background-color": bgColorList[bgColor], "background-size": "cover"});
+            }
+            else {
+                var backgroundnum = 5;
+                var backgroundimg = "url(/background/bg-x.jpg)".replace(/x/gi, Math.ceil(Math.random() * backgroundnum));
+                $("body").css({"background": backgroundimg, "background-attachment": "fixed", "background-size": "cover"});
+            }
+        })
+    </script>
+
+
+
+
+
+<div class="scroll" id="scroll">
+    <a href="#" title="Back to Top"><i class="fa fa-arrow-up"></i></a>
+    <a href="#comments" onclick="load$hide();" title="Comments"><i class="fa fa-comments-o"></i></a>
+    <a href="#footer" title="Go to Bottom"><i class="fa fa-arrow-down"></i></a>
+</div>
+<script>
+    // Open in New Window
+    
+        var oOpenInNew = {
+            
+            
+            
+            
+            
+            
+             archives: ".archive-article-title", 
+             miniArchives: "a.post-list-link", 
+            
+             friends: "#js-friends a", 
+             socail: ".social a" 
+        }
+        for (var x in oOpenInNew) {
+            $(oOpenInNew[x]).attr("target", "_blank");
+        }
+    
+</script>
+
+<script async src="https://dn-lbstatics.qbox.me/busuanzi/2.3/busuanzi.pure.mini.js">
+</script>
+  </div>
+</body>
+</html>

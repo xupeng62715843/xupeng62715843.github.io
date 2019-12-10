@@ -1,0 +1,576 @@
+<!DOCTYPE html>
+<html lang="en">
+<head><meta name="generator" content="Hexo 3.9.0">
+
+    <!--[if lt IE 9]>
+        <style>body {display: none; background: none !important} </style>
+        <meta http-equiv="Refresh" Content="0; url=//outdatedbrowser.com/" />
+    <![endif]-->
+
+<meta charset="utf-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge, chrome=1">
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
+<meta name="format-detection" content="telephone=no">
+<meta name="author" content="徐鹏">
+
+
+
+<meta name="description" content="标题：网络安全：信安2019-12-4 IP地址以及VLMP 子网划分 地址汇总 交换机的工作原理 交换机的配置 DHCP动态主机配置协议">
+<meta property="og:type" content="article">
+<meta property="og:title" content="徐鹏">
+<meta property="og:url" content="http://yoursite.com/2019/12/04/信安12-4/index.html">
+<meta property="og:site_name" content="徐鹏">
+<meta property="og:description" content="标题：网络安全：信安2019-12-4 IP地址以及VLMP 子网划分 地址汇总 交换机的工作原理 交换机的配置 DHCP动态主机配置协议">
+<meta property="og:locale" content="en">
+<meta property="og:image" content="https://gss2.bdstatic.com/9fo3dSag_xI4khGkpoWK1HF6hhy/baike/c0%3Dbaike116%2C5%2C5%2C116%2C38/sign=ef0111789a25bc313f5009ca3fb6e6d4/fc1f4134970a304ee7eb644cd2c8a786c8175cbf.jpg">
+<meta property="og:updated_time" content="2019-12-05T08:52:19.713Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="徐鹏">
+<meta name="twitter:description" content="标题：网络安全：信安2019-12-4 IP地址以及VLMP 子网划分 地址汇总 交换机的工作原理 交换机的配置 DHCP动态主机配置协议">
+<meta name="twitter:image" content="https://gss2.bdstatic.com/9fo3dSag_xI4khGkpoWK1HF6hhy/baike/c0%3Dbaike116%2C5%2C5%2C116%2C38/sign=ef0111789a25bc313f5009ca3fb6e6d4/fc1f4134970a304ee7eb644cd2c8a786c8175cbf.jpg">
+
+<link rel="apple-touch-icon" href="/apple-touch-icon.png">
+
+
+    <link rel="alternate" href="/atom.xml" title="徐鹏" type="application/atom+xml">
+
+
+
+    <link rel="shortcut icon" href="/favicon.png">
+
+
+
+    <link href="//cdn.bootcss.com/animate.css/3.5.1/animate.min.css" rel="stylesheet">
+
+
+
+    <link href="//cdn.bootcss.com/fancybox/2.1.5/jquery.fancybox.min.css" rel="stylesheet">
+
+
+
+    <script src="//cdn.bootcss.com/pace/1.0.2/pace.min.js"></script>
+    <link href="//cdn.bootcss.com/pace/1.0.2/themes/blue/pace-theme-minimal.css" rel="stylesheet">
+
+
+<link rel="stylesheet" href="/css/style.css">
+
+
+
+<link href="//cdn.bootcss.com/font-awesome/4.6.3/css/font-awesome.min.css" rel="stylesheet">
+
+
+<title>徐鹏</title>
+
+<script src="//cdn.bootcss.com/jquery/2.2.4/jquery.min.js"></script>
+<script src="//cdn.bootcss.com/clipboard.js/1.5.10/clipboard.min.js"></script>
+
+<script>
+    var yiliaConfig = {
+        fancybox: true,
+        animate: true,
+        isHome: false,
+        isPost: true,
+        isArchive: false,
+        isTag: false,
+        isCategory: false,
+        fancybox_js: "//cdn.bootcss.com/fancybox/2.1.5/jquery.fancybox.min.js",
+        scrollreveal: "//cdn.bootcss.com/scrollReveal.js/3.1.4/scrollreveal.min.js",
+        search: 
+    }
+</script>
+
+
+    <script> yiliaConfig.jquery_ui = [false]; </script>
+
+
+
+    <script> yiliaConfig.rootUrl = "\/";</script>
+
+
+
+
+
+
+</head></html>
+<body>
+  <div id="container">
+    <div class="left-col">
+    <div class="overlay"></div>
+<div class="intrude-less">
+    <header id="header" class="inner">
+        <a href="/" class="profilepic">
+            <img src="/img/avatar.png" class="animated zoomIn">
+        </a>
+        <hgroup>
+          <h1 class="header-author"><a href="/">徐鹏</a></h1>
+        </hgroup>
+
+        
+
+        
+
+
+        
+            <div id="switch-btn" class="switch-btn">
+                <div class="icon">
+                    <div class="icon-ctn">
+                        <div class="icon-wrap icon-house" data-idx="0">
+                            <div class="birdhouse"></div>
+                            <div class="birdhouse_holes"></div>
+                        </div>
+                        <div class="icon-wrap icon-ribbon hide" data-idx="1">
+                            <div class="ribbon"></div>
+                        </div>
+                        
+                        <div class="icon-wrap icon-link hide" data-idx="2">
+                            <div class="loopback_l"></div>
+                            <div class="loopback_r"></div>
+                        </div>
+                        
+                        
+                        <div class="icon-wrap icon-me hide" data-idx="3">
+                            <div class="user"></div>
+                            <div class="shoulder"></div>
+                        </div>
+                        
+                    </div>
+                    
+                </div>
+                <div class="tips-box hide">
+                    <div class="tips-arrow"></div>
+                    <ul class="tips-inner">
+                        <li>Menu</li>
+                        <li>Tags</li>
+                        
+                        <li>Friends</li>
+                        
+                        
+                        <li>About Me</li>
+                        
+                    </ul>
+                </div>
+            </div>
+        
+
+        <div id="switch-area" class="switch-area">
+            <div class="switch-wrap">
+                <section class="switch-part switch-part1">
+                    <nav class="header-menu">
+                        <ul>
+                        
+                            <li><a href="/">主页</a></li>
+                        
+                            <li><a href="/archives/">所有文章</a></li>
+                        
+                            <li><a href="/tags/">标签云</a></li>
+                        
+                            <li><a href="/about/">关于我</a></li>
+                        
+                        </ul>
+                    </nav>
+                    <nav class="header-nav">
+                        <ul class="social">
+                            
+                                <a class="fa Email" href="mailto:123@123.com" title="Email"></a>
+                            
+                                <a class="fa GitHub" href="#" title="GitHub"></a>
+                            
+                                <a class="fa RSS" href="/atom.xml" title="RSS"></a>
+                            
+                        </ul>
+                    </nav>
+                </section>
+                
+                
+                <section class="switch-part switch-part2">
+                    <div class="widget tagcloud" id="js-tagcloud">
+                        
+                    </div>
+                </section>
+                
+                
+                
+                <section class="switch-part switch-part3">
+                    <div id="js-friends">
+                    
+                      <a class="main-nav-link switch-friends-link" href="https://hexo.io">Hexo</a>
+                    
+                      <a class="main-nav-link switch-friends-link" href="https://pages.github.com/">GitHub</a>
+                    
+                      <a class="main-nav-link switch-friends-link" href="http://moxfive.xyz/">MOxFIVE</a>
+                    
+                    </div>
+                </section>
+                
+
+                
+                
+                <section class="switch-part switch-part4">
+                
+                    <div id="js-aboutme">专注于前端</div>
+                </section>
+                
+            </div>
+        </div>
+    </header>                
+</div>
+    </div>
+    <div class="mid-col">
+      <nav id="mobile-nav">
+      <div class="overlay">
+          <div class="slider-trigger"></div>
+          <h1 class="header-author js-mobile-header hide"><a href="/" title="回到主页">徐鹏</a></h1>
+      </div>
+    <div class="intrude-less">
+        <header id="header" class="inner">
+            <a href="/" class="profilepic">
+                <img src="/img/avatar.png" class="animated zoomIn">
+            </a>
+            <hgroup>
+              <h1 class="header-author"><a href="/" title="回到主页">徐鹏</a></h1>
+            </hgroup>
+            
+            <nav class="header-menu">
+                <ul>
+                
+                    <li><a href="/">主页</a></li>
+                
+                    <li><a href="/archives/">所有文章</a></li>
+                
+                    <li><a href="/tags/">标签云</a></li>
+                
+                    <li><a href="/about/">关于我</a></li>
+                
+                <div class="clearfix"></div>
+                </ul>
+            </nav>
+            <nav class="header-nav">
+                        <ul class="social">
+                            
+                                <a class="fa Email" target="_blank" href="mailto:123@123.com" title="Email"></a>
+                            
+                                <a class="fa GitHub" target="_blank" href="#" title="GitHub"></a>
+                            
+                                <a class="fa RSS" target="_blank" href="/atom.xml" title="RSS"></a>
+                            
+                        </ul>
+            </nav>
+        </header>                
+    </div>
+    <link class="menu-list" tags="Tags" friends="Friends" about="About Me"/>
+</nav>
+      <div class="body-wrap"><article id="post-信安12-4" class="article article-type-post" itemscope itemprop="blogPost">
+  
+    <div class="article-meta">
+      <a href="/2019/12/04/信安12-4/" class="article-date">
+      <time datetime="2019-12-04T14:12:25.257Z" itemprop="datePublished">2019-12-04</time>
+</a>
+
+
+    </div>
+  
+  <div class="article-inner">
+    
+      <input type="hidden" class="isFancy" />
+    
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+          
+        <hr>
+<h2 id="标题：网络安全：信安2019-12-4"><a href="#标题：网络安全：信安2019-12-4" class="headerlink" title="标题：网络安全：信安2019-12-4"></a>标题：网络安全：信安2019-12-4</h2><p> IP地址以及VLMP<br> 子网划分<br> 地址汇总<br> 交换机的工作原理<br> 交换机的配置<br> DHCP动态主机配置协议  </p>
+<a id="more"></a>
+
+<p>1.OSI七层?<br>应用层、表示层、会话层、传输层、网络层、数据链路层、物理层  </p>
+<p>2.568-B线序：橙白 橙 绿白 蓝 蓝白 绿 棕白 棕  </p>
+<p>3.telnet和ssh的区别？<br>端口号不一样 telnet是21 ssh是22端口<br>telnet是明文传输 ssh是加密传输  </p>
+<p>4.数据包封装过程？<br>应用层————表示层————会话层——————传输层————————————网络层——————————数据链路层————————物理层<br>Data—————加密压缩———定义—————TCP/UDP（加包头）———上层数据包加上ip地址——————上层数据包加上MAC地址—————帧<br><img src="https://gss2.bdstatic.com/9fo3dSag_xI4khGkpoWK1HF6hhy/baike/c0%3Dbaike116%2C5%2C5%2C116%2C38/sign=ef0111789a25bc313f5009ca3fb6e6d4/fc1f4134970a304ee7eb644cd2c8a786c8175cbf.jpg" alt="a1"><br>5.有线传输介质？<br>光纤、双绞线  </p>
+<h1 id="IP地址以及VLMP"><a href="#IP地址以及VLMP" class="headerlink" title="IP地址以及VLMP"></a>IP地址以及VLMP</h1><h3 id="IPV4编制方案"><a href="#IPV4编制方案" class="headerlink" title="IPV4编制方案"></a>IPV4编制方案</h3><p>Ip地址由32位二进制数组成，被分成4个字节，每组8位，以十进制数形式显示。分为网络地址和主机地址两个部分。<br>192.168.10.1  </p>
+<p>00000000.00000000.00000000.00000000  </p>
+<p>128 64 32 16 8 4 2 1  </p>
+<p>所以192.168.10.1 = 11000000.10101000.00001010.00000001  </p>
+<p>IPV4一共有2^32 大约是40多亿个地址  </p>
+<p>IP地址在网络是唯一的，不能重复。  </p>
+<h5 id="由于40亿个地址不够用"><a href="#由于40亿个地址不够用" class="headerlink" title="由于40亿个地址不够用"></a>由于40亿个地址不够用</h5><p>对地址进行分类<br>分公有地址、私有地址、保留地址  </p>
+<p>NAT网络地址转换  </p>
+<h3 id="1-IP地址分类"><a href="#1-IP地址分类" class="headerlink" title="1.IP地址分类"></a>1.IP地址分类</h3><h4 id="A类网络地址范围"><a href="#A类网络地址范围" class="headerlink" title="A类网络地址范围"></a>A类网络地址范围</h4><p>第一个字节第一位必须为0，第一个字节取值为0-127的<br>    （取值范围00000000-01111111）  </p>
+<p>例如： 1.1.1.1/8      网络号：8位    255.0.0.0  </p>
+<p>网络号（标识地址具体在哪个网络）：1.0.0.0<br>子网掩码： 255.0.0.0  斜杠表示法  1.1.1.1/8 表示8位为网络位<br>广播地址： 1.255.255.255<br>在这个网络中有多少个地址呢？ 2^24<br>有效地址2^24-2<br>（网络号和广播号不能用）  </p>
+<h4 id="B类网络地址范围"><a href="#B类网络地址范围" class="headerlink" title="B类网络地址范围"></a>B类网络地址范围</h4><p>第一个字节第一位必须为1，且第二位必须是0，第一个字节取值为128-191<br>例如：181.1.1.1/16    255.255.0.0  </p>
+<p>网络地址：181.1.0.0<br>广播地址：181.1.255.255<br>在这个网络中有多少个地址呢？ 2^16<br>有效地址2^16-2<br>（网络号和广播号不能用）  </p>
+<h4 id="C类网络地址范围"><a href="#C类网络地址范围" class="headerlink" title="C类网络地址范围"></a>C类网络地址范围</h4><p>第一个字节第一位必须为1，且第三位必须是0，第一个字节取值为192-223<br>例如：192.168.1.1/24    255.255.255.0  </p>
+<p>网络地址：192.168.1.0<br>广播地址：192.168.1.255<br>在这个网络中有多少个地址呢？ 2^8<br>有效地址2^8-2<br>（网络号和广播号不能用）  </p>
+<h4 id="D类网络地址范围："><a href="#D类网络地址范围：" class="headerlink" title="D类网络地址范围："></a>D类网络地址范围：</h4><p>第一个字节为224-239 ，用于组播地址</p>
+<h4 id="E类网络地址范围："><a href="#E类网络地址范围：" class="headerlink" title="E类网络地址范围："></a>E类网络地址范围：</h4><p>第一个字节为240-255 ，用于科学用途</p>
+<h3 id="保留的IP地址"><a href="#保留的IP地址" class="headerlink" title="保留的IP地址"></a>保留的IP地址</h3><p>网络地址全为0 表示当前网络或网段<br>网络地址全为1  表示所有网络<br>地址127.0.0.1    保留用于环回测试<br>节点地址全为0    表示网络地址或指定网络中的任何主机<br>节点地址全为1     表示制定网的所有主机<br>整个IP地址全为0<br>整个IP地址全为1    </p>
+<h3 id="私有Ip地址范围-在公网中不能路由的"><a href="#私有Ip地址范围-在公网中不能路由的" class="headerlink" title="私有Ip地址范围 在公网中不能路由的"></a>私有Ip地址范围 在公网中不能路由的</h3><p>A类  10.0.0.0~ 10.255.255.255<br>B类  172.16.0.0 ~ 172.31.255.255<br>C类   192.168.0.0~192.168.255.255</p>
+<h2 id="子网划分"><a href="#子网划分" class="headerlink" title="子网划分"></a>子网划分</h2><p>子网划分：将大的网络划分为若干个小网络，尽量减少广播风暴，提高网络效率。  </p>
+<h3 id="如何进行子网划分呢？"><a href="#如何进行子网划分呢？" class="headerlink" title="如何进行子网划分呢？"></a>如何进行子网划分呢？</h3><h3 id="c类"><a href="#c类" class="headerlink" title="c类"></a>c类</h3><p>IP地址: 192.168.1.0 </p>
+<p>网络号192.168.1.0<br>广播号192.168.1.255<br>可用地址254个</p>
+<p>向主机借位？<br>如果借1位，那么划分了几个网呢？ 2^1个网络<br>划分成了哪两个网络呢？<br>192.168.1.0/25<br>子网掩码 255.255.255.128<br>块大小（每个小网络的地址总数）：256-128=128<br>分成了哪些网络呢？  </p>
+<h5 id="192-168-1-0-25"><a href="#192-168-1-0-25" class="headerlink" title="192.168.1.0/25"></a>192.168.1.0/25</h5><p>网络号：192.168.1.0/25<br>广播地址(是这个网络中的最后一个地址):192.168.1.127/25 </p>
+<h5 id="192-168-1-128-25"><a href="#192-168-1-128-25" class="headerlink" title="192.168.1.128/25"></a>192.168.1.128/25</h5><p>网络号：192.168.1.128/25<br>广播地址(是这个网络中的最后一个地址):192.168.1.255/25 </p>
+<h3 id="案例2"><a href="#案例2" class="headerlink" title="案例2"></a>案例2</h3><p>192.168.10.0<br>向主机位借2位<br>这是一个c类地址，默认子网掩码255.255.255.0<br>向主机位借2位后，划分了2^2=4个<br>现在子网掩码是：255.255.255.192<br>块大小：256-192=64<br>有哪些网络呢?<br>192.168.10.0/26<br>网络号：192.168.10.0/26<br>广播和：192.168.10.63/26 </p>
+<p>192.168.10.64/26<br>网络号：192.168.10.64/26<br>广播和：192.168.10.127/26  </p>
+<p>192.168.10.128/26<br>网络号：192.168.10.128/26<br>广播和：192.168.10.191/26  </p>
+<p>192.168.10.192/26<br>网络号：192.168.10.192/26<br>广播和：192.168.10.255/26  </p>
+<p>练习：192.168.2.0/30<br> 请问192.168.2.91是哪个网络的地址？在这个网络中广播地址是哪个？  </p>
+<p>192.168.2.0/30 是c类地址向主机位借了6位<br>共划分2^6=64个子网<br>子网掩码 255.255.255.252<br>块大小：256-252=4  </p>
+<p>192.168.2.91在192.168.2.88/30网络<br>广播地址192.168.2.91/30<br>可用地址：192.168.2.89和192.168.2.90  </p>
+<p>/30 255.255.255.252<br>/29 255.255.255.248<br>/28 255.255.255.240<br>/27 255.255.255.224<br>/26 255.255.255.192<br>/25 255.255.255.128  </p>
+<h4 id="B类网络子网划分"><a href="#B类网络子网划分" class="headerlink" title="B类网络子网划分"></a>B类网络子网划分</h4><p>B类IP地址：181.1.1.1<br>这是一个B类地址，默认子网掩码255.255.0.0/16  </p>
+<p>如果要进行子网划分，就向主机位借位。<br>假如借2位，那么子网掩码是255.255.192.0/18<br>划分了2^2=4个子网<br>块大小256-192=64<br>有哪些网络呢?  </p>
+<h5 id="181-1-0-0"><a href="#181-1-0-0" class="headerlink" title="181.1.0.0"></a>181.1.0.0</h5><p>   网络号：181.1.0.0/18<br>   广播号: 181.1.63.255  </p>
+<h5 id="181-1-64-0"><a href="#181-1-64-0" class="headerlink" title="181.1.64.0"></a>181.1.64.0</h5><p>   网络号：181.1.64.0/18<br>   广播号: 181.1.127.255  </p>
+<h5 id="181-1-128-0"><a href="#181-1-128-0" class="headerlink" title="181.1.128.0"></a>181.1.128.0</h5><p>   网络号：181.1.128.0/18<br>   广播号: 181.1.191.255  </p>
+<h5 id="181-1-192-0"><a href="#181-1-192-0" class="headerlink" title="181.1.192.0"></a>181.1.192.0</h5><p>   网络号：181.1.192.0/18<br>   广播号: 181.1.255.255  </p>
+<h4 id="A类网络子网划分"><a href="#A类网络子网划分" class="headerlink" title="A类网络子网划分"></a>A类网络子网划分</h4><p>12.1.1.1<br>这是一个A类地址，默认子网掩码255.0.0.0/8<br>假如借2位，那么子网掩码是255.192.0.0<br>有哪些网络？<br>12.0.0.0<br>12.64.0.0<br>12.128.0.0<br>12.192.0.0<br>这四个网络  </p>
+<p>1.典型的分类网络设计（有类网络：不携带子网掩码）<br>浪费了很多地址  </p>
+<p>2.无类网络设计<br>（可变长子网掩码）</p>
+<h2 id="地址汇总"><a href="#地址汇总" class="headerlink" title="地址汇总"></a>地址汇总</h2><p>无类域间路由  </p>
+<h1 id="交换机的工作原理"><a href="#交换机的工作原理" class="headerlink" title="交换机的工作原理"></a>交换机的工作原理</h1><h4 id="介质访问控制子层MAC"><a href="#介质访问控制子层MAC" class="headerlink" title="介质访问控制子层MAC"></a>介质访问控制子层MAC</h4><h4 id="逻辑链路控制子层LLC"><a href="#逻辑链路控制子层LLC" class="headerlink" title="逻辑链路控制子层LLC"></a>逻辑链路控制子层LLC</h4><p>MAC地址是由48位二进制数组成，以十六进制数表示。前24位称为OUI（组织唯一标识符），后24位是厂商对网卡的唯一编号,第8位如果是0表示单播地址，是1表示组播地址。  </p>
+<p>基本MAC地址<br>switch#show version<br>Base ethernet MAC Address : 0001.9761.DCE3   </p>
+<p>MAC地址表<br>switch#show mac-address-table   </p>
+<p>####以太网交换机：分隔冲突域，实现全双工通信，存储过滤转发等功能</p>
+<p>交换机转发原理：<br>转发  </p>
+<p>学习  </p>
+<p>广播  </p>
+<p>更新  </p>
+<p>MAC地址表老化时间300秒。  </p>
+<h3 id="交换机的配置"><a href="#交换机的配置" class="headerlink" title="交换机的配置"></a>交换机的配置</h3><p>交换机的所有端口默认情况下都在一个网络（vlan 1）,所以只要将电脑连接到交换机并配置同一个网络内的地址，这样就组成了一个局域网。所以这样会形成广播风暴。</p>
+<p>交换机分类： 傻瓜交换机<br>           可管理型交换机（二层）<br>           三层交换机：带路由功能的交换机  </p>
+<p>1.vlan技术（虚拟局域网）<br>划分vlan方法：基于端口的划分<br>            基于MAC地址划分<br>            等等  </p>
+<h4 id="基于端口的vlan划分"><a href="#基于端口的vlan划分" class="headerlink" title="基于端口的vlan划分"></a>基于端口的vlan划分</h4><p>switch#show vlan brief<br>查看vlan详细信息  </p>
+<p>划分vlan<br>switch(config)#vlan 10<br>switch(config-vlan)#name rsb  </p>
+<p>switch(config)#vlan 20<br>switch(config-vlan)#name rsb  </p>
+<p>将端口加入到对应的vlan  </p>
+<p>switch(config)#interface f0/1  </p>
+<p>switch(config)#interface range f0/1-10<br>switch(config)#interface range f0/1,f0/5,f0/9 (同时选中多个端口)</p>
+<p>switch(config-if)#switch mode access  （设置端口为Access模式）<br>switch(config-if)#switchport access vlan 10 (将端口划分到vlan10)  </p>
+<p>switch(config)#interface range f0/1-10<br>switch(config-if-range)#switch mode access<br>switch(config-if-range)#switchport  access vlan 20</p>
+<p>switch#show vlan brief<br>查看vlan划分是否正确  </p>
+<h5 id="如何实现不同交换机上的同一个vlan间的通信"><a href="#如何实现不同交换机上的同一个vlan间的通信" class="headerlink" title="如何实现不同交换机上的同一个vlan间的通信"></a>如何实现不同交换机上的同一个vlan间的通信</h5><p>“trunk技术”  vlan中继协议<br>switch(config)#interface f0/24  </p>
+<p>switch(config-if)#switch mode trunk<br>switch(config-if)#switchport trunk allowed vlan 10,20  </p>
+<p>switch#sh interface f0/24 switchport<br>查看端口状态</p>
+<p>switch#sh interfaces trunk<br>查看trunk端口  </p>
+<h5 id="如何实现不同vlan间的通信？"><a href="#如何实现不同vlan间的通信？" class="headerlink" title="如何实现不同vlan间的通信？"></a>如何实现不同vlan间的通信？</h5><p>方法一：使用三层交换机，配置SVI虚拟接口作为不同vlan的网关，并开启路由功能。<br>方法二：使用单臂路由来实现。  </p>
+<h6 id="方法一：使用三层交换机"><a href="#方法一：使用三层交换机" class="headerlink" title="方法一：使用三层交换机"></a>方法一：使用三层交换机</h6><p>1.划vlan<br>2.设trunk<br>3.开启路由<br>4.开启SVI虚拟接口，并配ip接口<br>5.为pc配置网关  </p>
+<p>Switch(config)#hostname Sw3<br>第一步：划vlan<br>Sw3(config)#vlan 10<br>Sw3(config-vlan)#name rsb<br>Sw3(config-vlan)#vlan 20<br>Sw3(config-vlan)#name xsb<br>Sw3(config-vlan)#exit<br>Sw3(config)#int f0/23<br>第二步：<br>Sw3(config-if)#switchport trunk   encapsulation dot1q<br>Sw3(config-if)#sw mo trunk<br>第三步：<br>Sw3(config-if)#exit<br>Sw3(config)#ip routing<br>第四步：<br>Sw3(config)#int vlan 10<br>Sw3(config-if)#ip add 192.168.10.254   255.255.255.0<br>Sw3(config-if)#exit<br>Sw3(config)#int vlan 20<br>ip add 192.168.20.254 255.255.255.0<br>第五步：为PC机配置网关地址  </p>
+<p>最后要检查配置是否正确？<br>Sw3#sh vlan brief<br>Sw3#sh interfaces trunk<br>Sw2#sh running-config  </p>
+<h6 id="方法二：使用单臂路由"><a href="#方法二：使用单臂路由" class="headerlink" title="方法二：使用单臂路由"></a>方法二：使用单臂路由</h6><p>1.交换机配置<br>划vlan 将端口加入vlan<br>trunk<br>2.路由器配置<br>开接口<br>开子接口<br>trunk<br>Ip地址<br>3.Pc机配网关    </p>
+<p>SW1的配置：<br>划分vlan<br>SW1(config)#vlan 10<br>SW1(config-vlan)#vlan 20<br>将端口加入到vlan<br>SW1(config)#int range f0/1-10<br>SW1(config-if-range)#sw mo acc<br>SW1(config-if-range)#sw acc vlan 10<br>SW1(config-if-range)#exit<br>SW1(config)#int range f0/11-20<br>SW1(config-if-range)#sw mo acc<br>SW1(config-if-range)#sw acc vlan 20<br>检查vlan划分与端口加入情况<br>SW1#sh vlan<br>设置trunk<br>SW1(config)#int f0/24<br>SW1(config-if)#sw mo trunk   </p>
+<p>R1的配置：<br>Router(config)#hostname R1<br>开启端口  </p>
+<p>R1(config)#int f0/0<br>R1(config-if)#no shutdown<br>开启子接口，封装为trunk，并设置IP地址作为对应vlan的网关<br>R1(config-if)#exit<br>R1(config)#int f0/0.10<br>R1(config-subif)#encapsulation dot1Q 10  封装并作为vlan 10的网关<br>R1(config-subif)#ip add 192.168.10.254 255.255.255.0<br>R1(config)#int f0/0.2<br>R1(config-subif)#encapsulation dot1Q 20<br>R1(config-subif)#ip add 192.168.20.254 255.255.255.0  </p>
+<p>为PC机设置网关地址  </p>
+<h3 id="DHCP动态主机配置协议"><a href="#DHCP动态主机配置协议" class="headerlink" title="DHCP动态主机配置协议"></a>DHCP动态主机配置协议</h3><p>1.什么是DHCP?<br>动态主机配置协议，为客户端自动分配IP地址。<br>2.DHCP的工作原理？<br>3.谁可以做DHCP服务器呢？<br>服务器、三层设备（路由器和三层交换机）  </p>
+<h4 id="如何配置路由器为DHCP服务器"><a href="#如何配置路由器为DHCP服务器" class="headerlink" title="如何配置路由器为DHCP服务器?"></a>如何配置路由器为DHCP服务器?</h4><h5 id="如何配置路由器为DHCP服务器？"><a href="#如何配置路由器为DHCP服务器？" class="headerlink" title="如何配置路由器为DHCP服务器？"></a>如何配置路由器为DHCP服务器？</h5><p>R1#config t<br>R1(config)#ip dhcp pool vlan10     地址池名<br>R1(dhcp-config)#network 192.168.10.0   255.255.255.0   地址范围<br>R1(dhcp-config)#default-router   192.168.10.254     网关地址<br>R1(dhcp-config)#dns-server 61.139.2.69             DNS地址<br>R1(dhcp-config)#exit<br>R1(config)#ip dhcp excluded-address   192.168.10.1 192.168.10.10   排除地址  </p>
+<p>R1(config)#ip dhcp excluded-address   192.168.20.1 192.168.20.10<br>R1(config)#ip dhcp pool vlan20<br>R1(dhcp-config)#network 192.168.20.0 255.255.255.0<br>R1(dhcp-config)#default-router 192.168.20.254<br>R1(dhcp-config)#dns-server 61.139.2.69</p>
+<p>DNS：域名解析  </p>
+<h5 id="如果使用服务器作DHCP服务器呢？"><a href="#如果使用服务器作DHCP服务器呢？" class="headerlink" title="如果使用服务器作DHCP服务器呢？"></a>如果使用服务器作DHCP服务器呢？</h5><p>首先：配置vlan间通信<br>Sw3(config)#vlan 100<br>Sw3(config-vlan)#exit<br>Sw3(config)#int f0/1<br>Sw3(config-if)#sw mo acc<br>Sw3(config-if)#sw acc vlan 100<br>Sw3(config)#int vlan 100<br>Sw3(config-if)#ip add 192.168.100.254 255.255.255.0<br>其次：配置DHCP服务器（在图形界面上）<br>最后，配置转发<br>Sw3(config)#int vlan 10<br>Sw3(config-if)#ip helper-address 192.168.100.1<br>Sw3(config)#int vlan 20<br>Sw3(config-if)#ip helper-address 192.168.100.1  </p>
+<p>今日任务：<br>任务一：IP编制方案、子网划分、斜杠表示法、VLSM可变长子网掩码  无类网络设、IP地址汇总<br>任务二：交换机的工作原理，vlan的配置及如何实现vlan间的通信。DHCP的原理及配置。</p>
+
+      
+    </div>
+    
+  </div>
+  
+    
+    <div class="copyright">
+        <p><span>Title:</span><a href="/2019/12/04/信安12-4/"></a></p>
+        <p><span>Author:</span><a href="/" title="Back to Homepage">徐鹏</a></p>
+        <p><span>Created:</span>2019-12-04, 22:12:25</p>
+        <p><span>Updated:</span>2019-12-05, 16:52:19</p>
+        <p>
+            <span>Full URL:</span><a class="post-url" href="/2019/12/04/信安12-4/" title="">http://yoursite.com/2019/12/04/信安12-4/</a>
+            <span class="copy-path" data-clipboard-text="From http://yoursite.com/2019/12/04/信安12-4/　　By 徐鹏" title="Copy Article&#39;s Link &amp; Author"><i class="fa fa-clipboard"></i></span>
+            <script> var clipboard = new Clipboard('.copy-path'); </script>
+        </p>
+        <p>
+            <span>License:</span><i class="fa fa-creative-commons"></i> <a rel="license" href="http://creativecommons.org/licenses/by-nc-sa/4.0/" title="CC BY-NC-SA 4.0 International" target = "_blank">"CC BY-NC-SA 4.0"</a> Keep Link &amp; Author if Distribute.
+        </p>
+    </div>
+
+
+
+    <nav id="article-nav">
+        
+            <div id="article-nav-newer" class="article-nav-title">
+                <a href="/2019/12/04/信安12-2/">
+                    
+                </a>
+            </div>
+        
+        
+    </nav>
+
+  
+</article>
+
+    <div id="toc" class="toc-article">
+        <strong class="toc-title">Contents</strong>
+        
+            <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#标题：网络安全：信安2019-12-4"><span class="toc-number">1.</span> <span class="toc-text">标题：网络安全：信安2019-12-4</span></a></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link" href="#IP地址以及VLMP"><span class="toc-number"></span> <span class="toc-text">IP地址以及VLMP</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#IPV4编制方案"><span class="toc-number">0.1.</span> <span class="toc-text">IPV4编制方案</span></a><ol class="toc-child"><li class="toc-item toc-level-5"><a class="toc-link" href="#由于40亿个地址不够用"><span class="toc-number">0.1.0.1.</span> <span class="toc-text">由于40亿个地址不够用</span></a></li></ol></li></ol></li><li class="toc-item toc-level-3"><a class="toc-link" href="#1-IP地址分类"><span class="toc-number">0.2.</span> <span class="toc-text">1.IP地址分类</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#A类网络地址范围"><span class="toc-number">0.2.1.</span> <span class="toc-text">A类网络地址范围</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#B类网络地址范围"><span class="toc-number">0.2.2.</span> <span class="toc-text">B类网络地址范围</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#C类网络地址范围"><span class="toc-number">0.2.3.</span> <span class="toc-text">C类网络地址范围</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#D类网络地址范围："><span class="toc-number">0.2.4.</span> <span class="toc-text">D类网络地址范围：</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#E类网络地址范围："><span class="toc-number">0.2.5.</span> <span class="toc-text">E类网络地址范围：</span></a></li></ol></li><li class="toc-item toc-level-3"><a class="toc-link" href="#保留的IP地址"><span class="toc-number">0.3.</span> <span class="toc-text">保留的IP地址</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#私有Ip地址范围-在公网中不能路由的"><span class="toc-number">0.4.</span> <span class="toc-text">私有Ip地址范围 在公网中不能路由的</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#子网划分"><span class="toc-number">1.</span> <span class="toc-text">子网划分</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#如何进行子网划分呢？"><span class="toc-number">1.1.</span> <span class="toc-text">如何进行子网划分呢？</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#c类"><span class="toc-number">1.2.</span> <span class="toc-text">c类</span></a><ol class="toc-child"><li class="toc-item toc-level-5"><a class="toc-link" href="#192-168-1-0-25"><span class="toc-number">1.2.0.1.</span> <span class="toc-text">192.168.1.0/25</span></a></li><li class="toc-item toc-level-5"><a class="toc-link" href="#192-168-1-128-25"><span class="toc-number">1.2.0.2.</span> <span class="toc-text">192.168.1.128/25</span></a></li></ol></li></ol></li><li class="toc-item toc-level-3"><a class="toc-link" href="#案例2"><span class="toc-number">1.3.</span> <span class="toc-text">案例2</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#B类网络子网划分"><span class="toc-number">1.3.1.</span> <span class="toc-text">B类网络子网划分</span></a><ol class="toc-child"><li class="toc-item toc-level-5"><a class="toc-link" href="#181-1-0-0"><span class="toc-number">1.3.1.1.</span> <span class="toc-text">181.1.0.0</span></a></li><li class="toc-item toc-level-5"><a class="toc-link" href="#181-1-64-0"><span class="toc-number">1.3.1.2.</span> <span class="toc-text">181.1.64.0</span></a></li><li class="toc-item toc-level-5"><a class="toc-link" href="#181-1-128-0"><span class="toc-number">1.3.1.3.</span> <span class="toc-text">181.1.128.0</span></a></li><li class="toc-item toc-level-5"><a class="toc-link" href="#181-1-192-0"><span class="toc-number">1.3.1.4.</span> <span class="toc-text">181.1.192.0</span></a></li></ol></li><li class="toc-item toc-level-4"><a class="toc-link" href="#A类网络子网划分"><span class="toc-number">1.3.2.</span> <span class="toc-text">A类网络子网划分</span></a></li></ol></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#地址汇总"><span class="toc-number">2.</span> <span class="toc-text">地址汇总</span></a></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link" href="#交换机的工作原理"><span class="toc-number"></span> <span class="toc-text">交换机的工作原理</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#介质访问控制子层MAC"><span class="toc-number">0.0.1.</span> <span class="toc-text">介质访问控制子层MAC</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#逻辑链路控制子层LLC"><span class="toc-number">0.0.2.</span> <span class="toc-text">逻辑链路控制子层LLC</span></a></li></ol></li><li class="toc-item toc-level-3"><a class="toc-link" href="#交换机的配置"><span class="toc-number">0.1.</span> <span class="toc-text">交换机的配置</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#基于端口的vlan划分"><span class="toc-number">0.1.1.</span> <span class="toc-text">基于端口的vlan划分</span></a><ol class="toc-child"><li class="toc-item toc-level-5"><a class="toc-link" href="#如何实现不同交换机上的同一个vlan间的通信"><span class="toc-number">0.1.1.1.</span> <span class="toc-text">如何实现不同交换机上的同一个vlan间的通信</span></a></li><li class="toc-item toc-level-5"><a class="toc-link" href="#如何实现不同vlan间的通信？"><span class="toc-number">0.1.1.2.</span> <span class="toc-text">如何实现不同vlan间的通信？</span></a><ol class="toc-child"><li class="toc-item toc-level-6"><a class="toc-link" href="#方法一：使用三层交换机"><span class="toc-number">0.1.1.2.1.</span> <span class="toc-text">方法一：使用三层交换机</span></a></li><li class="toc-item toc-level-6"><a class="toc-link" href="#方法二：使用单臂路由"><span class="toc-number">0.1.1.2.2.</span> <span class="toc-text">方法二：使用单臂路由</span></a></li></ol></li></ol></li></ol></li><li class="toc-item toc-level-3"><a class="toc-link" href="#DHCP动态主机配置协议"><span class="toc-number">0.2.</span> <span class="toc-text">DHCP动态主机配置协议</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#如何配置路由器为DHCP服务器"><span class="toc-number">0.2.1.</span> <span class="toc-text">如何配置路由器为DHCP服务器?</span></a><ol class="toc-child"><li class="toc-item toc-level-5"><a class="toc-link" href="#如何配置路由器为DHCP服务器？"><span class="toc-number">0.2.1.1.</span> <span class="toc-text">如何配置路由器为DHCP服务器？</span></a></li><li class="toc-item toc-level-5"><a class="toc-link" href="#如果使用服务器作DHCP服务器呢？"><span class="toc-number">0.2.1.2.</span> <span class="toc-text">如果使用服务器作DHCP服务器呢？</span></a></li></ol></li></ol></li></ol></li></ol>
+        
+    </div>
+    <style>
+        .left-col .switch-btn,
+        .left-col .switch-area {
+            display: none;
+        }
+        .toc-level-3 i,
+        .toc-level-3 ol {
+            display: none !important;
+        }
+    </style>
+
+    <input type="button" id="tocButton" value="Hide"  title="Show or Hide Table of Contents">
+
+    <script>
+        yiliaConfig.toc = ["Hide", "Show", !!"false"];
+    </script>
+
+
+
+    
+<div class="share">
+    
+        <div class="bdsharebuttonbox">
+            <a href="#" class="fa fa-twitter bds_twi" data-cmd="twi" title="分享到推特"></a>
+            <a href="#" class="fa fa-weibo bds_tsina" data-cmd="tsina" title="分享到新浪微博"></a>
+            <a href="#" class="fa fa-qq bds_sqq" data-cmd="sqq" title="分享给 QQ 好友"></a>
+            <a href="#" class="fa fa-files-o bds_copy" data-cmd="copy" title="复制网址"></a>
+            <a href="#" class="fa fa fa-envelope-o bds_mail" data-cmd="mail" title="通过邮件分享"></a>
+            <a href="#" class="fa fa-weixin bds_weixin" data-cmd="weixin" title="生成文章二维码"></a>
+            <a href="#" class="fa fa-share-alt bds_more" data-cmd="more"></i></a>
+        </div>
+        <script>
+            window._bd_share_config={
+                "common":{"bdSnsKey":{},"bdText":"　| 徐鹏　","bdMini":"2","bdMiniList":false,"bdPic":"","bdStyle":"0","bdSize":"24"},"share":{}};with(document)0[(getElementsByTagName('head')[0]||body).appendChild(createElement('script')).src='http://bdimg.share.baidu.com/static/api/js/share.js?v=89860593.js?cdnversion='+~(-new Date()/36e5)];
+        </script>
+    
+
+    
+</div>
+
+
+
+
+
+
+
+    
+
+
+
+
+    <div class="scroll" id="post-nav-button">
+        
+            <a href="/2019/12/04/信安12-2/" title="Pre: ">
+                <i class="fa fa-angle-left"></i>
+            </a>
+        
+
+        <a title="Mini Archives"><i class="fa fa-bars"></i><i class="fa fa-times"></i></a>
+
+        
+            <a href="/" title="Back to Homepage"><i class="fa fa-home"></i></a>
+        
+    </div>
+
+    <ul class="post-list"><li class="post-list-item"><a class="post-list-link" href="/2019/12/10/信安12-10/">信安12-10</a></li><li class="post-list-item"><a class="post-list-link" href="/2019/12/10/信安12-9/">信安12-9</a></li><li class="post-list-item"><a class="post-list-link" href="/2019/12/10/信安12-6/">信安12-6</a></li><li class="post-list-item"><a class="post-list-link" href="/2019/12/05/信安12-5/">信安12-5</a></li><li class="post-list-item"><a class="post-list-link" href="/2019/12/04/信安12-3/">信安12-3</a></li><li class="post-list-item"><a class="post-list-link" href="/2019/12/04/信安12-2/">信安12-2</a></li><li class="post-list-item"><a class="post-list-link" href="/2019/12/04/信安12-4/">信安12-4</a></li></ul>
+
+
+
+
+    <script>
+        
+    </script>
+</div>
+      <footer id="footer">
+    <div class="outer">
+        <div id="footer-info">
+            <div class="footer-left">
+                <i class="fa fa-copyright"></i> 
+                2016-2019 徐鹏
+            </div>
+            <div class="footer-right">
+                <a href="http://hexo.io/" target="_blank" title="A fast, simple &amp; powerful blog framework">Hexo</a>  Theme <a href="https://github.com/MOxFIVE/hexo-theme-yelee" target="_blank" title="Another simple and elegant theme for Hexo  v3.5">Yelee</a> by MOxFIVE <i class="fa fa-heart animated infinite pulse"></i>
+            </div>
+        </div>
+        
+            <div class="visit">
+                
+                    <span id="busuanzi_container_site_pv" style='display:none'>
+                        <span id="site-visit" title="Site Visitors"><i class="fa fa-user" aria-hidden="true"></i><span id="busuanzi_value_site_uv"></span>
+                        </span>
+                    </span>
+                
+                
+                    <span>| </span>
+                
+                
+                    <span id="busuanzi_container_page_pv" style='display:none'>
+                        <span id="page-visit"  title="Page Hits"><i class="fa fa-eye animated infinite pulse" aria-hidden="true"></i><span id="busuanzi_value_page_pv"></span>
+                        </span>
+                    </span>
+                
+            </div>
+        
+    </div>
+</footer>
+    </div>
+    
+<script data-main="/js/main.js" src="//cdn.bootcss.com/require.js/2.2.0/require.min.js"></script>
+
+    <script>
+        $(document).ready(function() {
+            var iPad = window.navigator.userAgent.indexOf('iPad');
+            if (iPad > -1 || $(".left-col").css("display") === "none") {
+                var bgColorList = ["#9db3f4", "#414141", "#e5a859", "#f5dfc6", "#c084a0", "#847e72", "#cd8390", "#996731"];
+                var bgColor = Math.ceil(Math.random() * (bgColorList.length - 1));
+                $("body").css({"background-color": bgColorList[bgColor], "background-size": "cover"});
+            }
+            else {
+                var backgroundnum = 5;
+                var backgroundimg = "url(/background/bg-x.jpg)".replace(/x/gi, Math.ceil(Math.random() * backgroundnum));
+                $("body").css({"background": backgroundimg, "background-attachment": "fixed", "background-size": "cover"});
+            }
+        })
+    </script>
+
+
+
+
+
+<div class="scroll" id="scroll">
+    <a href="#" title="Back to Top"><i class="fa fa-arrow-up"></i></a>
+    <a href="#comments" onclick="load$hide();" title="Comments"><i class="fa fa-comments-o"></i></a>
+    <a href="#footer" title="Go to Bottom"><i class="fa fa-arrow-down"></i></a>
+</div>
+<script>
+    // Open in New Window
+    
+        var oOpenInNew = {
+            
+            
+            
+            
+            
+            
+             archives: ".archive-article-title", 
+             miniArchives: "a.post-list-link", 
+            
+             friends: "#js-friends a", 
+             socail: ".social a" 
+        }
+        for (var x in oOpenInNew) {
+            $(oOpenInNew[x]).attr("target", "_blank");
+        }
+    
+</script>
+
+<script async src="https://dn-lbstatics.qbox.me/busuanzi/2.3/busuanzi.pure.mini.js">
+</script>
+  </div>
+</body>
+</html>
