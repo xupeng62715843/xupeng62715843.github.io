@@ -6,21 +6,21 @@
   <meta name="renderer" content="webkit">
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
   <link rel="dns-prefetch" href="http://yoursite.com">
-  <title>你好</title>
+  <title>徐鹏</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
   <meta name="description" content="标题：网络安全：信安2019-12-2什么是计算机网络基本命令操作为方便管理，配置telnet远程管理设备SSH远程管理网络设备">
 <meta property="og:type" content="article">
-<meta property="og:title" content="你好">
+<meta property="og:title" content="徐鹏">
 <meta property="og:url" content="http://yoursite.com/2019/12/04/信安12-2/index.html">
-<meta property="og:site_name" content="你好">
+<meta property="og:site_name" content="徐鹏">
 <meta property="og:description" content="标题：网络安全：信安2019-12-2什么是计算机网络基本命令操作为方便管理，配置telnet远程管理设备SSH远程管理网络设备">
 <meta property="og:locale" content="en">
-<meta property="og:updated_time" content="2019-12-05T08:52:46.602Z">
+<meta property="og:updated_time" content="2019-12-07T03:41:21.419Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="你好">
+<meta name="twitter:title" content="徐鹏">
 <meta name="twitter:description" content="标题：网络安全：信安2019-12-2什么是计算机网络基本命令操作为方便管理，配置telnet远程管理设备SSH远程管理网络设备">
   
-    <link rel="alternative" href="/atom.xml" title="你好" type="application/atom+xml">
+    <link rel="alternative" href="/atom.xml" title="徐鹏" type="application/atom+xml">
   
   
     <link rel="icon" href="/favicon.png">
@@ -47,7 +47,7 @@
 <div class="intrude-less">
 	<header id="header" class="inner">
 		<a href="/" class="profilepic">
-			<img src="" class="js-avatar">
+			<img src="https://timgsa.baidu.com/timg?image&amp;quality=80&amp;size=b9999_10000&amp;sec=1575985763024&amp;di=262add41bcfad0f9e30b97ffd82cc549&amp;imgtype=0&amp;src=http%3A%2F%2Fimg01.jituwang.com%2F170525%2F256916-1F525003S984.jpg" class="js-avatar">
 		</a>
 		<hgroup>
 		  <h1 class="header-author"><a href="/">徐鹏</a></h1>
@@ -105,7 +105,7 @@
 	<div class="intrude-less">
 		<header id="header" class="inner">
 			<div class="profilepic">
-				<img src="" class="js-avatar">
+				<img src="https://timgsa.baidu.com/timg?image&amp;quality=80&amp;size=b9999_10000&amp;sec=1575985763024&amp;di=262add41bcfad0f9e30b97ffd82cc549&amp;imgtype=0&amp;src=http%3A%2F%2Fimg01.jituwang.com%2F170525%2F256916-1F525003S984.jpg" class="js-avatar">
 			</div>
 			<hgroup>
 			  <h1 class="header-author js-header-author">徐鹏</h1>
@@ -170,7 +170,7 @@
 <p>直通线:T568A-T568A T568B-T568B<br>不同设备相连<br>交换机-路由器 路由器-集线器 交换机-PC  </p>
 <p>交叉线：T568A-T568B<br>交换机-交换器 路由器-路由器 交换机-集线器  </p>
 <p>全反线：控制线</p>
-<p>##基本命令操作：<br>如何对设备进行配置？<br>真实设备的配置：<br>需要通过控制线进行连接，并在计算机上安装接口驱动程序和超级终端程序。  </p>
+<h2 id="基本命令操作："><a href="#基本命令操作：" class="headerlink" title="基本命令操作："></a>基本命令操作：</h2><p>如何对设备进行配置？<br>真实设备的配置：<br>需要通过控制线进行连接，并在计算机上安装接口驱动程序和超级终端程序。  </p>
 <p>模式：<br>Router&gt;用户模式<br>Router&gt;enable (简写en)<br>Router#特权模式<br>Router#config terminal 全局配置模式<br>Router(config)#<br>全局模式下路由器改名：<br>Router(config)# hostname R1  </p>
 <p>路由器工作在网络模型的第三层（所以也叫三层【网络层】设备）<br>网络层：传输数据包，作用是寻址，隔离广播，转发等。<br>广播域：不同网络处于不同广播域。 路由器的一个接口为一个广播域，交换机的所有接口都在一个广播域。<br>冲突域：集线器的所有端口都工作在一个冲突域，交换机的一个接口为一个冲突域。  </p>
 <p>R1(config)# interface fastEthernet 0/0<br>进入0/0接口<br>R1(config-if)# 接口模式<br>R1(config-if)#ip address 192.168.10.254  255.255.255.0<br>配置ip地址（和子网掩码）  </p>
@@ -192,7 +192,7 @@
 <p>switch(config)#int vlan1<br>switch(config-if)#ip address 192.168.10.253 255.255.255.0<br>switch(config-if)#no shutdown  0</p>
 <p>switch(config)#line vty 0 4<br>switch(config-line)#login local  </p>
 <p>switch(config)#hostname S1<br>S1(config)#username xupeng password 123456<br>S1(config)#enable secret 123456  </p>
-<p>###SSH远程管理网络设备<br>switch(config)#hostname S1<br>S1(config)#ip domain-name xupeng.com  设置域名<br>S1(config)#crypto key generate rsa    配置加密方式为RSA<br>  How many bits in the modulus [512]:1024    加密的位数（默认是512位）<br>S1(config)#username admin privilege 0 secret xupeng  设置用户名及密码<br>安全级别是0<br>s1(config)#line vty 0 4  进入line vty 模式 开启5个端口<br>S1(config-line)#exec-timeout 10 0   设置超时时间  10分钟 0秒<br>S1(config-line)#logging synchronous    日志同步<br>S1(config-line)#login local  采用本地登陆<br>S1(config-line)#transport input ssh  启用ssh登陆</p>
+<h3 id="SSH远程管理网络设备"><a href="#SSH远程管理网络设备" class="headerlink" title="SSH远程管理网络设备"></a>SSH远程管理网络设备</h3><p>switch(config)#hostname S1<br>S1(config)#ip domain-name xupeng.com  设置域名<br>S1(config)#crypto key generate rsa    配置加密方式为RSA<br>  How many bits in the modulus [512]:1024    加密的位数（默认是512位）<br>S1(config)#username admin privilege 0 secret xupeng  设置用户名及密码<br>安全级别是0<br>s1(config)#line vty 0 4  进入line vty 模式 开启5个端口<br>S1(config-line)#exec-timeout 10 0   设置超时时间  10分钟 0秒<br>S1(config-line)#logging synchronous    日志同步<br>S1(config-line)#login local  采用本地登陆<br>S1(config-line)#transport input ssh  启用ssh登陆</p>
 <p> 在pc机上验证ssh登：<br> ssh -l 用户名 ip地址  </p>
 <p>####ssh远程访问配置<br>服务端：<br>1.创建账户和密码<br>2.规定远程连接的方式  </p>
 <p>R1(config)#username admin password 123456  </p>
