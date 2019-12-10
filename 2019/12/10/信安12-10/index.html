@@ -8,20 +8,20 @@
   <link rel="dns-prefetch" href="http://yoursite.com">
   <title>徐鹏</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-  <meta name="description" content="标题：网络安全：信安2019-12-10">
+  <meta name="description" content="标题：网络安全：信安2019-12-10ACL：访问控制列表 基于时间的ACL">
 <meta property="og:type" content="article">
 <meta property="og:title" content="徐鹏">
 <meta property="og:url" content="http://yoursite.com/2019/12/10/信安12-10/index.html">
 <meta property="og:site_name" content="徐鹏">
-<meta property="og:description" content="标题：网络安全：信安2019-12-10">
+<meta property="og:description" content="标题：网络安全：信安2019-12-10ACL：访问控制列表 基于时间的ACL">
 <meta property="og:locale" content="en">
 <meta property="og:image" content="c:%5CUsers%5CAdministrator%5CAppData%5CRoaming%5CTypora%5Ctypora-user-images%5C1575975480403.png">
 <meta property="og:image" content="c:%5CUsers%5CAdministrator%5CAppData%5CRoaming%5CTypora%5Ctypora-user-images%5C1575975492719.png">
 <meta property="og:image" content="c:%5CUsers%5CAdministrator%5CAppData%5CRoaming%5CTypora%5Ctypora-user-images%5C1575968104207.png">
-<meta property="og:updated_time" content="2019-12-10T11:25:02.366Z">
+<meta property="og:updated_time" content="2019-12-10T11:30:14.370Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="徐鹏">
-<meta name="twitter:description" content="标题：网络安全：信安2019-12-10">
+<meta name="twitter:description" content="标题：网络安全：信安2019-12-10ACL：访问控制列表 基于时间的ACL">
 <meta name="twitter:image" content="c:%5CUsers%5CAdministrator%5CAppData%5CRoaming%5CTypora%5Ctypora-user-images%5C1575975480403.png">
   
     <link rel="alternative" href="/atom.xml" title="徐鹏" type="application/atom+xml">
@@ -164,7 +164,9 @@
     <div class="article-entry" itemprop="articleBody">
       
         <hr>
-<h2 id="标题：网络安全：信安2019-12-10"><a href="#标题：网络安全：信安2019-12-10" class="headerlink" title="标题：网络安全：信安2019-12-10"></a>标题：网络安全：信安2019-12-10</h2><a id="more"></a>
+<h2 id="标题：网络安全：信安2019-12-10"><a href="#标题：网络安全：信安2019-12-10" class="headerlink" title="标题：网络安全：信安2019-12-10"></a>标题：网络安全：信安2019-12-10</h2><p>ACL：访问控制列表</p>
+<p>基于时间的ACL</p>
+<a id="more"></a>
 <h2 id="ACL：访问控制列表"><a href="#ACL：访问控制列表" class="headerlink" title="ACL：访问控制列表"></a>ACL：访问控制列表</h2><p>在第三层对数据包进行过滤</p>
 <p>ACL————规则集</p>
 <p>ACL访问控制列表</p>
@@ -182,8 +184,7 @@
 <p>编号命名方式：</p>
 <p>​      标准ACL：1-99</p>
 <p>​       扩展ACL:   100-199   ；   2000-2699</p>
-<h4 id="有一条默认拒绝所有的规则，所以配置拒绝条目后，必须要配置被允许的条目。"><a href="#有一条默认拒绝所有的规则，所以配置拒绝条目后，必须要配置被允许的条目。" class="headerlink" title="有一条默认拒绝所有的规则，所以配置拒绝条目后，必须要配置被允许的条目。"></a>有一条默认拒绝所有的规则，所以配置拒绝条目后，必须要配置被允许的条目。</h4><h4 id="执行顺序，从上至下，一旦匹配，不再往下执行。"><a href="#执行顺序，从上至下，一旦匹配，不再往下执行。" class="headerlink" title="执行顺序，从上至下，一旦匹配，不再往下执行。"></a>执行顺序，从上至下，一旦匹配，不再往下执行。</h4><p>案例一：拒绝学生宿舍访问财务室网络。</p>
-<pre><code> 判断是用标准ACL还是用扩展ACL？
+<h4 id="有一条默认拒绝所有的规则，所以配置拒绝条目后，必须要配置被允许的条目。"><a href="#有一条默认拒绝所有的规则，所以配置拒绝条目后，必须要配置被允许的条目。" class="headerlink" title="有一条默认拒绝所有的规则，所以配置拒绝条目后，必须要配置被允许的条目。"></a>有一条默认拒绝所有的规则，所以配置拒绝条目后，必须要配置被允许的条目。</h4><h4 id="执行顺序，从上至下，一旦匹配，不再往下执行。"><a href="#执行顺序，从上至下，一旦匹配，不再往下执行。" class="headerlink" title="执行顺序，从上至下，一旦匹配，不再往下执行。"></a>执行顺序，从上至下，一旦匹配，不再往下执行。</h4><h2 id="案例一：拒绝学生宿舍访问财务室网络。"><a href="#案例一：拒绝学生宿舍访问财务室网络。" class="headerlink" title="案例一：拒绝学生宿舍访问财务室网络。"></a>案例一：拒绝学生宿舍访问财务室网络。</h2><pre><code> 判断是用标准ACL还是用扩展ACL？
  根据要求意思是拒绝整个学生宿舍的网络，就应该用标准ACL。
  搞清楚ACL应该做在哪个路由器上？标准ACL应做在离目标最近的端口。
 
@@ -214,8 +215,7 @@
        删除整个规则集：R2(config)#no access-list 10
 
        R2(config)#int f0/0
-       R2(config-if)#ip access-group 10 out</code></pre><p>案例二：拒绝学生宿舍访问www服务</p>
-<p>什么是www服务？万维网服务，提供WEB页面访问，协议是：http或www   默认端口号80</p>
+       R2(config-if)#ip access-group 10 out</code></pre><h2 id="案例二：拒绝学生宿舍访问www服务"><a href="#案例二：拒绝学生宿舍访问www服务" class="headerlink" title="案例二：拒绝学生宿舍访问www服务"></a>案例二：拒绝学生宿舍访问www服务</h2><p>什么是www服务？万维网服务，提供WEB页面访问，协议是：http或www   默认端口号80</p>
 <p>1.配置http服务 ：   开启服务 ————做网页</p>
 <p>2.配置DNS服务：  开启服务————做A记录</p>
 <p>​                                 配置DNS地址</p>
