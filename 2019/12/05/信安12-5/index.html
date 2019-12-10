@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="zh-Hant-HK">
 <head><meta name="generator" content="Hexo 3.9.0">
 
     <!--[if lt IE 9]>
@@ -21,7 +21,7 @@
 <meta property="og:url" content="http://yoursite.com/2019/12/05/信安12-5/index.html">
 <meta property="og:site_name" content="徐鹏的博客惹">
 <meta property="og:description" content="标题：网络安全：信安2019-12-5交换机的五种攻击类型配置VTP生成树STPPVST  按vlan生成树PVST的配置命令以太网端口聚合">
-<meta property="og:locale" content="en">
+<meta property="og:locale" content="zh-Hant-HK">
 <meta property="og:updated_time" content="2019-12-05T10:30:18.285Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="徐鹏的博客惹">
@@ -109,6 +109,46 @@
 
 
         
+            <div id="switch-btn" class="switch-btn">
+                <div class="icon">
+                    <div class="icon-ctn">
+                        <div class="icon-wrap icon-house" data-idx="0">
+                            <div class="birdhouse"></div>
+                            <div class="birdhouse_holes"></div>
+                        </div>
+                        <div class="icon-wrap icon-ribbon hide" data-idx="1">
+                            <div class="ribbon"></div>
+                        </div>
+                        
+                        <div class="icon-wrap icon-link hide" data-idx="2">
+                            <div class="loopback_l"></div>
+                            <div class="loopback_r"></div>
+                        </div>
+                        
+                        
+                        <div class="icon-wrap icon-me hide" data-idx="3">
+                            <div class="user"></div>
+                            <div class="shoulder"></div>
+                        </div>
+                        
+                    </div>
+                    
+                </div>
+                <div class="tips-box hide">
+                    <div class="tips-arrow"></div>
+                    <ul class="tips-inner">
+                        <li>菜單</li>
+                        <li>標籤</li>
+                        
+                        <li>友情鏈接</li>
+                        
+                        
+                        <li>關於我</li>
+                        
+                    </ul>
+                </div>
+            </div>
+        
 
         <div id="switch-area" class="switch-area">
             <div class="switch-wrap">
@@ -119,8 +159,6 @@
                             <li><a href="/">主页</a></li>
                         
                             <li><a href="/archives/">所有文章</a></li>
-                        
-                            <li><a href="/tags/">标签云</a></li>
                         
                             <li><a href="/about/">关于我</a></li>
                         
@@ -139,6 +177,12 @@
                     </nav>
                 </section>
                 
+                
+                <section class="switch-part switch-part2">
+                    <div class="widget tagcloud" id="js-tagcloud">
+                        
+                    </div>
+                </section>
                 
                 
                 
@@ -189,8 +233,6 @@
                 
                     <li><a href="/archives/">所有文章</a></li>
                 
-                    <li><a href="/tags/">标签云</a></li>
-                
                     <li><a href="/about/">关于我</a></li>
                 
                 <div class="clearfix"></div>
@@ -209,7 +251,7 @@
             </nav>
         </header>                
     </div>
-    <link class="menu-list" tags="Tags" friends="Friends" about="About Me"/>
+    <link class="menu-list" tags="標籤" friends="友情鏈接" about="關於我"/>
 </nav>
       <div class="body-wrap"><article id="post-信安12-5" class="article article-type-post" itemscope itemprop="blogPost">
   
@@ -280,17 +322,17 @@
   
     
     <div class="copyright">
-        <p><span>Title:</span><a href="/2019/12/05/信安12-5/"></a></p>
-        <p><span>Author:</span><a href="/" title="Back to Homepage">徐鹏</a></p>
-        <p><span>Created:</span>2019-12-05, 18:30:18</p>
-        <p><span>Updated:</span>2019-12-05, 18:30:18</p>
+        <p><span>本文標題:</span><a href="/2019/12/05/信安12-5/"></a></p>
+        <p><span>文章作者:</span><a href="/" title="回到主頁">徐鹏</a></p>
+        <p><span>發布時間:</span>2019-12-05, 18:30:18</p>
+        <p><span>最後更新:</span>2019-12-05, 18:30:18</p>
         <p>
-            <span>Full URL:</span><a class="post-url" href="/2019/12/05/信安12-5/" title="">http://yoursite.com/2019/12/05/信安12-5/</a>
-            <span class="copy-path" data-clipboard-text="From http://yoursite.com/2019/12/05/信安12-5/　　By 徐鹏" title="Copy Article&#39;s Link &amp; Author"><i class="fa fa-clipboard"></i></span>
+            <span>原始鏈接:</span><a class="post-url" href="/2019/12/05/信安12-5/" title="">http://yoursite.com/2019/12/05/信安12-5/</a>
+            <span class="copy-path" data-clipboard-text="原文: http://yoursite.com/2019/12/05/信安12-5/　　作者: 徐鹏" title="點擊複製文章鏈接"><i class="fa fa-clipboard"></i></span>
             <script> var clipboard = new Clipboard('.copy-path'); </script>
         </p>
         <p>
-            <span>License:</span><i class="fa fa-creative-commons"></i> <a rel="license" href="http://creativecommons.org/licenses/by-nc-sa/4.0/" title="CC BY-NC-SA 4.0 International" target = "_blank">"CC BY-NC-SA 4.0"</a> Keep Link &amp; Author if Distribute.
+            <span>許可協議:</span><i class="fa fa-creative-commons"></i> <a rel="license" href="http://creativecommons.org/licenses/by-nc-sa/4.0/" title="CC BY-NC-SA 4.0 International" target = "_blank">"姓名標示-非商業性-相同方式分享 4.0 國際"</a> 轉載請保留原文鏈接及作者。
         </p>
     </div>
 
@@ -317,7 +359,7 @@
 </article>
 
     <div id="toc" class="toc-article">
-        <strong class="toc-title">Contents</strong>
+        <strong class="toc-title">文章目錄</strong>
         
             <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#标题：网络安全：信安2019-12-5"><span class="toc-number">1.</span> <span class="toc-text">标题：网络安全：信安2019-12-5</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#每日提问："><span class="toc-number">1.0.1.</span> <span class="toc-text">每日提问：</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#交换机的五种攻击类型"><span class="toc-number">1.0.2.</span> <span class="toc-text">交换机的五种攻击类型</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#配置VTP"><span class="toc-number">1.0.3.</span> <span class="toc-text">配置VTP</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#生成树STP"><span class="toc-number">1.0.4.</span> <span class="toc-text">生成树STP</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#PVST-按vlan生成树"><span class="toc-number">1.0.5.</span> <span class="toc-text">PVST  按vlan生成树</span></a><ol class="toc-child"><li class="toc-item toc-level-5"><a class="toc-link" href="#让Sw1做vlan10的根桥，SW2做vlan20的备份根桥。"><span class="toc-number">1.0.5.1.</span> <span class="toc-text">让Sw1做vlan10的根桥，SW2做vlan20的备份根桥。</span></a></li><li class="toc-item toc-level-5"><a class="toc-link" href="#让SW2做vlan20的根桥，SW1做vlan20的备份根桥"><span class="toc-number">1.0.5.2.</span> <span class="toc-text">让SW2做vlan20的根桥，SW1做vlan20的备份根桥</span></a></li><li class="toc-item toc-level-5"><a class="toc-link" href="#PVST的配置命令"><span class="toc-number">1.0.5.3.</span> <span class="toc-text">PVST的配置命令</span></a></li></ol></li><li class="toc-item toc-level-4"><a class="toc-link" href="#以太网端口聚合"><span class="toc-number">1.0.6.</span> <span class="toc-text">以太网端口聚合</span></a><ol class="toc-child"><li class="toc-item toc-level-5"><a class="toc-link" href="#端口聚合："><span class="toc-number">1.0.6.1.</span> <span class="toc-text">端口聚合：</span></a><ol class="toc-child"><li class="toc-item toc-level-6"><a class="toc-link" href="#在SW1上配置聚合端口"><span class="toc-number">1.0.6.1.1.</span> <span class="toc-text">在SW1上配置聚合端口</span></a></li><li class="toc-item toc-level-6"><a class="toc-link" href="#在sw2上配置聚合端口"><span class="toc-number">1.0.6.1.2.</span> <span class="toc-text">在sw2上配置聚合端口</span></a></li></ol></li></ol></li></ol></li></ol></li></ol>
         
@@ -333,10 +375,10 @@
         }
     </style>
 
-    <input type="button" id="tocButton" value="Hide"  title="Show or Hide Table of Contents">
+    <input type="button" id="tocButton" value="隱藏目錄"  title="點擊按鈕隱藏或者顯示文章目錄">
 
     <script>
-        yiliaConfig.toc = ["Hide", "Show", !!"false"];
+        yiliaConfig.toc = ["隱藏目錄", "顯示目錄", !!"false"];
     </script>
 
 
@@ -375,15 +417,15 @@
 
     <div class="scroll" id="post-nav-button">
         
-            <a href="/2019/12/10/信安12-6/" title="Pre: ">
+            <a href="/2019/12/10/信安12-6/" title="上一篇: ">
                 <i class="fa fa-angle-left"></i>
             </a>
         
 
-        <a title="Mini Archives"><i class="fa fa-bars"></i><i class="fa fa-times"></i></a>
+        <a title="文章列表"><i class="fa fa-bars"></i><i class="fa fa-times"></i></a>
 
         
-            <a href="/2019/12/04/信安12-3/" title="Next: ">
+            <a href="/2019/12/04/信安12-3/" title="下一篇: ">
                 <i class="fa fa-angle-right"></i>
             </a>
         
@@ -406,14 +448,14 @@
                 2019 徐鹏
             </div>
             <div class="footer-right">
-                <a href="http://hexo.io/" target="_blank" title="A fast, simple &amp; powerful blog framework">Hexo</a>  Theme <a href="https://github.com/MOxFIVE/hexo-theme-yelee" target="_blank" title="Another simple and elegant theme for Hexo  v3.5">Yelee</a> by MOxFIVE <i class="fa fa-heart animated infinite pulse"></i>
+                <a href="http://hexo.io/" target="_blank" title="快速、簡潔且高效的博客框架">Hexo</a>  Theme <a href="https://github.com/MOxFIVE/hexo-theme-yelee" target="_blank" title="簡而不減 Hexo 雙欄博客主題  v3.5">Yelee</a> by MOxFIVE <i class="fa fa-heart animated infinite pulse"></i>
             </div>
         </div>
         
             <div class="visit">
                 
                     <span id="busuanzi_container_site_pv" style='display:none'>
-                        <span id="site-visit" title="Site Visitors"><i class="fa fa-user" aria-hidden="true"></i><span id="busuanzi_value_site_uv"></span>
+                        <span id="site-visit" title="本站到訪數"><i class="fa fa-user" aria-hidden="true"></i><span id="busuanzi_value_site_uv"></span>
                         </span>
                     </span>
                 
@@ -422,7 +464,7 @@
                 
                 
                     <span id="busuanzi_container_page_pv" style='display:none'>
-                        <span id="page-visit"  title="Page Hits"><i class="fa fa-eye animated infinite pulse" aria-hidden="true"></i><span id="busuanzi_value_page_pv"></span>
+                        <span id="page-visit"  title="本頁閱讀量"><i class="fa fa-eye animated infinite pulse" aria-hidden="true"></i><span id="busuanzi_value_page_pv"></span>
                         </span>
                     </span>
                 
@@ -455,18 +497,18 @@
 
 
 <div class="scroll" id="scroll">
-    <a href="#" title="Back to Top"><i class="fa fa-arrow-up"></i></a>
-    <a href="#comments" onclick="load$hide();" title="Comments"><i class="fa fa-comments-o"></i></a>
-    <a href="#footer" title="Go to Bottom"><i class="fa fa-arrow-down"></i></a>
+    <a href="#" title="返回頂部"><i class="fa fa-arrow-up"></i></a>
+    <a href="#comments" onclick="load$hide();" title="查看評論"><i class="fa fa-comments-o"></i></a>
+    <a href="#footer" title="轉到底部"><i class="fa fa-arrow-down"></i></a>
 </div>
 <script>
     // Open in New Window
     
         var oOpenInNew = {
             
-            
-            
-            
+             title: "a.article-title, .article-more-link a", 
+             post: ".article-entry a[href], .copyright a[href]", 
+             tags: ".article-tag a", 
              categories: ".article-category a, a.tag-list-link", 
              articleNav: "#article-nav a, #post-nav-button a", 
              archives: ".archive-article-title", 
