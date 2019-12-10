@@ -158,91 +158,10 @@
     <div class="article-entry" itemprop="articleBody">
       
         <hr>
-<p>​—<br>标题：网络安全：信安2019-12-10</p>
-<h2 id="​—"><a href="#​—" class="headerlink" title="​—"></a>​—</h2><h2 id="ACL：访问控制列表"><a href="#ACL：访问控制列表" class="headerlink" title="ACL：访问控制列表"></a>ACL：访问控制列表</h2><p>在第三层对数据包进行过滤</p>
-<p>ACL————规则集</p>
-<p>ACL访问控制列表</p>
-<h4 id="两种类型"><a href="#两种类型" class="headerlink" title="两种类型"></a>两种类型</h4><p>标准ACL：检查源地址，通常允许或拒绝的是完整的协议。</p>
-<p>扩展ACL：检查源地址和目的地址，通常允许或拒绝的是某个特定的协议。</p>
-<h4 id="两个方向"><a href="#两个方向" class="headerlink" title="两个方向"></a>两个方向</h4><p>in:进站</p>
-<p>out:出站</p>
-<p><em>标准ACL通常应用到离目标最近的端口，方向为out</em></p>
-<p><em>扩展ACL通常应用到离源最近的端口，方向为in</em></p>
-<h4 id="两个动作"><a href="#两个动作" class="headerlink" title="两个动作"></a>两个动作</h4><p>deny 拒绝</p>
-<p>permit 允许</p>
-<h4 id="两种命名方式"><a href="#两种命名方式" class="headerlink" title="两种命名方式"></a>两种命名方式</h4><p>名称命名方式：</p>
-<p>​     standard;</p>
-<p>​     extended;</p>
-<p>编号命名方式：</p>
-<p>​      标准ACL：1-99</p>
-<p>​       扩展ACL:   100-199   ；   2000-2699</p>
-<h4 id="有一条默认拒绝所有的规则，所以配置拒绝条目后，必须要配置被允许的条目。"><a href="#有一条默认拒绝所有的规则，所以配置拒绝条目后，必须要配置被允许的条目。" class="headerlink" title="有一条默认拒绝所有的规则，所以配置拒绝条目后，必须要配置被允许的条目。"></a>有一条默认拒绝所有的规则，所以配置拒绝条目后，必须要配置被允许的条目。</h4><h4 id="执行顺序，从上至下，一旦匹配，不再往下执行。"><a href="#执行顺序，从上至下，一旦匹配，不再往下执行。" class="headerlink" title="执行顺序，从上至下，一旦匹配，不再往下执行。"></a>执行顺序，从上至下，一旦匹配，不再往下执行。</h4><p>案例一：拒绝学生宿舍访问财务室网络。</p>
-<pre><code> 判断是用标准ACL还是用扩展ACL？
- 根据要求意思是拒绝整个学生宿舍的网络，就应该用标准ACL。
- 搞清楚ACL应该做在哪个路由器上？标准ACL应做在离目标最近的端口。
-
-
-第一步：设置ACL规则（名称方式命名）
-       R2(config)#ip access-list standard ACL1    做一个标准ACL名字叫ACL1
-       R2(config-std-nacl)#deny 192.168.10.0 0.0.0.255   拒绝学生宿舍网络，用反掩码精确匹配
-       如何查看？R2#sh ip access-lists
-第二步：应用ACL规则（思考应用到哪个端口？）
-       标准ACL应做在离目标最近的端口，方向为out。
-       R2(config)#int f0/0
-       R2(config-if)#ip access-group ACL1 out
-       R2#sh running-config
-第三步：验证ACL是否正确？
-
-如果要修改ACL？
-       R2(config)#ip access-list standard ACL1   进入到ACL规则集
-       R2(config-std-nacl)#permit any     添加规则
-       R2(config-std-nacl)#no 20      删除编号为20的规则
-       R2(config)#no ip access-list standard ACL1   删除名为ACL1的规则集
-
-
-如果用编号方式做ACL规则？
-       R2(config)#access-list 10 deny 192.168.10.0 0.0.0.255
-       R2(config)#access-list 10 permit any
-       删除规则：R2(config)#ip access-list standard 10
-                R2(config-std-nacl)#no 20
-       删除整个规则集：R2(config)#no access-list 10
-
-       R2(config)#int f0/0
-       R2(config-if)#ip access-group 10 out</code></pre><p>案例二：拒绝学生宿舍访问www服务</p>
-<p>什么是www服务？万维网服务，提供WEB页面访问，协议是：http或www   默认端口号80</p>
-<p>1.配置http服务 ：   开启服务 ————做网页</p>
-<p>2.配置DNS服务：  开启服务————做A记录</p>
-<p>​                                 配置DNS地址</p>
-<p>​                                 测试：在客户端计算机打开命令提示符： nslookup</p>
-<p>3.根据要求，应该用什么类型的ACL？</p>
-<p>使用扩展ACL,应用在离源端最近的端口。</p>
-<p>（eq等于 gt大于 lt小于 neq不等于 range包含 ）</p>
-<p>第一步：配置ACL规则</p>
-<p>​             R1(config)#access-list 100 deny tcp 192.168.10.0  0.0.0.255 host 192.168.100.1 eq www</p>
-<p>​             R1(config)#access-list 100 permit ip any any</p>
-<p>第二步：应用到端口</p>
-<p>​             R1(config)#int f0/0</p>
-<p>​             R1(config-if)#ip access-group 100 in </p>
-<p>第三步：测试</p>
-<p>​              假设测试失败，怎么检查？</p>
-<p>​              首先检查规则 sh ip access-list，其次检查是否正确应用到了端口 sh running-config。</p>
-<h2 id="案例三：拒绝学生宿舍ping服务器，但可以访问网站。"><a href="#案例三：拒绝学生宿舍ping服务器，但可以访问网站。" class="headerlink" title="案例三：拒绝学生宿舍ping服务器，但可以访问网站。"></a>案例三：拒绝学生宿舍ping服务器，但可以访问网站。</h2><p>ping服务器使用的是什么协议？ ICMP</p>
-<p>访问网站使用的是哪个协议？ http:80</p>
-<p>根据要求，需要使用什么类型的ACL？    扩展ACL</p>
-<p>扩展ACL应用在离源最近的端口，方向为in</p>
-<p>第一步：配置ACL：  使用编号方式</p>
-<p>R1(config)#access-list 100 deny icmp 192.168.10.0 0.0.0.255 host 192.168.100.1 echo</p>
-<p>R1(config)#access-list 100  permit  ip any any</p>
-<p>第二步：将ACL应用到端口(应用在离源最近的端口，方向为in)</p>
-<p>R1(config)# int f0/0</p>
-<p>R1(config-if)# ip access-group 100 in</p>
-<p>第三步：测试</p>
-<p>​              假设测试失败，怎么检查？</p>
-<p>​              首先检查规则 sh ip access-list，其次检查是否正确应用到了端口 sh running-config。</p>
-<h2 id="案例四：学生宿舍不可以ping服务器，不能用www-xupeng-com访问网站，但可以用地址访问网站"><a href="#案例四：学生宿舍不可以ping服务器，不能用www-xupeng-com访问网站，但可以用地址访问网站" class="headerlink" title="案例四：学生宿舍不可以ping服务器，不能用www.xupeng.com访问网站，但可以用地址访问网站"></a>案例四：学生宿舍不可以ping服务器，不能用<a href="http://www.xupeng.com访问网站，但可以用地址访问网站" target="_blank" rel="noopener">www.xupeng.com访问网站，但可以用地址访问网站</a></h2><p><img src="C:%5CUsers%5CAdministrator%5CAppData%5CRoaming%5CTypora%5Ctypora-user-images%5C1575975480403.png" alt="1575975480403"></p>
-<h2 id="案例五：服务器提供DNS-WEB-FTP服务器，只允许学生宿舍和财务室访问网站，行政楼只允许访问网站和FTP。财务室网络只允许财务内部网络访问，其他网络都不允许访问，除服务器网络外。"><a href="#案例五：服务器提供DNS-WEB-FTP服务器，只允许学生宿舍和财务室访问网站，行政楼只允许访问网站和FTP。财务室网络只允许财务内部网络访问，其他网络都不允许访问，除服务器网络外。" class="headerlink" title="案例五：服务器提供DNS/WEB/FTP服务器，只允许学生宿舍和财务室访问网站，行政楼只允许访问网站和FTP。财务室网络只允许财务内部网络访问，其他网络都不允许访问，除服务器网络外。"></a>案例五：服务器提供DNS/WEB/FTP服务器，只允许学生宿舍和财务室访问网站，行政楼只允许访问网站和FTP。财务室网络只允许财务内部网络访问，其他网络都不允许访问，除服务器网络外。</h2><p><img src="C:%5CUsers%5CAdministrator%5CAppData%5CRoaming%5CTypora%5Ctypora-user-images%5C1575975492719.png" alt="1575975492719"></p>
-<h2 id="设置时间周期"><a href="#设置时间周期" class="headerlink" title="设置时间周期"></a>设置时间周期</h2><p><img src="C:%5CUsers%5CAdministrator%5CAppData%5CRoaming%5CTypora%5Ctypora-user-images%5C1575968104207.png" alt="1575968104207"></p>
-
+<h2 id="标题：网络安全：信安2019-12-10"><a href="#标题：网络安全：信安2019-12-10" class="headerlink" title="标题：网络安全：信安2019-12-10"></a>标题：网络安全：信安2019-12-10</h2>
+        
+          <a class="article-more-a" href="/2019/12/10/信安12-10/#more">more >></a>
+        
       
 
       
@@ -290,95 +209,10 @@
     <div class="article-entry" itemprop="articleBody">
       
         <hr>
-<p>​—<br>标题：网络安全：信安2019-12-9</p>
-<h2 id="​—"><a href="#​—" class="headerlink" title="​—"></a>​—</h2><h3 id="重启"><a href="#重启" class="headerlink" title="重启"></a>重启</h3><p>switch#reload</p>
-<h3 id="本征vlan"><a href="#本征vlan" class="headerlink" title="本征vlan"></a>本征vlan</h3><p>为通过某一个端口但未打标的数据打标，统一打标为本征vlan的标签。</p>
-<p>trunk链路上用于传输没有vlan打标的信息，默认是vlan 1</p>
-<p> ![img](file:///D:\Documents\Tencent Files\627125843\Image\C2C\Image1\1LP3KL}H4]3~}[Y0JAYE1%D.png) </p>
-<h3 id="寄存器"><a href="#寄存器" class="headerlink" title="寄存器"></a>寄存器</h3><p>Flash        存镜像文件 操作系统OS</p>
-<p>RAM         存运行配置文件 running-config</p>
-<p>NVRAM    存启动配置文件 start-up</p>
-<h3 id="备份"><a href="#备份" class="headerlink" title="备份"></a>备份</h3><p>switch#copy flash:  tftp:</p>
-<p>(把flash里备份到tftp服务器)</p>
-<h3 id="还原"><a href="#还原" class="headerlink" title="还原"></a>还原</h3><p>switch#copy tftp:  flash:</p>
-<p>（把tftp服务器里还原到flash里）</p>
-<h3 id="清除启动配置文件"><a href="#清除启动配置文件" class="headerlink" title="清除启动配置文件"></a>清除启动配置文件</h3><p>Switch#erase startup-config</p>
-<p>——————————————————</p>
-<p>switch#copy starting-config tftp：</p>
-<p><img src="C:%5CUsers%5CAdministrator%5CAppData%5CRoaming%5CTypora%5Ctypora-user-images%5C1575858347775.png" alt="1575858347775"></p>
-<h2 id="思科路由器的启动过程："><a href="#思科路由器的启动过程：" class="headerlink" title="思科路由器的启动过程："></a>思科路由器的启动过程：</h2><p>1、 路由器加电后，首先运行ROM中的POST程序（Power On Self Test）对路由器的硬件进行检测，俗称加电自检。</p>
-<p>2、 检测通过后紧接着执行ROM中的引导程序（bootstrap），并根据寄存器值（register）来决定启动方式。</p>
-<p>寄存器值的格式为：0x21YZ</p>
-<p>  Y列的状态：0x210Z    从nvram加载配置文件<br>         0x214Z    不从nvram加载配置文件</p>
-<p>  Z列的状态：0x21Y0   从rommon启动   提示符为：&gt;(路由器启动时按Ctrl+Break)<br>        0x21Y1   从mini ios启动  提示符为：Router(boot)&gt;<br>         0x21Y2   从flash启动    提示符为：Router&gt;<br>    <strong><em>\</em>我们经常使用的两个寄存器值：0x2102 （正常），0x2142（不读取保存的配置）。**</strong></p>
-<p>3、 如果正常启动，则按引导程序到Flash中查找IOS镜像。如果找到IOS镜像，则读取后正常启动。如果没有找到IOS镜像，则进入boot模式，即Mini IOS启动。boot模式下可使用TFTP上的IOS；或使用TFTP/X-modem为路由器重新灌一个IOS。如果Mini IOS也启动失败，则进入rom monitor模式。 </p>
-<p>4、 读取IOS并初始化成功后，引导程序将更具寄存器值决定加载或者不加载启动配置文件。如果选择加载，则到NVRAM中找到启动配置文件，并加载到RAM中成为运行配置文件。如果选择不加载或者根本没有启动配置文件，则路由器会进入询问配置模式，以问答的方式对路由器进行基本配置。 </p>
-<p>5、 进入用户模式，启动过程完毕</p>
-<p>6、 举例：如果设置的密码忘记了怎么办？</p>
-<p>​     路由器启动时按Ctrl+Break</p>
-<p>​         rommon 1 &gt; confreg 0x2142</p>
-<p> rommon 1 &gt; reset</p>
-<p><strong><em>\</em>R2#copy startup-config running-config**</strong></p>
-<hr>
-<h4 id="！！！！！！！一定要copy启动配置文件过来-再改密码-再保存！！！-否则新运行文件将覆盖原来的启动配置文件！！！"><a href="#！！！！！！！一定要copy启动配置文件过来-再改密码-再保存！！！-否则新运行文件将覆盖原来的启动配置文件！！！" class="headerlink" title="！！！！！！！一定要copy启动配置文件过来 再改密码 再保存！！！ 否则新运行文件将覆盖原来的启动配置文件！！！"></a>！！！！！！！一定要copy启动配置文件过来 再改密码 再保存！！！ 否则新运行文件将覆盖原来的启动配置文件！！！</h4><p>修改密码配置后重启路由器</p>
-<p>R2#reload </p>
-<p>路由器启动时按Ctrl+Break</p>
-<p>​         rommon 1 &gt; confreg 0x2102</p>
-<p> rommon 1 &gt; reset</p>
-<hr>
-<h2 id="动态路由协议——RIP"><a href="#动态路由协议——RIP" class="headerlink" title="动态路由协议——RIP"></a>动态路由协议——RIP</h2><h3 id="cdp协议-：思科发现协议"><a href="#cdp协议-：思科发现协议" class="headerlink" title="cdp协议 ：思科发现协议"></a>cdp协议 ：思科发现协议</h3><p>发现直连的对方设备 形成邻居关系，通过发送hello包，维持邻居关系。  </p>
-<h3 id="距离矢量路由协议"><a href="#距离矢量路由协议" class="headerlink" title="距离矢量路由协议"></a>距离矢量路由协议</h3><p>{距离；矢量}  </p>
-<p>距离：跳数，                   矢量：方向  </p>
-<p>————————————————</p>
-<h3 id="解决RIP路由协议的环路问题"><a href="#解决RIP路由协议的环路问题" class="headerlink" title="解决RIP路由协议的环路问题"></a>解决RIP路由协议的环路问题</h3><h5 id="1-定义最大跳数（15跳）"><a href="#1-定义最大跳数（15跳）" class="headerlink" title="1.定义最大跳数（15跳）"></a>1.定义最大跳数（15跳）</h5><h5 id="2-水平分隔-（向原始信息的来源方向返回路由信息毫无用处）"><a href="#2-水平分隔-（向原始信息的来源方向返回路由信息毫无用处）" class="headerlink" title="2.水平分隔   （向原始信息的来源方向返回路由信息毫无用处）"></a>2.水平分隔   （向原始信息的来源方向返回路由信息毫无用处）</h5><h5 id="3-路由毒化和毒性逆转"><a href="#3-路由毒化和毒性逆转" class="headerlink" title="3.路由毒化和毒性逆转"></a>3.路由毒化和毒性逆转</h5><h5 id="4-抑制计时器"><a href="#4-抑制计时器" class="headerlink" title="4.抑制计时器"></a>4.抑制计时器</h5><h5 id="5-触发更新"><a href="#5-触发更新" class="headerlink" title="5.触发更新"></a>5.触发更新</h5><h4 id="RIP路由协议的版本"><a href="#RIP路由协议的版本" class="headerlink" title="RIP路由协议的版本"></a>RIP路由协议的版本</h4><h5 id="RIP-V1"><a href="#RIP-V1" class="headerlink" title="RIP V1"></a>RIP V1</h5><p>发送路由更新时不携带子网掩码，宣告主类网络，属于有类路由协议。</p>
-<p>发送路由更新时，目标地址为广播地址：255.255.255.255</p>
-<h5 id="RIP-V2"><a href="#RIP-V2" class="headerlink" title="RIP V2"></a>RIP V2</h5><p>发送路由更新时携带子网掩码，属于无类路由协议。</p>
-<p>发送路由更新时，目标地址为广播地址：224.0.0.0</p>
-<h4 id="配置RIP路由协议"><a href="#配置RIP路由协议" class="headerlink" title="配置RIP路由协议"></a>配置RIP路由协议</h4><p><img src="C:%5CUsers%5CAdministrator%5CAppData%5CRoaming%5CTypora%5Ctypora-user-images%5C1575861165902.png" alt="1575861165902"></p>
-<p>R1(config)#router rip</p>
-<p>开启RIP路由协议</p>
-<p>R1(config-router)#version 1</p>
-<p>设置版本号为1</p>
-<p>R1(config-router)#network 12.1.1.0</p>
-<p>宣告直连网络（是自己直连的所有网络，意思是连了几个就宣告几个）</p>
-<p>R2(config)#router rip</p>
-<p>开启RIP路由协议</p>
-<p>R2(config-router)#version 1</p>
-<p>设置版本号为1</p>
-<p>R2(config-router)#network 12.1.1.0</p>
-<p>R2(config-router)#network  23.1.1.0</p>
-<p>宣告直连网络（两条）</p>
-<p>R3(config)#router rip</p>
-<p>开启RIP路由协议</p>
-<p>R3(config-router)#version 1</p>
-<p>设置版本号为1</p>
-<p>R3(config-router)#network 23.1.1.0</p>
-<h4 id="查看路由表"><a href="#查看路由表" class="headerlink" title="查看路由表"></a>查看路由表</h4><p>R1#sh ip route</p>
-<h4 id="清除路由表"><a href="#清除路由表" class="headerlink" title="清除路由表"></a>清除路由表</h4><p>R1#clear ip route *</p>
-<h4 id="版本2中关闭自动汇总"><a href="#版本2中关闭自动汇总" class="headerlink" title="版本2中关闭自动汇总"></a>版本2中关闭自动汇总</h4><p>R1(config-router)#no auto-summary</p>
-<h3 id="Version1与Version2的兼容问题"><a href="#Version1与Version2的兼容问题" class="headerlink" title="Version1与Version2的兼容问题"></a>Version1与Version2的兼容问题</h3><p><img src="C:%5CUsers%5CAdministrator%5CAppData%5CRoaming%5CTypora%5Ctypora-user-images%5C1575872688544.png" alt="1575872688544"></p>
-<p>———————————————————</p>
-<h2 id="在接口禁止运行RIP"><a href="#在接口禁止运行RIP" class="headerlink" title="在接口禁止运行RIP"></a>在接口禁止运行RIP</h2><p>R3(config-router)passive-interface f0/1</p>
-<p>(！！只收不发！！)</p>
-<h2 id="RIP-version2的单播更新"><a href="#RIP-version2的单播更新" class="headerlink" title="RIP version2的单播更新"></a>RIP version2的单播更新</h2><h2 id="RIP-version2自动汇总"><a href="#RIP-version2自动汇总" class="headerlink" title="RIP version2自动汇总"></a>RIP version2自动汇总</h2><h2 id="RIP-version2手动汇总"><a href="#RIP-version2手动汇总" class="headerlink" title="RIP version2手动汇总"></a>RIP version2手动汇总</h2><p>（因为自动汇总最终汇总成了主类网络）</p>
-<p><img src="C:%5CUsers%5CAdministrator%5CAppData%5CRoaming%5CTypora%5Ctypora-user-images%5C1575874716642.png" alt="1575874716642"></p>
-<p>手动汇总可以缩小汇总的范围</p>
-<p>（有一个问题，汇总地址的子网掩码长度必须大于主类的子网掩码长度）</p>
-<h2 id="使用RIP产生默认路由"><a href="#使用RIP产生默认路由" class="headerlink" title="使用RIP产生默认路由"></a>使用RIP产生默认路由</h2><p>R3(config)#route rip</p>
-<p>R3(config-router)#default-information originate </p>
-<h2 id="RIP-V2明文认证"><a href="#RIP-V2明文认证" class="headerlink" title="RIP V2明文认证"></a>RIP V2明文认证</h2><h2 id="RIP-V2密文认证-MD5"><a href="#RIP-V2密文认证-MD5" class="headerlink" title="RIP V2密文认证(MD5)"></a>RIP V2密文认证(MD5)</h2><h2 id="RIP过滤路由"><a href="#RIP过滤路由" class="headerlink" title="RIP过滤路由"></a>RIP过滤路由</h2><h2 id="提问："><a href="#提问：" class="headerlink" title="提问："></a>提问：</h2><h5 id="RIP路由协议的工作原理？"><a href="#RIP路由协议的工作原理？" class="headerlink" title="RIP路由协议的工作原理？"></a>RIP路由协议的工作原理？</h5><p>RIP协议是一种典型的距离矢量协议，它使用的也是距离矢量算法，该算法可以用一句话来概括：进行路由更新时传递路由表。 </p>
-<h5 id="RIP解决环路的机制？"><a href="#RIP解决环路的机制？" class="headerlink" title="RIP解决环路的机制？"></a>RIP解决环路的机制？</h5><p>5种：</p>
-<p>定义最大跳数</p>
-<p>水平分隔</p>
-<p>路由毒化和毒性逆转</p>
-<p>抑制计时器</p>
-<p>触发更新</p>
-<h5 id="RIP的最大跳数？"><a href="#RIP的最大跳数？" class="headerlink" title="RIP的最大跳数？"></a>RIP的最大跳数？</h5><p>15</p>
-<h5 id="RIP的管理距离？-120"><a href="#RIP的管理距离？-120" class="headerlink" title="RIP的管理距离？   120"></a>RIP的管理距离？   120</h5><p>补充ospf管理距离为110 管理距离为0-255中的整数，值越高可靠性越低。</p>
-<h5 id="RIP的配置？"><a href="#RIP的配置？" class="headerlink" title="RIP的配置？"></a>RIP的配置？</h5><p>8个实验：</p>
-<p>1.Version1与Version2的兼容问题<br>2.在接口禁止运行RIP<br>3.RIP version2的单播更新<br>4.RIP version2自动汇总<br>5.RIP version2手动汇总<br>6.使用RIP产生默认路由<br>7.RIP V2明文认证  RIP V2密文认证(MD5)<br>8.RIP过滤路由</p>
-<h5 id="RIP路由协议的优缺点？"><a href="#RIP路由协议的优缺点？" class="headerlink" title="RIP路由协议的优缺点？"></a>RIP路由协议的优缺点？</h5><p>根据跳数选择路由，没有考虑开销和延迟等其他因素。收敛速度慢，最大跳数是15，超过15认为不可达，并且rip不支持可变长子网掩码，ip地址分配效率低，原理简单开销小。</p>
-
+<h2 id="标题：网络安全：信安2019-12-9"><a href="#标题：网络安全：信安2019-12-9" class="headerlink" title="标题：网络安全：信安2019-12-9"></a>标题：网络安全：信安2019-12-9</h2>
+        
+          <a class="article-more-a" href="/2019/12/10/信安12-9/#more">more >></a>
+        
       
 
       
@@ -426,8 +260,7 @@
     <div class="article-entry" itemprop="articleBody">
       
         <hr>
-<p>​—<br>标题：网络安全：信安2019-12-6</p>
-<h2 id="​—"><a href="#​—" class="headerlink" title="​—"></a>​—</h2>
+<h2 id="标题：网络安全：信安2019-12-6"><a href="#标题：网络安全：信安2019-12-6" class="headerlink" title="标题：网络安全：信安2019-12-6"></a>标题：网络安全：信安2019-12-6</h2>
         
           <a class="article-more-a" href="/2019/12/10/信安12-6/#more">more >></a>
         
